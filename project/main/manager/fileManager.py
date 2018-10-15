@@ -1,7 +1,6 @@
 # charst=utf-8
 
 import os
-
 from project.main.system import shell
 from project.main.base import sysout
 from project.main.config import config
@@ -18,12 +17,27 @@ def createDir(dir):
     exist = os.path.exists(dir)
     return exist
 
+
+#
+# get the directory number int the 'dir'
+# linux :
+#   get dir number of the dir
+#       #ls -l |grep "^d"|wc -l
+#
+#   get file num of the dir
+#       #ls -l |grep "^-"|wc -l
+#
+def getDirNumber(dir):
+    cmd = 'ls -l ' + str(dir) + ' |grep "^d"|wc -l'
+    n = os.popen(cmd).read()
+    return n
+
 #
 # copy init common project to user's dir for preview
 # path -- absolute path of the file
 # filePath -- relative path of the  user's dir
 #
-def createPreProject(path, projectId, projectName, type, filePath):
+def createProject(path, projectId, projectName, type, filePath):
     notebook = config.getNotebook(type)
     if notebook is not None:
         nb = notebook.get("nb")
@@ -37,9 +51,10 @@ def createPreProject(path, projectId, projectName, type, filePath):
         jupyter.executingNb(path, config.getNotebookName(), type)
 
         return {
-            'projectId':projectId,
+            'projectId': projectId,
             'projectName': projectName,
-            'projectType':type,
+            'projectType': type,
+            'version': 1,
             'notebook': config.ns_doname + '/notebooks' + filePath + '/' + config.getNotebookName(),
             'html': config.ns_doname + '/notebooks' + filePath + '/' + config.getH5Name()
         }

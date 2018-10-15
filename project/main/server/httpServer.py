@@ -27,10 +27,10 @@ resp_err_params = {'status': '0', 'result': 'request params form error!'}
 
 # action = initProject
 def initProject(request_body):
-    userId = ''
-    pjId = ''
-    pjName = ''
-    pjType = ''
+    userId = None
+    pjId = None
+    pjName = None
+    pjType = None
     try:
         userId = request_body['userId']
         pjId = request_body['projectId']
@@ -43,6 +43,28 @@ def initProject(request_body):
         'result': projectManager.createPreProject(userId, pjId, pjName, pjType)
     }
 
+# action = newVersion
+def newVersion(request_body):
+    userId = None
+    pjId = None
+    pjName = None
+    version = None
+    try:
+        userId = request_body['userId']
+        pjId = request_body['projectId']
+        pjName = request_body['projectName']
+        version = request_body['version']
+    except:
+        return resp_err_params
+    result = projectManager.createNewVersion(userId, pjId, pjName, version)
+    if(type(result) == type({})) and result.get('status') == 0:
+        return result
+    else:
+        return {
+            'status': 1,
+            'result': result
+        }
+
 
 def praseData(request_body):
     if type(request_body) != type({}):
@@ -51,11 +73,18 @@ def praseData(request_body):
         action = request_body['action']
         sysout.info(TAG, 'action=' + str(action))
 
+        # functions = {
+        #     'initproject': initProject(request_body),
+        #     'newVersion': newVersion(request_body)
+        # }
+
         if action == 'initProject':
             return initProject(request_body)
+        elif action == 'newVersion':
+            return newVersion(request_body)
         else:
-            # pass
-            return {'status': 0, 'result': 'bad request 40004'}
+            return {'status': 0, 'result': 'request & params not support!!!'}
+
 
 
 # server
@@ -67,6 +96,7 @@ def application(environ, start_response):
     print('http request ---> ' + str(request_body))
     request_body = json.loads(request_body)
     response = praseData(request_body)
+    print(response)
     result = json.dumps(response).encode('utf-8')
     print("http response --> " + str(result))
     return [result]
