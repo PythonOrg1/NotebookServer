@@ -42,8 +42,10 @@ def createProject(path, projectId, projectName, type, filePath):
     if notebook is not None:
         nb = notebook.get("nb")
         h5 = notebook.get("h5")
+        py = notebook.get('py')
         shell.execute('cp ' + nb + ' ' + path + '/')
         shell.execute('cp ' + h5 + ' ' + path + '/')
+        shell.execute('cp ' + py + ' ' + path + '/')
         # if projectId != None:
         #     shell.execute('mv ' + config.getNotebookName() + ' ' + str(projectId) + '.ipynb')
         #     shell.execute('mv ' + config.getH5Name() + ' ' + str(projectId) + '.ipynb')
@@ -56,7 +58,8 @@ def createProject(path, projectId, projectName, type, filePath):
             'projectType': type,
             'version': 1,
             'notebook': config.ns_doname + '/notebooks' + filePath + '/' + config.getNotebookName(),
-            'html': config.ns_doname + '/notebooks' + filePath + '/' + config.getH5Name()
+            'html': config.ns_doname + '/notebooks' + filePath + '/' + config.getH5Name(),
+            'py': config.ns_doname + '/notebooks' + filePath + '/' + config.getPYName()
         }
     else:
         return None

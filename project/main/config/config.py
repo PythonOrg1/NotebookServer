@@ -35,26 +35,34 @@ dir_home_user = '/users'
 # the common base nb of the sys
 nb_base_python3 = dir_home + '/base/python3/edit.ipynb'
 h5_base_python3 = dir_home + '/base/python3/edit.html'
+py_base_python3 = dir_home + '/base/python3/edit.py'
+
 nb_base_python2 = dir_home + '/base/python2/edit.ipynb'
 h5_base_python2 = dir_home + '/base/python2/edit.html'
+py_base_python2 = dir_home + '/base/python2/edit.py'
+
 nb_base_r = dir_home + '/base/r/edit.ipynb'
 h5_base_r = dir_home + '/base/r/edit.html'
+py_base_r = dir_home + '/base/r/edit.py'
 
 
 def getNotebook(projectType):
     return {
         'PYTHON3': {
             'nb': nb_base_python3,
-            'h5': h5_base_python3
+            'h5': h5_base_python3,
+            'py': py_base_python3
         },
 
         'PYTHON2': {
             'nb': nb_base_python2,
-            'h5': h5_base_python2
+            'h5': h5_base_python2,
+            'py': py_base_python2
         },
         'R': {
             'nb': nb_base_r,
-            'h5': h5_base_r
+            'h5': h5_base_r,
+            'py': py_base_r
         }
     }.get(str(projectType).upper())
 
@@ -62,6 +70,8 @@ def getNotebook(projectType):
 def getNotebookName():
     return 'edit.ipynb'
 
-
 def getH5Name():
     return 'edit.html'
+
+def getPYName():
+    return 'edit.py'

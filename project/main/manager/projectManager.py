@@ -15,6 +15,17 @@ resp_err_version_create_dir_err = {'status': 0, 'result': 'system error on creat
 
 
 
+#
+#check the version of pj is exists?
+#
+def checkVersion(userId, projectId, v):
+    if v == None:
+        return (False, resp_err_version_invlid)
+    maxVersion = int(fileManager.getDirNumber(config.dir_home + config.dir_home_user + '/' + str(userId) + '/' + str(projectId) + '/'))
+    if (v <= 0 or v > maxVersion):
+        return (False, resp_err_version_invlid)
+    return (True, maxVersion)
+
 
 
 # create user's project
@@ -38,16 +49,14 @@ def createPreProject(userId, projectId, projectName, projectType):
 #
 #
 def createNewVersion(userId, projectId, projectName, versionCur):
-    if versionCur == None:
-        return resp_err_version_invlid
-
-    maxVersion = int(fileManager.getDirNumber(config.dir_home + config.dir_home_user + '/' + str(userId) + '/' + str(projectId) + '/'))
-    if (versionCur <= 0 or versionCur > maxVersion):
-        return resp_err_version_invlid
-
+    (exist, result) = checkVersion(userId, projectId, versionCur)
+    if not exist:
+        return result
+    maxVersion = result
     curPath = config.dir_home_user + '/' + str(userId) + '/' + str(projectId) + '/' + str(versionCur)
     curNb = config.dir_home + curPath + '/' + config.getNotebookName()
     curH5 = config.dir_home + curPath + '/' + config.getH5Name()
+    curPY = config.dir_home + curPath + '/' + config.getPYName()
 
     version = maxVersion + 1
     path = config.dir_home_user + '/' + str(userId) + '/' + str(projectId) + '/' + str(version)
@@ -59,12 +68,26 @@ def createNewVersion(userId, projectId, projectName, versionCur):
         else:
             shell.execute('cp ' + curNb + ' ' + dir + '/')
             shell.execute('cp ' + curH5 + ' ' + dir + '/')
+            shell.execute('cp ' + curPY + ' ' + dir + '/')
             return {
                 'projectId': projectId,
                 'projectName': projectName,
                 'version': version,
                 'notebook': config.ns_doname + '/notebooks' + path + '/' + config.getNotebookName(),
-                'html': config.ns_doname + '/notebooks' + path + '/' + config.getH5Name()
+                'html': config.ns_doname + '/notebooks' + path + '/' + config.getH5Name(),
+                'py': config.ns_doname + '/notebooks' + path + '/' + config.getPYName()
             }
     else:
         return resp_err_version_create_dir_err
+
+#
+#
+#cmd:
+#
+# def generateCode(userId, projectId, projectName, version):
+#     (exist, result) = checkVersion(userId, projectId, version)
+#     if not exist:
+#         return result
+#     maxVersion = result
+
+
