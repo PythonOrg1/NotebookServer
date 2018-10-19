@@ -19,6 +19,49 @@ def createDir(dir):
 
 
 #
+# get all files & dirs of the directory
+#   response:
+#   [
+#        {'pwd': '/Users/jerryyin/.jupyter',            //current directory
+#         'dirs': ['nbconfig', 'custom'],                //child dir
+#         'files': ['.DS_Store', 'migrated', 'jupyter_notebook_config.py', 'jupyter_notebook_config.json2']      //all files
+#         }, ...
+#   ]
+#
+def getAllFiles(dir):
+    if dir == None:
+        return None
+    result = []
+    for pwd, d, file in os.walk(dir):
+        result.append({
+            'pwd': pwd,
+            'dirs': d,
+            'files': file
+        })
+    return result
+
+#
+# get only one file name of the dir
+# --fileForm:  .ipynb / .html / .py
+#
+def getOneNbFileName(dir, fileForm):
+    print("getOneNbFileName...")
+    print(str(dir) + '/ ' + str(fileForm))
+
+    if dir == None or (not os.path.exists(dir)):
+        return None
+    data = getAllFiles(dir)
+    if data == None:
+        return None
+    parentFiles = (data[0])['files']
+    fileName = None
+    for f in parentFiles:
+        if str(fileForm) in str(f):
+            fileName = str(f)
+    return fileName
+
+
+#
 # get the directory number int the 'dir'
 # linux :
 #   get dir number of the dir
@@ -31,6 +74,7 @@ def getDirNumber(dir):
     cmd = 'ls -l ' + str(dir) + ' |grep "^d"|wc -l'
     n = os.popen(cmd).read()
     return n
+
 
 #
 # copy init common project to user's dir for preview
@@ -85,3 +129,8 @@ def deleteFile(path):
             return (2, 'File not exists!')
     except Exception as e:
         return (0, 'Delete Failed, cause: ' + e)
+
+
+# for test
+# if __name__ == '__main__':
+#     getAllFiles('/Users/jerryyin/.jupyter')

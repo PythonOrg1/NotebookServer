@@ -109,9 +109,10 @@ def runWithVm(userId, projectId, projectName, version, vmId, passwd, isoName, is
         #  }
         # }
         path = res['result'].get('jupyter', '') + '/notebooks/system/' + str(projectId) + '/' + str(version)
-        notebook = path + '/' + config.getNotebookName()
-        html = path + '/' + config.getH5Name()
-        py = path + '/' + config.getPYName()
+        parentPath = config.dir_home + '/' + str(userId) + '/system/' + str(projectId) + '/' + str(version)
+        notebook = path + '/' + fileManager.getOneNbFileName(parentPath, '.ipynb')
+        html = path + '/' + fileManager.getOneNbFileName(parentPath, '.html')
+        py = path + '/' + fileManager.getOneNbFileName(parentPath, '.py')
 
         result = {
             'status': 1,

@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="75761fac-7abd-4c54-8adb-d20f3bc5d893" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/project/test/codeTest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/main/config/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/main/config/config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/main/manager/fileManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/main/manager/fileManager.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/main/manager/projectManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/main/manager/projectManager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/main/manager/vmManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/main/manager/vmManager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/main/server/httpServer.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/main/server/httpServer.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,8 +16,8 @@
     <SUITE FILE_PATH="coverage/NotebookServer$httpServer.coverage" NAME="httpServer Coverage Results" MODIFIED="1539573611868" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/project/main/server" />
     <SUITE FILE_PATH="coverage/NotebookServer$codeTest.coverage" NAME="codeTest Coverage Results" MODIFIED="1539939259284" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/project/test" />
     <SUITE FILE_PATH="coverage/NotebookServer$httpServer2.coverage" NAME="httpServer2 Coverage Results" MODIFIED="1539571295682" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/project/main/server" />
-    <SUITE FILE_PATH="coverage/NotebookServer$fileManager.coverage" NAME="fileManager Coverage Results" MODIFIED="1539591533211" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/project/main/manager" />
-    <SUITE FILE_PATH="coverage/NotebookServer$main.coverage" NAME="main Coverage Results" MODIFIED="1539938704916" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/project/main" />
+    <SUITE FILE_PATH="coverage/NotebookServer$fileManager.coverage" NAME="fileManager Coverage Results" MODIFIED="1539941661046" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/project/main/manager" />
+    <SUITE FILE_PATH="coverage/NotebookServer$main.coverage" NAME="main Coverage Results" MODIFIED="1539944453461" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/project/main" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-589950821">
@@ -36,7 +31,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="24" />
+          <entry key="py" value="28" />
           <entry key="pyi" value="2" />
           <entry key="txt" value="3" />
         </counts>
@@ -44,21 +39,21 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="PLAIN_TEXT" value="3" />
-          <entry key="Python" value="24" />
+          <entry key="Python" value="28" />
           <entry key="PythonStub" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="20" />
-          <entry key="py" value="5530" />
+          <entry key="py" value="6557" />
           <entry key="txt" value="68" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="88" />
-          <entry key="Python" value="5530" />
+          <entry key="Python" value="6557" />
         </counts>
       </usages-collector>
     </session>
@@ -68,8 +63,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/project/main/config/config.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-779">
-              <caret line="13" column="56" lean-forward="true" selection-start-line="13" selection-start-column="56" selection-end-line="13" selection-end-column="56" />
+            <state relative-caret-position="208">
+              <caret line="33" column="23" selection-start-line="33" selection-start-column="11" selection-end-line="33" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -77,8 +72,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/project/main/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+            <state relative-caret-position="90">
+              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
               <folding>
                 <element signature="e#17#53#0" expanded="true" />
               </folding>
@@ -89,8 +84,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/project/main/server/httpServer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-51">
-              <caret line="114" column="44" lean-forward="true" selection-start-line="114" selection-start-column="44" selection-end-line="114" selection-end-column="44" />
+            <state relative-caret-position="248">
+              <caret line="116" selection-start-line="116" selection-end-line="116" />
               <folding>
                 <element signature="e#108#153#0" expanded="true" />
                 <marker date="1539938606262" expanded="true" signature="1605:1606" ph="..." />
@@ -100,16 +95,25 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/project/main/manager/projectManager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="91" lean-forward="true" selection-start-line="91" selection-end-line="91" />
+            <state relative-caret-position="281">
+              <caret line="122" column="37" lean-forward="true" selection-start-line="122" selection-start-column="37" selection-end-line="122" selection-end-column="37" />
               <folding>
                 <element signature="e#17#53#0" expanded="true" />
-                <marker date="1539936684434" expanded="true" signature="603:937" ph="..." />
-                <marker date="1539936684434" expanded="true" signature="4993:4996" ph="..." />
+                <marker date="1539944449948" expanded="true" signature="603:937" ph="..." />
+                <marker date="1539944449948" expanded="true" signature="5187:5190" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/wsgiref/handlers.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="157">
+              <caret line="136" selection-start-line="136" selection-end-line="136" />
             </state>
           </provider>
         </entry>
@@ -117,39 +121,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/project/main/manager/fileManager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="28" column="1" lean-forward="true" selection-start-line="28" selection-start-column="1" selection-end-line="28" selection-end-column="1" />
+            <state relative-caret-position="-26">
+              <caret line="52" column="27" lean-forward="true" selection-start-line="52" selection-start-column="27" selection-end-line="52" selection-end-column="27" />
               <folding>
                 <element signature="e#16#25#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/project/main/manager/vmManager.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
-              <caret line="100" column="9" lean-forward="true" selection-start-line="100" selection-start-column="9" selection-end-line="100" selection-end-column="9" />
-              <folding>
-                <element signature="e#1#39#0" expanded="true" />
+                <marker date="1539944388458" expanded="true" signature="763:1484" ph="..." />
+                <marker date="1539944388458" expanded="true" signature="1243:1484" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/project/main/utils/socketUtils.py">
+        <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/genericpath.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-                <marker date="1539848154084" expanded="true" signature="170:172" ph="..." />
-                <marker date="1539848154084" expanded="true" signature="239:240" ph="..." />
-                <marker date="1539848154084" expanded="true" signature="301:309" ph="..." />
-                <marker date="1539848154084" expanded="true" signature="1428:1479" ph="..." />
-              </folding>
+            <state relative-caret-position="285">
+              <caret line="20" selection-start-line="20" selection-end-line="20" />
             </state>
           </provider>
         </entry>
@@ -191,6 +178,7 @@
       <find>deleteProject</find>
       <find>base</find>
       <find>dir_home_user</find>
+      <find>getNotebookName</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -212,12 +200,12 @@
         <option value="$PROJECT_DIR$/docs/doc_inteface_jupyter.txt" />
         <option value="$PROJECT_DIR$/project/main/base/sysout.py" />
         <option value="$PROJECT_DIR$/project/main/utils/socketUtils.py" />
-        <option value="$PROJECT_DIR$/project/main/manager/fileManager.py" />
         <option value="$PROJECT_DIR$/project/main/config/config.py" />
-        <option value="$PROJECT_DIR$/project/main/manager/projectManager.py" />
         <option value="$PROJECT_DIR$/project/main/server/httpServer.py" />
         <option value="$PROJECT_DIR$/project/main/manager/vmManager.py" />
         <option value="$PROJECT_DIR$/project/test/codeTest.py" />
+        <option value="$PROJECT_DIR$/project/main/manager/fileManager.py" />
+        <option value="$PROJECT_DIR$/project/main/manager/projectManager.py" />
       </list>
     </option>
   </component>
@@ -353,7 +341,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.codeTest">
+  <component name="RunManager" selected="Python.main">
     <configuration name="codeTest" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="NotebookServer" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -473,10 +461,10 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.codeTest" />
         <item itemvalue="Python.main" />
-        <item itemvalue="Python.projectManager" />
         <item itemvalue="Python.fileManager" />
+        <item itemvalue="Python.codeTest" />
+        <item itemvalue="Python.projectManager" />
         <item itemvalue="Python.httpServer" />
       </list>
     </recent_temporary>
@@ -513,8 +501,8 @@
       <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Docker" order="1" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.5005325" side_tool="true" weight="0.32277226" />
-      <window_info active="true" anchor="bottom" id="Run" order="3" sideWeight="0.49946752" visible="true" weight="0.43762377" />
-      <window_info anchor="bottom" id="Debug" order="4" weight="0.3990099" />
+      <window_info active="true" anchor="bottom" id="Run" order="3" sideWeight="0.49946752" visible="true" weight="0.5683168" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.42772278" />
       <window_info anchor="bottom" id="Terminal" order="5" weight="0.32871288" />
       <window_info anchor="bottom" id="Version Control" order="6" weight="0.32871288" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.32871288" />
@@ -562,6 +550,62 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/project/main/manager/fileManager.py</url>
+          <line>57</line>
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/project/main/manager/fileManager.py</url>
+          <line>50</line>
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/project/main/manager/fileManager.py</url>
+          <line>52</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/project/main/manager/fileManager.py</url>
+          <line>51</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/project/main/manager/fileManager.py</url>
+          <line>53</line>
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/project/main/manager/fileManager.py</url>
+          <line>54</line>
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/project/main/manager/fileManager.py</url>
+          <line>55</line>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/project/main/manager/fileManager.py</url>
+          <line>58</line>
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/project/main/manager/fileManager.py</url>
+          <line>59</line>
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/project/main/manager/fileManager.py</url>
+          <line>60</line>
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/setup.py">
@@ -655,13 +699,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="22" column="21" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/selectors.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="375" selection-start-line="375" selection-end-line="375" />
         </state>
       </provider>
     </entry>
@@ -786,13 +823,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/wsgiref/handlers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="136" selection-start-line="136" selection-end-line="136" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/project/main/system/shell.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -800,10 +830,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/project/main/config/config.py">
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/bs4/element.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-779">
-          <caret line="13" column="56" lean-forward="true" selection-start-line="13" selection-start-column="56" selection-end-line="13" selection-end-column="56" />
+        <state relative-caret-position="160">
+          <caret line="1571" column="8" selection-start-line="1571" selection-start-column="8" selection-end-line="1571" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/doc_inteface_jupyter.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="945">
+          <caret line="63" column="17" lean-forward="true" selection-start-line="63" selection-start-column="17" selection-end-line="63" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/test/codeTest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/main/manager/vmManager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="85" column="24" lean-forward="true" selection-start-line="85" selection-start-column="24" selection-end-line="85" selection-end-column="24" />
+          <folding>
+            <element signature="e#1#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/main/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+          <folding>
+            <element signature="e#17#53#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -821,27 +885,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/bs4/element.py">
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/wsgiref/handlers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="1571" column="8" selection-start-line="1571" selection-start-column="8" selection-end-line="1571" selection-end-column="8" />
+        <state relative-caret-position="157">
+          <caret line="136" selection-start-line="136" selection-end-line="136" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/project/main/main.py">
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/selectors.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
-          <folding>
-            <element signature="e#17#53#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="172">
+          <caret line="375" selection-start-line="375" selection-end-line="375" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/genericpath.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/project/main/server/httpServer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-51">
-          <caret line="114" column="44" lean-forward="true" selection-start-line="114" selection-start-column="44" selection-end-line="114" selection-end-column="44" />
+        <state relative-caret-position="248">
+          <caret line="116" selection-start-line="116" selection-end-line="116" />
           <folding>
             <element signature="e#108#153#0" expanded="true" />
             <marker date="1539938606262" expanded="true" signature="1605:1606" ph="..." />
@@ -850,48 +918,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/project/main/manager/projectManager.py">
+    <entry file="file://$PROJECT_DIR$/project/main/config/config.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="91" lean-forward="true" selection-start-line="91" selection-end-line="91" />
-          <folding>
-            <element signature="e#17#53#0" expanded="true" />
-            <marker date="1539936684434" expanded="true" signature="603:937" ph="..." />
-            <marker date="1539936684434" expanded="true" signature="4993:4996" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/doc_inteface_jupyter.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="945">
-          <caret line="63" column="17" lean-forward="true" selection-start-line="63" selection-start-column="17" selection-end-line="63" selection-end-column="17" />
+        <state relative-caret-position="208">
+          <caret line="33" column="23" selection-start-line="33" selection-start-column="11" selection-end-line="33" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/project/main/manager/fileManager.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="28" column="1" lean-forward="true" selection-start-line="28" selection-start-column="1" selection-end-line="28" selection-end-column="1" />
+        <state relative-caret-position="-26">
+          <caret line="52" column="27" lean-forward="true" selection-start-line="52" selection-start-column="27" selection-end-line="52" selection-end-column="27" />
           <folding>
             <element signature="e#16#25#0" expanded="true" />
+            <marker date="1539944388458" expanded="true" signature="763:1484" ph="..." />
+            <marker date="1539944388458" expanded="true" signature="1243:1484" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/project/test/codeTest.py">
+    <entry file="file://$PROJECT_DIR$/project/main/manager/projectManager.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/main/manager/vmManager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="100" column="9" lean-forward="true" selection-start-line="100" selection-start-column="9" selection-end-line="100" selection-end-column="9" />
+        <state relative-caret-position="281">
+          <caret line="122" column="37" lean-forward="true" selection-start-line="122" selection-start-column="37" selection-end-line="122" selection-end-column="37" />
           <folding>
-            <element signature="e#1#39#0" expanded="true" />
+            <element signature="e#17#53#0" expanded="true" />
+            <marker date="1539944449948" expanded="true" signature="603:937" ph="..." />
+            <marker date="1539944449948" expanded="true" signature="5187:5190" ph="..." />
           </folding>
         </state>
       </provider>
