@@ -133,6 +133,8 @@ def praseData(request_body):
             return newVersion(request_body)
         elif action == 'runWithVm':
             return runWithVm(request_body)
+        elif action == 'deleteProject':
+            return deleteProject(request_body)
         else:
             return {'status': 0, 'result': 'request & params not support!!!'}
 
