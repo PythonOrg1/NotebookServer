@@ -60,6 +60,9 @@ def createProject(path, projectId, projectName, type, filePath):
             'notebook': config.ns_doname + '/notebooks/storage' + filePath + '/' + config.getNotebookName(),
             'html': config.ns_doname + '/notebooks/storage' + filePath + '/' + config.getH5Name(),
             'py': config.ns_doname + '/notebooks/storage' + filePath + '/' + config.getPYName()
+            # 'notebook': config.ns_doname + '/notebooks' + filePath + '/' + config.getNotebookName(),
+            # 'html': config.ns_doname + '/notebooks' + filePath + '/' + config.getH5Name(),
+            # 'py': config.ns_doname + '/notebooks' + filePath + '/' + config.getPYName()
         }
     else:
         return None

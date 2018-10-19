@@ -21,7 +21,7 @@ def checkVersion(userId, projectId, v):
     if v == None:
         return (False, resp_err_version_invlid)
     maxVersion = int(fileManager.getDirNumber(
-        config.dir_home + config.dir_home_user + '/' + str(userId) + '/' + str(projectId) + '/'))
+        config.dir_home + config.dir_home_user + '/' + str(userId) + '/system/' + str(projectId) + '/'))
     if (v <= 0 or v > maxVersion):
         return (False, resp_err_version_invlid)
     return (True, maxVersion)
@@ -32,7 +32,17 @@ def checkVersion(userId, projectId, v):
 # projectType -- 'PYTHON3' | 'PYTHON2' | 'R'
 #
 def createPreProject(userId, projectId, projectName, projectType):
-    path = config.dir_home_user + '/' + str(userId) + '/' + str(projectId) + '/1'  # 1--version of pj， vesionInit=1
+    pjHome = ''
+    if config.dir_home_user != "":
+        pjHome = config.dir_home + "/" + config.dir_home_user + '/' + str(userId) + '/system'
+    else:
+        pjHome = config.dir_home + '/' + str(userId) + '/system'
+    if not os.path.exists(pjHome):
+        os.makedirs(pjHome)
+        shell.execute('cp ' + config.file_system_readme + ' ' + pjHome + '/')
+
+    path = config.dir_home_user + '/' + str(userId) + '/system/' + str(
+        projectId) + '/1'  # 1--version of pj， vesionInit=1
     dir = config.dir_home + path
     if (fileManager.createDir(dir)):
         notebook = fileManager.createProject(dir, projectId, projectName, projectType, path)
@@ -52,13 +62,13 @@ def createNewVersion(userId, projectId, projectName, versionCur):
     if not exist:
         return result
     maxVersion = result
-    curPath = config.dir_home_user + '/' + str(userId) + '/' + str(projectId) + '/' + str(versionCur)
+    curPath = config.dir_home_user + '/' + str(userId) + '/system/' + str(projectId) + '/' + str(versionCur)
     curNb = config.dir_home + curPath + '/' + config.getNotebookName()
     curH5 = config.dir_home + curPath + '/' + config.getH5Name()
     curPY = config.dir_home + curPath + '/' + config.getPYName()
 
     version = maxVersion + 1
-    path = config.dir_home_user + '/' + str(userId) + '/' + str(projectId) + '/' + str(version)
+    path = config.dir_home_user + '/' + str(userId) + '/system/' + str(projectId) + '/' + str(version)
     dir = config.dir_home + path
     if (fileManager.createDir(dir)):
         print(config.dir_home + curPath)
@@ -80,8 +90,15 @@ def createNewVersion(userId, projectId, projectName, versionCur):
         return resp_err_version_create_dir_err
 
 
-def runWithVm(userId, projectId, projectName, version, vmId, passwd, isoName, isoRemarks, gpu, cpu, memory):
-    res = vmManager.startVm(userId, isoName, vmId, passwd, gpu, cpu, memory, isoRemarks)
+def runWithVm(userId, projectId, projectName, version, vmId, passwd, isoName, isoRemarks, gpu, cpu, memory,
+              action='start'):
+    res = None
+    if action != None and action == 'stop':
+        # shutdown vm
+        res = vmManager.startVm(userId, isoName, vmId, passwd, gpu, cpu, memory, isoRemarks, action)
+    else:
+        # run vm
+        res = vmManager.startVm(userId, isoName, vmId, passwd, gpu, cpu, memory, isoRemarks)
     if res['status'] == 1:
         # start vm success
         # {
@@ -91,7 +108,7 @@ def runWithVm(userId, projectId, projectName, version, vmId, passwd, isoName, is
         #     'message': (result['result'])['message']
         #  }
         # }
-        path = res['result'].get('jupyter', '') + '/notebooks/' + str(projectId) + '/' + str(version)
+        path = res['result'].get('jupyter', '') + '/notebooks/system/' + str(projectId) + '/' + str(version)
         notebook = path + '/' + config.getNotebookName()
         html = path + '/' + config.getH5Name()
         py = path + '/' + config.getPYName()
@@ -120,9 +137,8 @@ def runWithVm(userId, projectId, projectName, version, vmId, passwd, isoName, is
 # delete project by user
 #
 def delectProject(userId, pjId, pjName):
-    projectPath = config.dir_home + config.dir_home_user + '/' + str(userId) + '/' + str(pjId) + '/'
+    projectPath = config.dir_home + config.dir_home_user + '/' + str(userId) + '/system/' + str(pjId) + '/'
     return fileManager.deleteFile(projectPath)
-
 
 #
 #
@@ -142,8 +158,5 @@ def delectProject(userId, pjId, pjName):
 #     runWithVm(userId='39', projectId=113, projectName='my first pj', version=1, vmId='c4851539075413000', passwd='yy123456', isoName='60.12.136.59/ocdeep/b3',
 #               isoRemarks='remaraks test', gpu='geforce gtx 1070', cpu='i7-7700k', memory='16')
 
-    # res = delectProject(2, 12, 'ddd')
-    # print(res)
-
-
-
+# res = delectProject(2, 12, 'ddd')
+# print(res)

@@ -33,7 +33,7 @@ def startVm(userId, isoName, vmId, passwd, gpu, cpu, memory, isoRemarks, action=
     if result != None:
         sysout.log(TAG, result)
         if type(result) == type({}):
-            if result['status'] == 200:
+            if result['status'] == 200 or (result['status'] == 211 and action =='start'):
                 # start vm success
                 # resp example
                 # {

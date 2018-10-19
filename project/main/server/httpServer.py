@@ -63,10 +63,10 @@ def newVersion(request_body):
 
 # delete project
 def deleteProject(request_body):
-    # todo delete
     userId = None
     pjId = None
     version = None
+    pjName = ''
     try:
         userId = request_body['userId']
         pjId = request_body['projectId']
@@ -96,7 +96,7 @@ def runWithVm(request_body):
     gpu = None
     cpu = None
     memory = None
-
+    action = None
     try:
         userId = request_body['userId']
         pjId = request_body['projectId']
@@ -109,10 +109,12 @@ def runWithVm(request_body):
         gpu = request_body['gpu']
         cpu = request_body['cpu']
         memory = request_body['memory']
+        if 'action' in request_body:
+            action = request_body['action']
     except Exception as e:
-        return resp_err_params + str(e)
+        return str(resp_err_params) + str(e)
     return projectManager.runWithVm(str(userId), str(pjId), pjName, str(version), str(vmId), passwd, isoName,
-                                    isoRemarks, gpu, cpu, str(memory))
+                                    isoRemarks, gpu, cpu, str(memory), action)
 
 
 def praseData(request_body):

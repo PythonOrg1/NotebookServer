@@ -31,11 +31,13 @@ vms_host = '121.40.62.80'
 # system home dir
 dir_home_localhost = '/Users/jerryyin/workspace/notebook'
 dir_home_dev = '/Users/jerryyin/workspace/notebook/storage'
-dir_home = dir_home_localhost
+dir_home = dir_home_dev
 
-dir_home_user = '/users'
+# dir_home_user = '/users'
+dir_home_user = ''
 # user's project dir:   homeDir/users/userId/projectId/version/xxx-nb
 
+file_system_readme = dir_home +'/base/readme'
 
 #cmd
 #sshfs for storage on StorageServer
