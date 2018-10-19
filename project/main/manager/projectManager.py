@@ -2,7 +2,7 @@
 
 from project.main.base import sysout
 from project.main.config import config, string
-from project.main.manager import fileManager
+from project.main.manager import fileManager, vmManager
 from project.main.system import shell
 import os
 
@@ -14,18 +14,17 @@ resp_err_version_old_err = {'status': 0, 'result': 'current project is not exist
 resp_err_version_create_dir_err = {'status': 0, 'result': 'system error on create new directory!'}
 
 
-
 #
-#check the version of pj is exists?
+# check the version of pj is exists?
 #
 def checkVersion(userId, projectId, v):
     if v == None:
         return (False, resp_err_version_invlid)
-    maxVersion = int(fileManager.getDirNumber(config.dir_home + config.dir_home_user + '/' + str(userId) + '/' + str(projectId) + '/'))
+    maxVersion = int(fileManager.getDirNumber(
+        config.dir_home + config.dir_home_user + '/' + str(userId) + '/' + str(projectId) + '/'))
     if (v <= 0 or v > maxVersion):
         return (False, resp_err_version_invlid)
     return (True, maxVersion)
-
 
 
 # create user's project
@@ -80,9 +79,45 @@ def createNewVersion(userId, projectId, projectName, versionCur):
     else:
         return resp_err_version_create_dir_err
 
+
+def runWithVm(userId, projectId, projectName, version, vmId, passwd, isoName, isoRemarks, gpu, cpu, memory):
+    res = vmManager.startVm(userId, isoName, vmId, passwd, gpu, cpu, memory, isoRemarks)
+    if res['status'] == 1:
+        # start vm success
+        # {
+        #  'status': 1,
+        #  'result': {
+        #     'jupyeter': 'http://'],
+        #     'message': (result['result'])['message']
+        #  }
+        # }
+        path = res['result'].get('jupyter', '') + '/notebooks/' + str(projectId) + '/' + str(version)
+        notebook = path + '/' + config.getNotebookName()
+        html = path + '/' + config.getH5Name()
+        py = path + '/' + config.getPYName()
+
+        result = {
+            'status': 1,
+            'result': {
+                'projectId': projectId,
+                'projectName': projectName,
+                'version': version,
+                'notebook': notebook,
+                'html': html,
+                'py': py
+            }
+        }
+        sysout.log(TAG, result)
+        return result
+
+    else:
+        # 'status' == 0
+        sysout.log(TAG, res)
+        return res
+
 #
 #
-#cmd:
+# cmd:
 #
 # def generateCode(userId, projectId, projectName, version):
 #     (exist, result) = checkVersion(userId, projectId, version)
@@ -91,3 +126,8 @@ def createNewVersion(userId, projectId, projectName, versionCur):
 #     maxVersion = result
 
 
+# for test
+# if __name__ == '__main__':
+#     print('test...')
+#     runWithVm(userId='39', projectId=113, projectName='my first pj', version=1, vmId='c4851539075413000', passwd='yy123456', isoName='60.12.136.59/ocdeep/b3',
+#               isoRemarks='remaraks test', gpu='geforce gtx 1070', cpu='i7-7700k', memory='16')

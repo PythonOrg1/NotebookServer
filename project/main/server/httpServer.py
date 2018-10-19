@@ -9,20 +9,14 @@ from project.main.base import sysout
 from project.main.manager import projectManager
 from project.main.config import config
 
-
-
-
 TAG = 'httpServer'
 
 mPort = config.ns_port_http
 mHost = config.ns_host
 mServer = (mHost, mPort)
 
-
 # global response data
 resp_err_params = {'status': '0', 'result': 'request params form error!'}
-
-
 
 
 # action = initProject
@@ -43,6 +37,7 @@ def initProject(request_body):
         'result': projectManager.createPreProject(userId, pjId, pjName, pjType)
     }
 
+
 # action = newVersion
 def newVersion(request_body):
     userId = None
@@ -57,13 +52,49 @@ def newVersion(request_body):
     except:
         return resp_err_params
     result = projectManager.createNewVersion(userId, pjId, pjName, version)
-    if(type(result) == type({})) and result.get('status') == 0:
+    if (type(result) == type({})) and result.get('status') == 0:
         return result
     else:
         return {
             'status': 1,
             'result': result
         }
+
+
+# delete project
+def deleteProject(request_body):
+    # todo delete
+    pass
+
+
+def runWithVm(request_body):
+    userId = None
+    pjId = None
+    pjName = None
+    version = None
+    vmId = None
+    passwd = None
+    isoName = None
+    isoRemarks = ''
+    gpu = None
+    cpu = None
+    memory = None
+
+    try:
+        userId = request_body['userId']
+        pjId = request_body['projectId']
+        pjName = request_body['projectName']
+        version = request_body['version']
+        vmId = request_body['vmId']
+        passwd = request_body['passwd']
+        isoName = request_body['isoName']
+        isoRemarks = request_body['isoRemarks']
+        gpu = request_body['gpu']
+        cpu = request_body['cpu']
+        memory = request_body['memory']
+    except Exception as e:
+        return resp_err_params + str(e)
+    return projectManager.runWithVm(str(userId), str(pjId), pjName, str(version), str(vmId), passwd, isoName, isoRemarks, gpu, cpu, str(memory))
 
 
 def praseData(request_body):
@@ -82,9 +113,10 @@ def praseData(request_body):
             return initProject(request_body)
         elif action == 'newVersion':
             return newVersion(request_body)
+        elif action == 'runWithVm':
+            return runWithVm(request_body)
         else:
             return {'status': 0, 'result': 'request & params not support!!!'}
-
 
 
 # server

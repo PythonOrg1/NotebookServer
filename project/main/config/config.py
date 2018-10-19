@@ -23,13 +23,25 @@ ns_port_http = 8100
 ns_port = 8888
 ns_doname = 'http://' + ns_host + ":" + str(ns_port)
 
+vms_port = 18883
+vms_host = '121.40.62.80'
+
+
+
 # system home dir
 dir_home_localhost = '/Users/jerryyin/workspace/notebook'
-dir_home_dev = ''
-dir_home = dir_home_localhost
+dir_home_dev = '/Users/jerryyin/workspace/notebook/storage'
+dir_home = dir_home_dev
 
 dir_home_user = '/users'
 # user's project dir:   homeDir/users/userId/projectId/version/xxx-nb
+
+
+#cmd
+#sshfs for storage on StorageServer
+cmd_sshfs_mount_storage = 'sshfs -C -o reconnect user@hostname:remote_dir local_dir'
+# 'sshfs -C -o reconnect root@60.12.136.60:/sshfs/jupyter ~/workspace/notebook/storage'
+sshfs_pwd = 'fd324;1'
 
 
 # the common base nb of the sys
@@ -59,6 +71,7 @@ def getNotebook(projectType):
             'h5': h5_base_python2,
             'py': py_base_python2
         },
+
         'R': {
             'nb': nb_base_r,
             'h5': h5_base_r,

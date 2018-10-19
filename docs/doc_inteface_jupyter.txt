@@ -1,0 +1,79 @@
+
+
+//jpyter
+
+1.重置jupyter端口：
+请求方式：
+	socket
+请求地址：
+	0.0.0.0:18883
+
+请求参数（端口转发）：
+    （发送）
+        new_task_ssh@:{
+            "action"   : "start"
+            "cname"    : cname
+            "index"    :    1
+        }
+
+
+
+    （返回）
+	    {
+            "status":  100,
+	        "result":{
+	            "message":"xxx"
+	        }
+        }
+
+        100 成功
+        101 实例名称为空
+        102 seatno或uid为空,实例状态异常         //异常
+        103 index参数错误,必须为0,1,2,3,4
+        104 action参数错误,必须为start,stop
+        105 服务器公网端口不足
+
+
+
+2.实例开关机：
+    （发送）
+        new_task_publish@{
+            "iname"	:	"iso name"	//技术支持分配给用户的镜像名称
+            "cname"	:	"实例 id"	//实例id，针对实例唯一
+            "user"	:	"user id"	//用户id，针对用户唯一
+            "action":	"start"		//start:开机，stop:关机，commit:保存
+            "password":	"实例的密码"	//创建实例时用户输入的值，不能数字开头，不能包含'@'
+            "nname"	:	"20180823151320"//用户保存镜像时天填写的备注
+            "gpu"	:	"geforce gtx 1080 ti"
+            "cpu"	:	"i7-7700k"
+            "mem"	:	"16"
+            # "begintime"
+            # "endtime"
+        }
+    （返回）
+        {
+            "status":  200,
+	        "result":{
+                 "jupyter":"http://xxx:000"
+                 "message":"xxx"
+	        }
+        }
+
+        返回值status参数详细
+        200 成功
+        201 镜像名为空
+        202 实例名为空
+        203 用户名为空
+        204 action参数错误,必须为start,stop,commit,savequit
+        205 实例密码不能为空
+        206 实例密码不能以数字开头
+        207 开机时,启动命令为空,无法开机
+        208 开机时,uid或座位号为空,无法开机。没用可用节点
+        209 除开机外的操作,uid或座位号为空,无法操作。实例状态异常       //异常
+        210 开机时,当前节点已被占用,无法开机。没用可用节点
+        211 已运行的实例,无法start
+        212 未运行的实例,无法stop,commit,savequit
+        213 上一次操作正在执行中,请稍后重试
+        223 距离上次间隔时间不足一分钟
+        233 不允许开机
+        105 服务器公网端口不足
