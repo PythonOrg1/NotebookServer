@@ -63,3 +63,22 @@ def createProject(path, projectId, projectName, type, filePath):
         }
     else:
         return None
+
+
+#
+# response:
+#         1 : 'Delete Sccess!',
+#         0 : 'Delete Failed, cause: ',
+#         2 : 'File not exists!'
+#
+def deleteFile(path):
+    try:
+        if os.path.exists(path):
+            d = shell.execute('rm -r ' + path)
+            print("d ======== ")
+            print(d)
+            return (1, 'Delete Sccess!')
+        else:
+            return (2, 'File not exists!')
+    except Exception as e:
+        return (0, 'Delete Failed, cause: ' + e)

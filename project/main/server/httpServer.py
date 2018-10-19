@@ -64,7 +64,24 @@ def newVersion(request_body):
 # delete project
 def deleteProject(request_body):
     # todo delete
-    pass
+    userId = None
+    pjId = None
+    version = None
+    try:
+        userId = request_body['userId']
+        pjId = request_body['projectId']
+        pjName = request_body['projectName']
+    except:
+        return resp_err_params
+    (code, msg) = projectManager.delectProject(userId, pjId, pjName)
+    status = 0
+    if code == 1:
+        # success
+        status = 1
+    return {
+        "status": status,
+        "result": msg
+    }
 
 
 def runWithVm(request_body):
@@ -94,7 +111,8 @@ def runWithVm(request_body):
         memory = request_body['memory']
     except Exception as e:
         return resp_err_params + str(e)
-    return projectManager.runWithVm(str(userId), str(pjId), pjName, str(version), str(vmId), passwd, isoName, isoRemarks, gpu, cpu, str(memory))
+    return projectManager.runWithVm(str(userId), str(pjId), pjName, str(version), str(vmId), passwd, isoName,
+                                    isoRemarks, gpu, cpu, str(memory))
 
 
 def praseData(request_body):

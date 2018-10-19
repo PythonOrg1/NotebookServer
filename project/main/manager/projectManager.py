@@ -115,6 +115,15 @@ def runWithVm(userId, projectId, projectName, version, vmId, passwd, isoName, is
         sysout.log(TAG, res)
         return res
 
+
+#
+# delete project by user
+#
+def delectProject(userId, pjId, pjName):
+    projectPath = config.dir_home + config.dir_home_user + '/' + str(userId) + '/' + str(pjId) + '/'
+    return fileManager.deleteFile(projectPath)
+
+
 #
 #
 # cmd:
@@ -128,6 +137,13 @@ def runWithVm(userId, projectId, projectName, version, vmId, passwd, isoName, is
 
 # for test
 # if __name__ == '__main__':
+
 #     print('test...')
 #     runWithVm(userId='39', projectId=113, projectName='my first pj', version=1, vmId='c4851539075413000', passwd='yy123456', isoName='60.12.136.59/ocdeep/b3',
 #               isoRemarks='remaraks test', gpu='geforce gtx 1070', cpu='i7-7700k', memory='16')
+
+    # res = delectProject(2, 12, 'ddd')
+    # print(res)
+
+
+
