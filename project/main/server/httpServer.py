@@ -96,7 +96,7 @@ def runWithVm(request_body):
     gpu = None
     cpu = None
     memory = None
-    action = None
+    action1 = None
     try:
         userId = request_body['userId']
         pjId = request_body['projectId']
@@ -109,12 +109,12 @@ def runWithVm(request_body):
         gpu = request_body['gpu']
         cpu = request_body['cpu']
         memory = request_body['memory']
-        if 'action' in request_body:
-            action = request_body['action']
+        if 'action1' in request_body:
+            action1 = request_body['action1']
     except Exception as e:
         return str(resp_err_params) + str(e)
     return projectManager.runWithVm(str(userId), str(pjId), pjName, str(version), str(vmId), passwd, isoName,
-                                    isoRemarks, gpu, cpu, str(memory), action)
+                                    isoRemarks, gpu, cpu, str(memory), action1)
 
 
 def praseData(request_body):

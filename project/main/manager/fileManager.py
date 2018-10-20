@@ -45,9 +45,8 @@ def getAllFiles(dir):
 # --fileForm:  .ipynb / .html / .py
 #
 def getOneNbFileName(dir, fileForm):
-    print("getOneNbFileName...")
-    print(str(dir) + '/ ' + str(fileForm))
-
+    # print("getOneNbFileName...")
+    # print(str(dir) + '/ ' + str(fileForm))
     if dir == None or (not os.path.exists(dir)):
         return None
     data = getAllFiles(dir)

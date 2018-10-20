@@ -41,8 +41,10 @@ file_system_readme = dir_home +'/base/readme'
 
 #cmd
 #sshfs for storage on StorageServer
-cmd_sshfs_mount_storage = 'sshfs -C -o reconnect user@hostname:remote_dir local_dir'
 # 'sshfs -C -o reconnect root@60.12.136.60:/sshfs/jupyter ~/workspace/notebook/storage'
+#  sshfs  root@60.12.136.60:/sshfs/ ~/workspace/notebook/storage
+#  umount -f ~/workspace/notebook/storage
+cmd_sshfs_mount_storage = 'sshfs -C -o reconnect user@hostname:remote_dir local_dir'
 sshfs_pwd = 'fd324;1'
 
 

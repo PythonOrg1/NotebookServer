@@ -47,6 +47,12 @@ def startVm(userId, isoName, vmId, passwd, gpu, cpu, memory, isoRemarks, action=
                     'status': 1,
                     'result': result['result']
                 }
+            elif result['status'] == 223:
+                # start fail
+                return {
+                    'status': 0,
+                    'result': "It's too short time for last request, please try again 1 minute later!"
+                }
             else:
                 # start fail
                 return {
