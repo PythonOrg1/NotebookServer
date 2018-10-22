@@ -1,10 +1,10 @@
 # charst=utf-8
 
 import os
-from project.main.system import shell
-from project.main.base import sysout
-from project.main.config import config
-from project.main.manager import jupyter
+from system import shell
+from base import sysout
+from config import config
+from manager import jupyter
 
 TAG = 'filemanager'
 

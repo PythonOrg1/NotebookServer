@@ -5,9 +5,9 @@
 from wsgiref.simple_server import make_server
 import json
 
-from project.main.base import sysout
-from project.main.manager import projectManager
-from project.main.config import config
+from base import sysout
+from manager import projectManager
+from config import config
 
 TAG = 'httpServer'
 

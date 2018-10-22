@@ -1,6 +1,6 @@
 
 import subprocess, os, time
-from project.main.base import sysout
+from base import sysout
 
 
 

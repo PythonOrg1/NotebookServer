@@ -22,6 +22,8 @@ ns_host = '192.168.188.105'
 ns_port_http = 8100
 ns_port = 8888
 ns_doname = 'http://' + ns_host + ":" + str(ns_port)
+# ns_doname = 'http://116.62.57.192' + ":" + str(ns_port)
+
 
 vms_port = 18883
 vms_host = '121.40.62.80'
@@ -31,6 +33,7 @@ vms_host = '121.40.62.80'
 # system home dir
 dir_home_localhost = '/Users/jerryyin/workspace/notebook'
 dir_home_dev = '/Users/jerryyin/workspace/notebook/storage'
+# dir_home_dev = '/root/notebook/storage'
 dir_home = dir_home_dev
 
 # dir_home_user = '/users'

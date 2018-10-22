@@ -1,5 +1,5 @@
-from project.main.config import config
-from project.main.system import shell
+from config import config
+from system import shell
 
 import nbformat
 from nbconvert.preprocessors import ExecutePreprocessor

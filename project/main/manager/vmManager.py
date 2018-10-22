@@ -1,8 +1,7 @@
 
-from project.main.config import config
-from project.main.interfece.onResponseListener import onResponseListener
-from project.main.utils import socketUtils
-from project.main.base import sysout
+from config import config
+from utils import socketUtils
+from base import sysout
 
 import json
 

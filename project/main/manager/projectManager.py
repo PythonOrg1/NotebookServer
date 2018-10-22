@@ -1,9 +1,9 @@
 # charset=utf-8
 
-from project.main.base import sysout
-from project.main.config import config, string
-from project.main.manager import fileManager, vmManager
-from project.main.system import shell
+from base import sysout
+from config import config, string
+from manager import fileManager, vmManager
+from system import shell
 import os
 
 TAG = "projectManager"

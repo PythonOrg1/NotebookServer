@@ -2,8 +2,7 @@ import socket
 import sys
 import json
 
-from project.main.base import sysout
-from project.main.interfece.onResponseListener import onResponseListener
+from base import sysout
 
 TAG = "socketUtils"
 

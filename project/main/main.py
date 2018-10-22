@@ -1,8 +1,9 @@
 # charset=utf-8
 
-from project.main.base import sysout
-from project.main.config import config, string
-from project.main.server import httpServer
+from base import sysout
+from config import config, string
+from server import httpServer
+
 
 
 
