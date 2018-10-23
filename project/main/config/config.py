@@ -17,8 +17,8 @@ author = "JayYin"
 
 # config of system file url
 
-# ns_host = '127.0.0.1'
-ns_host = '192.168.188.105'
+ns_host = '127.0.0.1'
+# ns_host = '192.168.188.105'
 ns_port_http = 8100
 ns_port = 8888
 ns_doname = 'http://' + ns_host + ":" + str(ns_port)

@@ -89,6 +89,7 @@ def createProject(path, projectId, projectName, type, filePath):
         shell.execute('cp ' + nb + ' ' + path + '/')
         shell.execute('cp ' + h5 + ' ' + path + '/')
         shell.execute('cp ' + py + ' ' + path + '/')
+        shell.execute('cp  ~/.jupyter/custom/custom.css ' + path + '/')
         # if projectId != None:
         #     shell.execute('mv ' + config.getNotebookName() + ' ' + str(projectId) + '.ipynb')
         #     shell.execute('mv ' + config.getH5Name() + ' ' + str(projectId) + '.ipynb')

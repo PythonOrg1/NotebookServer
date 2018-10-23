@@ -144,6 +144,8 @@ def praseData(request_body):
 # server
 def application(environ, start_response):
     # 定义请求的类型和当前请求成功的code
+    # print(environ)
+    # print(start_response)
     start_response('200 OK', [('Content-Type', 'application/json')])
     # environ是当前请求的所有数据，包括Header和URL，body
     request_body = environ["wsgi.input"].read(int(environ.get("CONTENT_LENGTH", 0))).decode('utf-8')
