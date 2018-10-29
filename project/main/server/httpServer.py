@@ -148,8 +148,15 @@ def application(environ, start_response):
     # print(start_response)
     start_response('200 OK', [('Content-Type', 'application/json')])
     # environ是当前请求的所有数据，包括Header和URL，body
-    request_body = environ["wsgi.input"].read(int(environ.get("CONTENT_LENGTH", 0))).decode('utf-8')
-    print('http request ---> ' + str(request_body))
+    request_body = None
+    # request_body = environ["wsgi.input"].read(int(environ.get("CONTENT_LENGTH", 0))).decode('utf-8')
+    request_body = str(environ["wsgi.input"].read(int(environ.get("CONTENT_LENGTH", 0))), 'utf-8')
+    print('http request ---> ')
+    try:
+        print(str(request_body))
+    except Exception as e:
+        print('Exception:')
+        print(e)
     request_body = json.loads(request_body)
     response = praseData(request_body)
     print(response)

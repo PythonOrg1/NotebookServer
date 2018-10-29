@@ -1,0 +1,22 @@
+#!/usr/bin/expect
+##
+# expect file
+##
+
+# auto mount storage to local dir
+# command : sshfs  root@60.12.136.60:/sshfs/notebookserver /notebook/storage
+
+#set time out to 20s
+set timeout 20
+## dev server
+#spawn sshfs  root@60.12.136.60:/sshfs/notebookserver /root/notebook/storage
+## release server
+spawn sshfs  root@60.12.136.60:/sshfs/notebookserver /notebook/storage
+expect "*password:"
+send "fd324;1\r"
+# expect "*#"
+interact
+
+
+
+##mount //60.12.136.60:/sshfs/notebookserver /root/notebook/storage -o username=root,password=fd324;1
