@@ -33,7 +33,7 @@ def getAllFiles(dir, containSystem = True):
         return None
     result = []
     for pwd, d, file in os.walk(dir):
-        if not (not containSystem and '.system' in str(pwd)):
+        if not (not containSystem and 'system' in str(pwd)):
             result.append({
                 'pwd': pwd,
                 'dirs': d,
