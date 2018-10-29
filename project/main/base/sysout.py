@@ -3,12 +3,26 @@ isDebug = True
 
 def log(tag, msg):
     if isDebug:
-        print("LOG: " + tag + " | " + str(msg))
+        try:
+            print("LOG: " + tag + " | " + str(msg))
+        except Exception as e:
+            print('Exception:')
+            print(e)
 
 def err(tag, err):
     if isDebug:
-        print("ERROR: " + tag + " | "+ str(err))
+        try:
+            print("ERROR: " + tag + " | "+ str(err))
+        except Exception as e:
+            print('Exception:')
+            print(e)
+
 
 def info(tag, msg):
     if isDebug:
-        print("INFO: " + tag + " | "+ str(msg))
+        try:
+            print("INFO: " + tag + " | "+ str(msg))
+        except Exception as e:
+            print('Exception:')
+            print(e)
+

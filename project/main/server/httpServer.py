@@ -159,7 +159,11 @@ def application(environ, start_response):
         print(e)
     request_body = json.loads(request_body)
     response = praseData(request_body)
-    print(response)
+    try:
+        print(str(response))
+    except Exception as e:
+        print('Exception:')
+        print(e)
     result = json.dumps(response).encode('utf-8')
     print("http response --> " + str(result))
     return [result]

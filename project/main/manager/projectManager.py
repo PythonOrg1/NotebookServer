@@ -5,6 +5,7 @@ from config import config, string
 from manager import fileManager, vmManager
 from system import shell
 import os
+import json
 
 TAG = "projectManager"
 
@@ -125,7 +126,7 @@ def runWithVm(userId, projectId, projectName, version, vmId, passwd, isoName, is
                 'py': py
             }
         }
-        sysout.log(TAG, result)
+        sysout.log(TAG, json.loads(result))
         return result
 
     else:
