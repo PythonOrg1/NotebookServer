@@ -28,16 +28,17 @@ def createDir(dir):
 #         }, ...
 #   ]
 #
-def getAllFiles(dir):
+def getAllFiles(dir, containSystem = True):
     if dir == None:
         return None
     result = []
     for pwd, d, file in os.walk(dir):
-        result.append({
-            'pwd': pwd,
-            'dirs': d,
-            'files': file
-        })
+        if not (not containSystem and '.system' in str(pwd)):
+            result.append({
+                'pwd': pwd,
+                'dirs': d,
+                'files': file
+            })
     return result
 
 #
@@ -59,6 +60,14 @@ def getOneNbFileName(dir, fileForm):
             fileName = str(f)
     return fileName
 
+#
+# get all the files & dirs of the user
+# ** Except 'system' directory
+#
+def getUserHome(home):
+    all = getAllFiles(home, False)
+    print(all)
+    return all
 
 #
 # get the directory number int the 'dir'

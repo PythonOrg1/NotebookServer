@@ -8,6 +8,7 @@ import json
 from base import sysout
 from manager import projectManager
 from config import config
+from manager import fileManager
 
 TAG = 'httpServer'
 
@@ -18,6 +19,13 @@ mServer = (mHost, mPort)
 # global response data
 resp_err_params = {'status': '0', 'result': 'request params form error!'}
 
+
+
+
+##
+# module -- project
+#
+#
 
 # action = initProject
 def initProject(request_body):
@@ -117,6 +125,28 @@ def runWithVm(request_body):
                                     isoRemarks, gpu, cpu, str(memory), action1)
 
 
+##
+# module -- file system
+#
+
+#
+# get user's all files & directories of his storage
+#
+def getMyFiles(request_body):
+    userId = None
+    try:
+        userId = request_body['userId']
+    except Exception as e:
+        return str(resp_err_params) + str(e)
+
+    home = config.dir_home + '/' + str(userId)
+    res =  fileManager.getUserHome(home)
+    return {
+        "status": 1,
+        "result": res
+    }
+
+
 def praseData(request_body):
     if type(request_body) != type({}):
         return resp_err_params
@@ -137,6 +167,8 @@ def praseData(request_body):
             return runWithVm(request_body)
         elif action == 'deleteProject':
             return deleteProject(request_body)
+        elif action == 'getMyFiles':
+            return getMyFiles(request_body)
         else:
             return {'status': 0, 'result': 'request & params not support!!!'}
 

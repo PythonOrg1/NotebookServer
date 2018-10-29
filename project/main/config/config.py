@@ -25,21 +25,21 @@ vms_host = vms_host_release
 
 
 # ----------- RELEASE ------------
-# ns_host = '172.16.59.99'        #_release server cloudyotech.com
-# ns_port_http = 8100
-# ns_port = 8888
-# ns_doname = 'https://g.cloudyotech.com/notebook'
-# # ns_doname = 'http://' + ns_host + ":" + str(ns_port)
-#
-# # system home dir
-# dir_home_release = '/notebook/storage/users'
-# dir_home = dir_home_release
-#
-# # dir_home_user = '/users'
-# dir_home_user = ''
-# # user's project dir:   homeDir/users/userId/projectId/version/xxx-nb
-#
-# file_system_readme = dir_home +'/base/readme'
+ns_host = '172.16.59.99'        #_release server cloudyotech.com
+ns_port_http = 8100
+ns_port = 8888
+ns_doname = 'https://g.cloudyotech.com/notebook'
+# ns_doname = 'http://' + ns_host + ":" + str(ns_port)
+
+# system home dir
+dir_home_release = '/notebook/storage'
+dir_home = dir_home_release
+
+# dir_home_user = '/users'
+dir_home_user = ''
+# user's project dir:   homeDir/users/userId/projectId/version/xxx-nb
+
+file_system_readme = dir_home +'/base/readme'
 
 
 
@@ -63,20 +63,20 @@ vms_host = vms_host_release
 
 
 # ----------- localohst ------------
-ns_host = '192.168.188.105'   #_localhost
-ns_port_http = 8100
-ns_port = 8888
-ns_doname = 'http://' + ns_host + ":" + str(ns_port)
-
-## system home dir
-dir_home_localhost = '/Users/jerryyin/workspace/notebook'
-dir_home_dev = '/Users/jerryyin/workspace/notebook/storage'
-dir_home = dir_home_dev
-
-# dir_home_user = '/users'
-dir_home_user = ''
-## user's project dir:   homeDir/users/userId/projectId/version/xxx-nb
-file_system_readme = dir_home +'/base/readme'
+# ns_host = '192.168.188.105'   #_localhost
+# ns_port_http = 8100
+# ns_port = 8888
+# ns_doname = 'http://' + ns_host + ":" + str(ns_port)
+#
+# ## system home dir
+# dir_home_localhost = '/Users/jerryyin/workspace/notebook'
+# dir_home_dev = '/Users/jerryyin/workspace/notebook/storage'
+# dir_home = dir_home_dev
+#
+# # dir_home_user = '/users'
+# dir_home_user = ''
+# ## user's project dir:   homeDir/users/userId/projectId/version/xxx-nb
+# file_system_readme = dir_home +'/base/readme'
 
 
 

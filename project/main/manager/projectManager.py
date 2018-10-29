@@ -22,7 +22,7 @@ def checkVersion(userId, projectId, v):
     if v == None:
         return (False, resp_err_version_invlid)
     maxVersion = int(fileManager.getDirNumber(
-        config.dir_home + config.dir_home_user + '/' + str(userId) + '/system/' + str(projectId) + '/'))
+        config.dir_home + config.dir_home_user + '/' + str(userId) + '/.system/' + str(projectId) + '/'))
     if (v <= 0 or v > maxVersion):
         return (False, resp_err_version_invlid)
     return (True, maxVersion)
@@ -35,14 +35,14 @@ def checkVersion(userId, projectId, v):
 def createPreProject(userId, projectId, projectName, projectType):
     pjHome = ''
     if config.dir_home_user != "":
-        pjHome = config.dir_home + "/" + config.dir_home_user + '/' + str(userId) + '/system'
+        pjHome = config.dir_home + "/" + config.dir_home_user + '/' + str(userId) + '/.system'
     else:
-        pjHome = config.dir_home + '/' + str(userId) + '/system'
+        pjHome = config.dir_home + '/' + str(userId) + '/.system'
     if not os.path.exists(pjHome):
         os.makedirs(pjHome)
         shell.execute('cp ' + config.file_system_readme + ' ' + pjHome + '/')
 
-    path = config.dir_home_user + '/' + str(userId) + '/system/' + str(
+    path = config.dir_home_user + '/' + str(userId) + '/.system/' + str(
         projectId) + '/1'  # 1--version of pj， vesionInit=1
     dir = config.dir_home + path
     if (fileManager.createDir(dir)):
@@ -63,13 +63,13 @@ def createNewVersion(userId, projectId, projectName, versionCur):
     if not exist:
         return result
     maxVersion = result
-    curPath = config.dir_home_user + '/' + str(userId) + '/system/' + str(projectId) + '/' + str(versionCur)
+    curPath = config.dir_home_user + '/' + str(userId) + '/.system/' + str(projectId) + '/' + str(versionCur)
     curNb = config.dir_home + curPath + '/' + config.getNotebookName()
     curH5 = config.dir_home + curPath + '/' + config.getH5Name()
     curPY = config.dir_home + curPath + '/' + config.getPYName()
 
     version = maxVersion + 1
-    path = config.dir_home_user + '/' + str(userId) + '/system/' + str(projectId) + '/' + str(version)
+    path = config.dir_home_user + '/' + str(userId) + '/.system/' + str(projectId) + '/' + str(version)
     dir = config.dir_home + path
     if (fileManager.createDir(dir)):
         print(config.dir_home + curPath)
@@ -109,8 +109,8 @@ def runWithVm(userId, projectId, projectName, version, vmId, passwd, isoName, is
         #     'message': (result['result'])['message']
         #  }
         # }
-        path = res['result'].get('jupyter', '') + '/notebooks/system/' + str(projectId) + '/' + str(version)
-        parentPath = config.dir_home + '/' + str(userId) + '/system/' + str(projectId) + '/' + str(version)
+        path = res['result'].get('jupyter', '') + '/notebooks/.system/' + str(projectId) + '/' + str(version)
+        parentPath = config.dir_home + '/' + str(userId) + '/.system/' + str(projectId) + '/' + str(version)
         notebook = path + '/' + fileManager.getOneNbFileName(parentPath, '.ipynb')
         html = path + '/' + fileManager.getOneNbFileName(parentPath, '.html')
         py = path + '/' + fileManager.getOneNbFileName(parentPath, '.py')
@@ -139,7 +139,7 @@ def runWithVm(userId, projectId, projectName, version, vmId, passwd, isoName, is
 # delete project by user
 #
 def delectProject(userId, pjId, pjName):
-    projectPath = config.dir_home + config.dir_home_user + '/' + str(userId) + '/system/' + str(pjId) + '/'
+    projectPath = config.dir_home + config.dir_home_user + '/' + str(userId) + '/.system/' + str(pjId) + '/'
     return fileManager.deleteFile(projectPath)
 
 #
