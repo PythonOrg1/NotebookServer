@@ -1,9 +1,11 @@
 from config import config
 from system import shell
+from base import sysout
 
 import nbformat
 from nbconvert.preprocessors import ExecutePreprocessor
 
+TAG = 'jupyter'
 
 
 def start():
@@ -23,13 +25,15 @@ def convertNb(form, nbName):
 #kernel --- kernel of the system
 #
 def executingNb(path, nbName, kernel):
-    if kernel is None:
-        kernel = 'python3'
-    runPath = path
-    with open(path+'/'+nbName) as f:
-        nbook = nbformat.read(f, as_version=4)
-    ep = ExecutePreprocessor(timeout=600, kernel_name=kernel)
-    (nbd, res) = ep.preprocess(nbook, {'metadata': {'path': runPath}})
-
+    try:
+        if kernel is None:
+            kernel = 'python3'
+        runPath = path
+        with open(path+'/'+nbName) as f:
+            nbook = nbformat.read(f, as_version=4)
+        ep = ExecutePreprocessor(timeout=600, kernel_name=kernel)
+        (nbd, res) = ep.preprocess(nbook, {'metadata': {'path': runPath}})
+    except ModuleNotFoundError as e:
+        sysout.err(TAG, e)
 
 

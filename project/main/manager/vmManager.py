@@ -8,7 +8,7 @@ import json
 TAG = "vmManager"
 
 
-def startVm(userId, isoName, vmId, passwd, gpu, cpu, memory, isoRemarks, action='start'):
+def startVm(userId, isoName, vmId, passwd, gpu, cpu, memory, isoRemarks, action='start', pstartTime = None, pendTime = None):
     sysout.log(TAG, 'startVm...')
     host = config.vms_host
     port = config.vms_port
@@ -24,6 +24,12 @@ def startVm(userId, isoName, vmId, passwd, gpu, cpu, memory, isoRemarks, action=
         "cpu": cpu,
         "mem": memory
     }
+
+    if not pstartTime == None:
+        #package device
+        p_body["begintime"] = pstartTime
+        p_body["endtime"] = pendTime
+
     p_body = json.dumps(p_body)
     params = ("new_task_publish@" + p_body).encode('utf-8')
     # params = json.dumps().encode('utf-8')

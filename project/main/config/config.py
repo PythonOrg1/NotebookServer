@@ -25,40 +25,37 @@ vms_host = vms_host_release
 
 
 # ----------- RELEASE ------------
-ns_host = '172.16.59.99'        #_release server cloudyotech.com
-ns_port_http = 8100
-ns_port = 8888
-ns_doname = 'https://g.cloudyotech.com/notebook'
-# ns_doname = 'http://' + ns_host + ":" + str(ns_port)
-
-# system home dir
-dir_home_release = '/notebook/storage'
-dir_home = dir_home_release
-
-# dir_home_user = '/users'
-dir_home_user = ''
-# user's project dir:   homeDir/users/userId/projectId/version/xxx-nb
-
-file_system_readme = dir_home +'/base/readme'
+# ns_host = '172.16.59.99'        #_release server cloudyotech.com
+# ns_port_http = 8100
+# ns_port = 8888
+# ns_doname = 'https://g.cloudyotech.com/notebook'
+# # ns_doname = 'http://' + ns_host + ":" + str(ns_port)
+#
+# # system home dir
+# dir_home_release = '/notebook/storage'
+# dir_home = dir_home_release
+#
+# # dir_home_user = '/users'
+# dir_home_user = ''
+# # user's project dir:   homeDir/users/userId/projectId/version/xxx-nb
+#
+# file_system_readme = dir_home +'/base/readme'
 
 
 
 # ----------- DEV ------------
-# ns_host = '172.16.3.254'
-# ns_port_http = 8100
-# ns_port = 8888
-# ns_doname = 'https://dev.dongxicc.cn/notebook'
-# ## ns_doname = 'http://' + ns_host + ":" + str(ns_port)
-#
-# # system home dir
-# # dir_home_dev = '/root/notebook/storage'
-# dir_home_release = '/notebook/storage/users'
-# dir_home = dir_home_release
-#
+ns_host = '172.16.3.254'
+ns_port_http = 8100
+ns_port = 8888
+ns_doname = 'https://dev.dongxicc.cn/notebook'
+## ns_doname = 'http://' + ns_host + ":" + str(ns_port)
+
+# system home dir
+dir_home = '/notebook/storage'
 # dir_home_user = '/users'
-## dir_home_user = ''
-# # user's project dir:   homeDir/users/userId/projectId/version/xxx-nb
-# file_system_readme = dir_home +'/base/readme'
+dir_home_user = ''
+# user's project dir:   homeDir/users/userId/projectId/version/xxx-nb
+file_system_readme = dir_home +'/base/readme'
 
 
 
@@ -69,10 +66,7 @@ file_system_readme = dir_home +'/base/readme'
 # ns_doname = 'http://' + ns_host + ":" + str(ns_port)
 #
 # ## system home dir
-# dir_home_localhost = '/Users/jerryyin/workspace/notebook'
-# dir_home_dev = '/Users/jerryyin/workspace/notebook/storage'
-# dir_home = dir_home_dev
-#
+# dir_home = '/Users/jerryyin/workspace/notebook/storage-dev'
 # # dir_home_user = '/users'
 # dir_home_user = ''
 # ## user's project dir:   homeDir/users/userId/projectId/version/xxx-nb
@@ -82,11 +76,22 @@ file_system_readme = dir_home +'/base/readme'
 
 #cmd
 #sshfs for storage on StorageServer
-# 'sshfs -C -o reconnect root@60.12.136.60:/sshfs/jupyter ~/workspace/notebook/storage'
-#  sshfs  root@60.12.136.60:/sshfs/ ~/workspace/notebook/storage
-#  umount -f ~/workspace/notebook/storage
-cmd_sshfs_mount_storage = 'sshfs -C -o reconnect user@hostname:remote_dir local_dir'
+#cmd_sshfs_mount_storage = 'sshfs -C -o reconnect user@hostname:remote_dir local_dir'
+#
+# release
+# sshfs  root@60.12.136.60:/sshfs/ /notebook/storage
 sshfs_pwd = 'fd324;1'
+#
+# dev & localhost    [private network]
+# sshfs  root@10.10.45.246:/mnt/ ~/workspace/notebook/storage
+# sshfs_pwd = 'abcd#12345'
+# dev2              [common network]
+#  sshfs  root@60.12.136.61:/mnt
+# sshfs_pwd = 'abcd#12345'
+
+# path of the user's dataset
+path_dataset = '/file/datasets'
+
 
 
 # the common base nb of the sys

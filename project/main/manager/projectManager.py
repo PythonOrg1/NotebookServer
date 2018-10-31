@@ -92,14 +92,14 @@ def createNewVersion(userId, projectId, projectName, versionCur):
 
 
 def runWithVm(userId, projectId, projectName, version, vmId, passwd, isoName, isoRemarks, gpu, cpu, memory,
-              action='start'):
+              action='start', pstartTime = None, pendTime = None):
     res = None
-    if action != None and action == 'stop':
-        # shutdown vm
-        res = vmManager.startVm(userId, isoName, vmId, passwd, gpu, cpu, memory, isoRemarks, action)
-    else:
-        # run vm
-        res = vmManager.startVm(userId, isoName, vmId, passwd, gpu, cpu, memory, isoRemarks)
+    # if action != None and action == 'stop':
+    #     # shutdown vm
+    #     res = vmManager.startVm(userId, isoName, vmId, passwd, gpu, cpu, memory, isoRemarks, action, pstartTime, pendTime)
+    # else:
+    #     # run vm
+    res = vmManager.startVm(userId, isoName, vmId, passwd, gpu, cpu, memory, isoRemarks, action, pstartTime, pendTime)
     if res['status'] == 1:
         # start vm success
         # {
@@ -142,9 +142,71 @@ def delectProject(userId, pjId, pjName):
     projectPath = config.dir_home + config.dir_home_user + '/' + str(userId) + '/system/' + str(pjId) + '/'
     return fileManager.deleteFile(projectPath)
 
+
+
+#
+# bind dataset with project
+# isUnbind = True --> unbind dataset
+#
+def bindDataWithProject(userId, projectId, version, dataIds, isUbind = False):
+    if not isUbind:
+        #bind dataset
+        paths = []
+        for i in range(len(dataIds)):
+            pathPj = config.dir_home + config.dir_home_user + '/' + str(userId) + '/system/' + str(projectId) + '/' + str(version) + '/dataset/'
+            if not os.path.exists(pathPj):
+                os.mkdir(pathPj)
+            pathDset = config.dir_home + config.path_dataset + '/' + str(dataIds[i])
+            if not os.path.exists(pathDset):
+                return {
+                    'status' : 0,
+                    'result' : 'Dataset file not exists!'
+                }
+            shell.execute('ln -s ' + pathDset + ' ' + pathPj)
+            pathDsetln = 'dataset/' + str(dataIds[i]) + '/'
+            paths.append(pathDsetln)
+
+        return {
+            'status': 1,
+            'result': {
+                'message':"dataset bind successde!",
+                'path': paths
+            }
+        }
+
+    else:
+        #unbind dataset
+        done = {}
+        for i in range(len(dataIds)):
+            path = config.dir_home + config.dir_home_user + '/' + str(userId) + '/system/' + str(projectId) + '/' + str(version) + '/dataset/' + str(dataIds[i])
+            if not os.path.exists(path):
+                #the data not binded
+                done[str(i)] = 'data hava not been binded before!'
+            elif os.path.exists(path):
+                try:
+                    shell.execute('rm -rf ' + path)
+                    done[str(i)] = 1
+                except Exception as e:
+                    sysout.err(TAG, e)
+                    done[str(i)] = str(e)
+        success = True
+        for k in range(len(dataIds)):
+            if not done[str(k)] == 1:
+                success = False
+
+        if success :
+            return {
+                'status': 1,
+                'result': "unbind datasets success!"
+            }
+        else:
+            return {
+                'status': 0,
+                'result': done
+            }
 #
 #
-# cmd:
+# cmd:path_dataset
 #
 # def generateCode(userId, projectId, projectName, version):
 #     (exist, result) = checkVersion(userId, projectId, version)

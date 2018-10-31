@@ -105,6 +105,8 @@ def runWithVm(request_body):
     cpu = None
     memory = None
     action1 = None
+    pstartTime = None
+    pendTime = None
     try:
         userId = request_body['userId']
         pjId = request_body['projectId']
@@ -117,12 +119,18 @@ def runWithVm(request_body):
         gpu = request_body['gpu']
         cpu = request_body['cpu']
         memory = request_body['memory']
+
         if 'action1' in request_body:
             action1 = request_body['action1']
+        if 'pstartTime' in request_body:
+            pstartTime = request_body['pstartTime']
+        if 'pendTime' in request_body:
+            pendTime = request_body['pendTime']
+
     except Exception as e:
         return str(resp_err_params) + str(e)
     return projectManager.runWithVm(str(userId), str(pjId), pjName, str(version), str(vmId), passwd, isoName,
-                                    isoRemarks, gpu, cpu, str(memory), action1)
+                                    isoRemarks, gpu, cpu, str(memory), action1, pstartTime, pendTime)
 
 
 ##
@@ -147,6 +155,30 @@ def getMyFiles(request_body):
     }
 
 
+def bindDataWithProject(request_body):
+    userId = None
+    projectId = None
+    version = request_body['version']
+    dataIds = None
+    isUbind = False
+
+    if request_body['action'] == 'unbindDataset':
+        isUbind = True
+    try:
+        userId = request_body['userId']
+        projectId = request_body['projectId']
+        # pjName = request_body['projectName']
+        version = request_body['version']
+        dataIds = request_body['dataIds']
+    except Exception as e:
+        return str(resp_err_params) + str(e)
+    if dataIds == None or len(dataIds) == 0:
+        return {'status': '0', 'result': 'empty dataset!'}
+    else:
+        return projectManager.bindDataWithProject(userId, projectId, version, dataIds, isUbind)
+
+
+
 def praseData(request_body):
     if type(request_body) != type({}):
         return resp_err_params
@@ -169,6 +201,10 @@ def praseData(request_body):
             return deleteProject(request_body)
         elif action == 'getMyFiles':
             return getMyFiles(request_body)
+        elif action == 'bindDataset':
+            return bindDataWithProject(request_body)
+        elif action == 'unbindDataset':
+            return bindDataWithProject(request_body)
         else:
             return {'status': 0, 'result': 'request & params not support!!!'}
 
