@@ -42,6 +42,11 @@ def createPreProject(userId, projectId, projectName, projectType):
         os.makedirs(pjHome)
         shell.execute('cp ' + config.file_system_readme + ' ' + pjHome + '/')
 
+    #create directory for users's dataSets
+    pathDsets = config.dir_home + "/" + config.dir_home_user + '/' + str(userId) + '/system/datasets'
+    if not os.path.exists(pathDsets):
+        os.makedirs(pathDsets)
+
     path = config.dir_home_user + '/' + str(userId) + '/system/' + str(
         projectId) + '/1'  # 1--version of pj， vesionInit=1
     dir = config.dir_home + path
@@ -156,7 +161,8 @@ def bindDataWithProject(userId, projectId, version, dataIds, isUbind = False):
             pathPj = config.dir_home + config.dir_home_user + '/' + str(userId) + '/system/' + str(projectId) + '/' + str(version) + '/dataset/'
             if not os.path.exists(pathPj):
                 os.mkdir(pathPj)
-            pathDset = config.dir_home + config.path_dataset + '/' + str(dataIds[i])
+            # pathDset = config.dir_home + config.path_dataset + '/' + str(dataIds[i])
+            pathDset = config.dir_home + "/" + config.dir_home_user + '/'+str(userId) + '/system/datasets/' + str(dataIds[i])
             if not os.path.exists(pathDset):
                 return {
                     'status' : 0,
@@ -181,7 +187,7 @@ def bindDataWithProject(userId, projectId, version, dataIds, isUbind = False):
             path = config.dir_home + config.dir_home_user + '/' + str(userId) + '/system/' + str(projectId) + '/' + str(version) + '/dataset/' + str(dataIds[i])
             if not os.path.exists(path):
                 #the data not binded
-                done[str(i)] = 'data hava not been binded before!'
+                done[str(i)] = 'data hava not been binded bebindDataWithProjectfore!'
             elif os.path.exists(path):
                 try:
                     shell.execute('rm -rf ' + path)
