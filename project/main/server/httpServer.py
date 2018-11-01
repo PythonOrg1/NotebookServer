@@ -104,7 +104,7 @@ def runWithVm(request_body):
     gpu = None
     cpu = None
     memory = None
-    action1 = None
+    action1 = 'start'   #default : start
     pstartTime = None
     pendTime = None
     try:
@@ -177,6 +177,18 @@ def bindDataWithProject(request_body):
     else:
         return projectManager.bindDataWithProject(userId, projectId, version, dataIds, isUbind)
 
+def deleteDataset(request_body):
+    userId = None
+    dataId = None
+    try:
+        userId = request_body['userId']
+        dataId = request_body['dataId']
+    except Exception as e:
+        return str(resp_err_params) + str(e)
+    if dataId == None:
+        return {'status': '0', 'result': 'empty dataset!'}
+    else:
+        return projectManager.deleteDataset(userId, dataId)
 
 
 def praseData(request_body):
@@ -185,12 +197,10 @@ def praseData(request_body):
     else:
         action = request_body['action']
         sysout.info(TAG, 'action=' + str(action))
-
         # functions = {
         #     'initproject': initProject(request_body),
         #     'newVersion': newVersion(request_body)
         # }
-
         if action == 'initProject':
             return initProject(request_body)
         elif action == 'newVersion':
@@ -205,9 +215,10 @@ def praseData(request_body):
             return bindDataWithProject(request_body)
         elif action == 'unbindDataset':
             return bindDataWithProject(request_body)
+        elif action == 'deleteDataset':
+            return deleteDataset(request_body)
         else:
             return {'status': 0, 'result': 'request & params not support!!!'}
-
 
 # server
 def application(environ, start_response):

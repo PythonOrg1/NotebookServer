@@ -33,7 +33,7 @@ def executingNb(path, nbName, kernel):
             nbook = nbformat.read(f, as_version=4)
         ep = ExecutePreprocessor(timeout=600, kernel_name=kernel)
         (nbd, res) = ep.preprocess(nbook, {'metadata': {'path': runPath}})
-    except ModuleNotFoundError as e:
+    except Exception as e:
         sysout.err(TAG, e)
 
 

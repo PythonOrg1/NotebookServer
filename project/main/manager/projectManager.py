@@ -158,11 +158,19 @@ def bindDataWithProject(userId, projectId, version, dataIds, isUbind = False):
         #bind dataset
         paths = []
         for i in range(len(dataIds)):
-            pathPj = config.dir_home + config.dir_home_user + '/' + str(userId) + '/system/' + str(projectId) + '/' + str(version) + '/dataset/'
+            pathPj = ""
+            pathDset = ""
+            if config.dir_home_user != '':
+                pathPj = config.dir_home + config.dir_home_user + '/' + str(userId) + '/system/' + str(projectId) + '/' + str(version) + '/dataset/'
+                pathDset = config.dir_home + config.dir_home_user + '/' + str(userId) + '/system/datasets/' + str(dataIds[i])
+            else:
+                pathPj = config.dir_home + '/' + str(userId) + '/system/' + str(projectId) + '/' + str(version) + '/dataset/'
+                pathDset = config.dir_home + '/' + str(userId) + '/system/datasets/' + str(dataIds[i])
+
             if not os.path.exists(pathPj):
                 os.mkdir(pathPj)
             # pathDset = config.dir_home + config.path_dataset + '/' + str(dataIds[i])
-            pathDset = config.dir_home + "/" + config.dir_home_user + '/'+str(userId) + '/system/datasets/' + str(dataIds[i])
+            # pathDset = config.dir_home + config.dir_home_user + '/'+str(userId) + '/system/datasets/' + str(dataIds[i])
             if not os.path.exists(pathDset):
                 return {
                     'status' : 0,
@@ -184,13 +192,22 @@ def bindDataWithProject(userId, projectId, version, dataIds, isUbind = False):
         #unbind dataset
         done = {}
         for i in range(len(dataIds)):
-            path = config.dir_home + config.dir_home_user + '/' + str(userId) + '/system/' + str(projectId) + '/' + str(version) + '/dataset/' + str(dataIds[i])
+            path = ''
+            path1 = ''
+            if config.dir_home_user != '':
+                path = config.dir_home + config.dir_home_user + '/' + str(userId) + '/system/' + str(projectId) + '/' + str(version) + '/dataset/' + str(dataIds[i])
+                path1 = config.dir_home + config.dir_home_user + '/' + str(userId) + '/system/' + str(projectId) + '/' + str(version) + '/dataset'
+            else:
+                path = config.dir_home + '/' + str(userId) + '/system/' + str(projectId) + '/' + str(version) + '/dataset/' + str(dataIds[i])
+                path1 = config.dir_home + '/' + str(userId) + '/system/' + str(projectId) + '/' + str(version) + '/dataset'
+
             if not os.path.exists(path):
                 #the data not binded
-                done[str(i)] = 'data hava not been binded bebindDataWithProjectfore!'
+                done[str(i)] = 'data hava not been binded before!'
             elif os.path.exists(path):
                 try:
-                    shell.execute('rm -rf ' + path)
+                    shell.execute('rm -r ' + path)
+                    shell.execute('rm -r ' + path1)
                     done[str(i)] = 1
                 except Exception as e:
                     sysout.err(TAG, e)
@@ -210,6 +227,55 @@ def bindDataWithProject(userId, projectId, version, dataIds, isUbind = False):
                 'status': 0,
                 'result': done
             }
+
+
+def deleteDataset(userId, dataId):
+    try:
+        path = ''
+        pathDsetFile = ''
+
+        #first unbind dataset of all project
+        if config.dir_home_user != '':
+            path = config.dir_home + config.dir_home_user + '/' + str(userId) + '/system/'
+            pathDsetFile = config.dir_home + config.dir_home_user + '/' + str(userId) + '/system/datasets/' + str(dataId)
+        else:
+            path = config.dir_home + '/' + str(userId) + '/system/'
+            pathDsetFile = config.dir_home + '/' + str(userId) + '/system/datasets/' + str(dataId)
+
+
+        content = fileManager.getAllFiles(path)
+        for i in range(len(content)):
+            # is project's dataset dir ? == 1. 'dataset/dataId' is in pwd   and   2. len(pwds) == 8
+            files = (content[i])['files']
+            pwd = (content[i])['pwd']
+            if ('dataset/' + str(dataId)) in pwd:
+                pwds = str(pwd).split('/')
+                if len(pwds) == 8:
+                    # pwd = '/notebook/storage/userId/system/projectId/version/dataset/dataId'
+                    projectId = pwds[4]
+                    version = pwds[5]
+                    bindDataWithProject(userId, projectId, version, [dataId], True)
+
+        #second delete file
+        (code, msg) = fileManager.deleteFile(pathDsetFile)
+        if code == 1:
+            return {
+                'status': 1,
+                'result': "delete dataset success!"
+            }
+        else:
+            return {
+                'status': 0,
+                'result': msg
+            }
+    except Exception as e:
+        sysout.err(TAG, e)
+        return {
+            'status': 0,
+            'result': "delete failed! " + e
+        }
+
+
 #
 #
 # cmd:path_dataset

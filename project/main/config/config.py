@@ -90,7 +90,7 @@ sshfs_pwd = 'fd324;1'
 # sshfs_pwd = 'abcd#12345'
 
 # path of the user's dataset
-path_dataset = '/file/datasets'
+# path_dataset = '/file/datasets'
 
 
 

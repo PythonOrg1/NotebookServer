@@ -130,7 +130,7 @@ def createProject(path, projectId, projectName, type, filePath):
 def deleteFile(path):
     try:
         if os.path.exists(path):
-            d = shell.execute('rm -r ' + path)
+            d = shell.execute('rm -rf ' + path)
             print("d ======== ")
             print(d)
             return (1, 'Delete Sccess!')
