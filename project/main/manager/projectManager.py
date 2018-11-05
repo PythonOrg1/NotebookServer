@@ -21,8 +21,7 @@ resp_err_version_create_dir_err = {'status': 0, 'result': 'system error on creat
 def checkVersion(userId, projectId, v):
     if v == None:
         return (False, resp_err_version_invlid)
-    maxVersion = int(fileManager.getDirNumber(
-        config.dir_home + config.dir_home_user + '/' + str(userId) + '/system/' + str(projectId) + '/'))
+    maxVersion = int(fileManager.getDirNumber(config.dir_home + config.dir_home_user + '/' + str(userId) + '/system/' + str(projectId) + '/'))
     if (v <= 0 or v > maxVersion):
         return (False, resp_err_version_invlid)
     return (True, maxVersion)
@@ -81,16 +80,18 @@ def createNewVersion(userId, projectId, projectName, versionCur):
         if not os.path.exists(config.dir_home + curPath):
             return resp_err_version_old_err
         else:
+            # cmd = 'cp / notebook / storage / 416 / system / 35 / 15 / edit.ipynb / notebook / storage / storage / 416 / system / 35 / 26 /'
             shell.execute('cp ' + curNb + ' ' + dir + '/')
             shell.execute('cp ' + curH5 + ' ' + dir + '/')
             shell.execute('cp ' + curPY + ' ' + dir + '/')
+            shell.execute('cp  ~/.jupyter/custom/custom.css ' + dir + '/')
             return {
                 'projectId': projectId,
                 'projectName': projectName,
                 'version': version,
-                'notebook': config.ns_doname + '/notebooks' + path + '/' + config.getNotebookName(),
-                'html': config.ns_doname + '/notebooks' + path + '/' + config.getH5Name(),
-                'py': config.ns_doname + '/notebooks' + path + '/' + config.getPYName()
+                'notebook': config.ns_doname + '/notebooks/storage' + path + '/' + config.getNotebookName(),
+                'html': config.ns_doname + '/notebooks/storage' + path + '/' + config.getH5Name(),
+                'py': config.ns_doname + '/notebooks/storage' + path + '/' + config.getPYName()
             }
     else:
         return resp_err_version_create_dir_err
@@ -162,20 +163,24 @@ def bindDataWithProject(userId, projectId, version, dataIds, isUbind = False):
             pathDset = ""
             if config.dir_home_user != '':
                 pathPj = config.dir_home + config.dir_home_user + '/' + str(userId) + '/system/' + str(projectId) + '/' + str(version) + '/dataset/'
-                pathDset = config.dir_home + config.dir_home_user + '/' + str(userId) + '/system/datasets/' + str(dataIds[i])
+                # pathDset = config.dir_home + config.dir_home_user + '/' + str(userId) + '/system/datasets/' + str(dataIds[i])
             else:
                 pathPj = config.dir_home + '/' + str(userId) + '/system/' + str(projectId) + '/' + str(version) + '/dataset/'
-                pathDset = config.dir_home + '/' + str(userId) + '/system/datasets/' + str(dataIds[i])
+                # pathDset = config.dir_home + '/' + str(userId) + '/system/datasets/' + str(dataIds[i])
+
+            # pathPj = '/data/system/' + str(projectId) + '/' + str(version) + '/dataset/'
+            pathDset = '/data/system/datasets/' + str(dataIds[i])
 
             if not os.path.exists(pathPj):
                 os.mkdir(pathPj)
             # pathDset = config.dir_home + config.path_dataset + '/' + str(dataIds[i])
             # pathDset = config.dir_home + config.dir_home_user + '/'+str(userId) + '/system/datasets/' + str(dataIds[i])
             if not os.path.exists(pathDset):
-                return {
-                    'status' : 0,
-                    'result' : 'Dataset file not exists!'
-                }
+                shell.execute('mkdir '+ pathDset)
+                # return {
+                #     'status' : 0,
+                #     'result' : 'Dataset file not exists!'
+                # }
             shell.execute('ln -s ' + pathDset + ' ' + pathPj)
             pathDsetln = 'dataset/' + str(dataIds[i]) + '/'
             paths.append(pathDsetln)
@@ -201,17 +206,25 @@ def bindDataWithProject(userId, projectId, version, dataIds, isUbind = False):
                 path = config.dir_home + '/' + str(userId) + '/system/' + str(projectId) + '/' + str(version) + '/dataset/' + str(dataIds[i])
                 path1 = config.dir_home + '/' + str(userId) + '/system/' + str(projectId) + '/' + str(version) + '/dataset'
 
+            # path = config.dir_home + config.dir_home_user + '/' + str(userId) + '/system/' + str(projectId) + '/' + str(version) + '/dataset/' + str(dataIds[i])
+
+            haveException = False
+            try:
+                shell.execute('rm -r ' + path)
+                # shell.execute('rm -r ' + path1)
+            except Exception as e:
+                sysout.err(TAG, e)
+                done[str(i)] = str(e)
+                havaException = True
+
             if not os.path.exists(path):
                 #the data not binded
-                done[str(i)] = 'data hava not been binded before!'
-            elif os.path.exists(path):
-                try:
-                    shell.execute('rm -r ' + path)
-                    shell.execute('rm -r ' + path1)
-                    done[str(i)] = 1
-                except Exception as e:
-                    sysout.err(TAG, e)
-                    done[str(i)] = str(e)
+                # done[str(i)] = 'data hava not been binded before!'
+                done[str(i)] = 1
+            else:
+                if not havaException:
+                    done[str(i)] = "delete failed !"
+
         success = True
         for k in range(len(dataIds)):
             if not done[str(k)] == 1:

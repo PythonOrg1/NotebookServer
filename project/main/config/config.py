@@ -19,9 +19,9 @@ author = "JayYin"
 
 ## http request server for vm
 vms_port = 18883
-# vms_host_dev = '121.40.62.80'       #dev
+vms_host_dev = '121.40.62.80'       #dev
 vms_host_release = '60.12.136.59'   #release
-vms_host = vms_host_release
+vms_host = vms_host_dev
 
 
 # ----------- RELEASE ------------
@@ -40,7 +40,6 @@ vms_host = vms_host_release
 # # user's project dir:   homeDir/users/userId/projectId/version/xxx-nb
 #
 # file_system_readme = dir_home +'/base/readme'
-
 
 
 # ----------- DEV ------------

@@ -4,10 +4,7 @@
     <list default="true" id="75761fac-7abd-4c54-8adb-d20f3bc5d893" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/main/config/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/main/config/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/main/manager/fileManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/main/manager/fileManager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/main/manager/jupyter.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/main/manager/jupyter.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/main/manager/projectManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/main/manager/projectManager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/main/server/httpServer.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/main/server/httpServer.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,15 +24,16 @@
     <session id="-589950821">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="8" />
+          <entry key="project.closed" value="10" />
           <entry key="project.open.time.10" value="3" />
           <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.16" value="1" />
           <entry key="project.open.time.160" value="1" />
+          <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="9" />
+          <entry key="project.open.time.9" value="2" />
+          <entry key="project.opened" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -59,7 +57,7 @@
           <entry key="Python Console" value="17" />
           <entry key="automount" value="68" />
           <entry key="dummy" value="20" />
-          <entry key="py" value="11567" />
+          <entry key="py" value="11739" />
           <entry key="sh" value="399" />
           <entry key="txt" value="68" />
         </counts>
@@ -67,18 +65,18 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="555" />
-          <entry key="Python" value="11584" />
+          <entry key="Python" value="11756" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/project/main/config/config.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="55" column="18" lean-forward="true" selection-start-line="55" selection-start-column="18" selection-end-line="55" selection-end-column="18" />
+            <state relative-caret-position="216">
+              <caret line="43" selection-start-line="43" selection-end-line="43" />
             </state>
           </provider>
         </entry>
@@ -107,8 +105,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/project/main/server/httpServer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-8">
-              <caret line="172" column="26" lean-forward="true" selection-start-line="172" selection-start-column="26" selection-end-line="172" selection-end-column="26" />
+            <state relative-caret-position="2490">
+              <caret line="172" column="26" selection-start-line="172" selection-start-column="26" selection-end-line="172" selection-end-column="26" />
               <folding>
                 <element signature="e#108#153#0" expanded="true" />
                 <marker date="1541051969170" expanded="true" signature="3506:4921" ph="..." />
@@ -119,14 +117,13 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/project/main/manager/projectManager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="213" column="18" selection-start-line="213" selection-start-column="18" selection-end-line="213" selection-end-column="18" />
+            <state relative-caret-position="589">
+              <caret line="94" column="13" lean-forward="true" selection-start-line="94" selection-start-column="13" selection-end-line="94" selection-end-column="13" />
               <folding>
                 <element signature="e#17#40#0" expanded="true" />
-                <marker date="1541053710672" expanded="true" signature="10291:10690" ph="..." />
               </folding>
             </state>
           </provider>
@@ -135,8 +132,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/project/main/manager/fileManager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="24" column="18" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="42" />
+            <state relative-caret-position="955">
+              <caret line="97" column="52" lean-forward="true" selection-start-line="97" selection-start-column="52" selection-end-line="97" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -144,7 +141,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/project/main/manager/vmManager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="101">
+            <state relative-caret-position="90">
               <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
               <folding>
                 <element signature="e#1#26#0" expanded="true" />
@@ -156,8 +153,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/docs/doc_inteface_jupyter.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="38" column="8" lean-forward="true" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="8" />
+            <state relative-caret-position="570">
+              <caret line="38" column="8" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -165,8 +162,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/project/main/manager/jupyter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="80" lean-forward="true" selection-start-line="11" selection-start-column="80" selection-end-line="11" selection-end-column="80" />
+            <state relative-caret-position="90">
+              <caret line="11" column="80" selection-start-line="11" selection-start-column="80" selection-end-line="11" selection-end-column="80" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
               </folding>
@@ -185,12 +182,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Server response form error</find>
-      <find>sendSocket</find>
-      <find>projectId</find>
-      <find>dir_home_user = '/users'</find>
-      <find>deleteProject</find>
-      <find>base</find>
       <find>getNotebookName</find>
       <find>ns_host</find>
       <find>request &amp; params not support!!!</find>
@@ -204,17 +195,23 @@
       <find>resp_err_params</find>
       <find>runWithVm</find>
       <find>config</find>
-      <find>dir_home</find>
       <find>getAllFiles</find>
       <find>system</find>
       <find>.system</find>
       <find>shell</find>
       <find>bindDataWithProject</find>
-      <find>pathDset</find>
       <find>startVm</find>
       <find>sys</find>
       <find>path_dataset</find>
+      <find>ln -s</find>
+      <find>config.dir_home + config.dir_home_user + '/' + str(userId)</find>
+      <find>pathDset</find>
+      <find>path1</find>
       <find>dir_home_user</find>
+      <find>getDirNumber</find>
+      <find>resp_err_version_invlid</find>
+      <find>dir_home</find>
+      <find>custom.css</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -245,8 +242,8 @@
         <option value="$PROJECT_DIR$/project/main/manager/vmManager.py" />
         <option value="$PROJECT_DIR$/project/main/manager/fileManager.py" />
         <option value="$PROJECT_DIR$/project/main/server/httpServer.py" />
-        <option value="$PROJECT_DIR$/project/main/manager/projectManager.py" />
         <option value="$PROJECT_DIR$/project/main/config/config.py" />
+        <option value="$PROJECT_DIR$/project/main/manager/projectManager.py" />
       </list>
     </option>
   </component>
@@ -528,7 +525,7 @@
     <frame x="1280" y="0" width="1920" height="1080" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17518637" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17838125" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
@@ -536,7 +533,7 @@
       <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.5005325" side_tool="true" weight="0.3960396" />
       <window_info anchor="bottom" id="Run" order="3" sideWeight="0.49893504" weight="0.5792079" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.4960396" />
-      <window_info anchor="bottom" id="Terminal" order="5" weight="0.33960396" />
+      <window_info anchor="bottom" id="Terminal" order="5" weight="0.4782178" />
       <window_info anchor="bottom" id="Version Control" order="6" sideWeight="0.49946752" weight="0.55346537" />
       <window_info anchor="bottom" id="Python Console" order="7" sideWeight="0.49946752" weight="0.32871288" />
       <window_info anchor="bottom" id="Message" order="8" />
@@ -864,6 +861,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/pandas/tests/io/test_html.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="409">
+          <caret line="918" column="25" selection-start-line="918" selection-start-column="25" selection-end-line="918" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/main/base/sysout.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/bin/autodeeplearning.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -881,58 +892,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/project/main/manager/jupyter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="80" lean-forward="true" selection-start-line="11" selection-start-column="80" selection-end-line="11" selection-end-column="80" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/main/manager/vmManager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
-          <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
-          <folding>
-            <element signature="e#1#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/pandas/tests/io/test_html.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="918" column="25" selection-start-line="918" selection-start-column="25" selection-end-line="918" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/main/base/sysout.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/doc_inteface_jupyter.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="38" column="8" lean-forward="true" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/main/manager/fileManager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="24" column="18" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/project/main/server/httpServer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8">
-          <caret line="172" column="26" lean-forward="true" selection-start-line="172" selection-start-column="26" selection-end-line="172" selection-end-column="26" />
+        <state relative-caret-position="2490">
+          <caret line="172" column="26" selection-start-line="172" selection-start-column="26" selection-end-line="172" selection-end-column="26" />
           <folding>
             <element signature="e#108#153#0" expanded="true" />
             <marker date="1541051969170" expanded="true" signature="3506:4921" ph="..." />
@@ -942,21 +905,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/project/main/manager/projectManager.py">
+    <entry file="file://$PROJECT_DIR$/project/main/manager/vmManager.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="213" column="18" selection-start-line="213" selection-start-column="18" selection-end-line="213" selection-end-column="18" />
+        <state relative-caret-position="90">
+          <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
           <folding>
-            <element signature="e#17#40#0" expanded="true" />
-            <marker date="1541053710672" expanded="true" signature="10291:10690" ph="..." />
+            <element signature="e#1#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/doc_inteface_jupyter.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="38" column="8" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/main/manager/jupyter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="11" column="80" selection-start-line="11" selection-start-column="80" selection-end-line="11" selection-end-column="80" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/project/main/config/config.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="55" column="18" lean-forward="true" selection-start-line="55" selection-start-column="18" selection-end-line="55" selection-end-column="18" />
+        <state relative-caret-position="216">
+          <caret line="43" selection-start-line="43" selection-end-line="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/main/manager/fileManager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="955">
+          <caret line="97" column="52" lean-forward="true" selection-start-line="97" selection-start-column="52" selection-end-line="97" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/main/manager/projectManager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="589">
+          <caret line="94" column="13" lean-forward="true" selection-start-line="94" selection-start-column="13" selection-end-line="94" selection-end-column="13" />
+          <folding>
+            <element signature="e#17#40#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
