@@ -217,6 +217,8 @@ def praseData(request_body):
             return bindDataWithProject(request_body)
         elif action == 'deleteDataset':
             return deleteDataset(request_body)
+        elif action == 'test-file':
+            return fileManager.getFilesInfoOfPath(request_body['path'])
         else:
             return {'status': 0, 'result': 'request & params not support!!!'}
 

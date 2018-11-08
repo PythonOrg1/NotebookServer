@@ -28,8 +28,8 @@ def createDir(dir):
 #         }, ...
 #   ]
 #
-def getAllFiles(dir, containSystem = True):
-    if dir == None:
+def getAllFiles(dir, containSystem=True):
+    if dir == None or (not os.path.exists(dir)):
         return None
     result = []
     for pwd, d, file in os.walk(dir):
@@ -40,6 +40,7 @@ def getAllFiles(dir, containSystem = True):
                 'files': file
             })
     return result
+
 
 #
 # get only one file name of the dir
@@ -60,6 +61,7 @@ def getOneNbFileName(dir, fileForm):
             fileName = str(f)
     return fileName
 
+
 #
 # get all the files & dirs of the user
 # ** Except 'system' directory
@@ -68,6 +70,110 @@ def getUserHome(home):
     all = getAllFiles(home, False)
     print(all)
     return all
+
+
+#
+# @params dir:
+#
+# dirname | file | size | timeModify | timeAccess
+# for one dir: name | totalSize | numDir | numFile | modifyTime | viewTime
+#
+#
+def getFilesInfoOfPath(dir):
+    if dir == None or (not os.path.exists(dir)) or (not os.path.isdir(dir)):
+        return None
+    contents = os.listdir(dir)
+    if contents == None:
+        return None
+    if len(contents) == 0:
+        return {}
+    else:
+        files = []
+        dirs = []
+        unknown = []
+        for i in range(len(contents)):
+            c = contents[i]
+            filePath = ''
+            if str(dir).endswith("/"):
+                filePath = str(dir) + str(c)
+            else:
+                filePath = str(dir) + "/" + str(c)
+
+            timeAccess = os.path.getatime(filePath)
+            timeModify = os.path.getmtime(filePath)
+            timeCreate = os.path.getctime(filePath)
+            size = os.path.getsize(filePath)
+            if os.path.isfile(filePath) or (not str(c).startswith(".") and "." in str(c)):
+                #is a file
+                # files.append(c)
+                #get file's properties
+                file = {
+                    "name":c,
+                    "locate":filePath,
+                    "size":size,
+                    "timeCreate":timeCreate,
+                    "timeModify":timeModify,
+                    "timeAccess":timeAccess
+                }
+                files.append(file)
+
+            elif os.path.isdir(filePath) :
+                # else:
+                #is a dir
+                isSystem = "system" in str(c)
+
+                info = getAllFiles(filePath)
+                print(info)
+                numDirs = 0
+                if len(info) > 1:
+                    numDirs = len(info) - 1
+                numFiles = 0
+                for i in info:
+                    numFiles += len(i['files'])
+
+                d = {
+                    "name": c,
+                    "size": size,
+                    "timeCreate": timeCreate,
+                    "timeModify": timeModify,
+                    "timeAccess": timeAccess,
+                    "numDir":numDirs,
+                    "numFiles":numFiles,
+                    "system": isSystem
+                }
+                dirs.append(d)
+            else:
+                print(str(c)+" is unknown")
+                unknown.append(c)
+        result = {
+            'files': files,
+            'dirs': dirs,
+            'unknown':unknown
+        }
+        return result
+
+    # content = contents[0]       # all files & firs of the current dir
+
+    # return content
+
+
+def moveFile(fileName, dir, dirTo):
+    # todo
+
+    pass
+
+
+def renameFile(file, newFileName):
+    # todo
+
+    pass
+
+
+def getFileInfo(file, path):
+    # todo
+
+    pass
+
 
 #
 # get the directory number int the 'dir'
@@ -103,7 +209,7 @@ def createProject(path, projectId, projectName, type, filePath):
         #     shell.execute('mv ' + config.getNotebookName() + ' ' + str(projectId) + '.ipynb')
         #     shell.execute('mv ' + config.getH5Name() + ' ' + str(projectId) + '.ipynb')
 
-        jupyter.executingNb(path, config.getNotebookName(), type)
+        # jupyter.executingNb(path, config.getNotebookName(), type)
 
         return {
             'projectId': projectId,
@@ -139,7 +245,6 @@ def deleteFile(path):
     except Exception as e:
         return (0, 'Delete Failed, cause: ' + e)
 
-
 # for test
 # if __name__ == '__main__':
-#     getAllFiles('/Users/jerryyin/.jupyter')
+#     getAllFiles('/Users/jerryyin/notebook')
