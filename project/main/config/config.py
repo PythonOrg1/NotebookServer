@@ -1,7 +1,7 @@
 # global config file
 
 app_name = "极算云notebook管理分发系统"
-version = "v1.0.0"
+version = "v1.0.1"
 author = "JayYin"
 
 # server

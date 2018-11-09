@@ -190,7 +190,83 @@ def deleteDataset(request_body):
     else:
         return projectManager.deleteDataset(userId, dataId)
 
+#
+# get all files & dirs info of the current path
+#
+def getFilesInfoOfPath(request_body):
+    path = None
+    try:
+        path = request_body['path']
+    except Exception as e:
+        return str(resp_err_params) + str(e)
+    res = fileManager.getFilesInfoOfPath(path)
+    if res == None:
+        return {
+            'status':0,
+            'result':"File or directory not found!"
+        }
+    else:
+        return {
+            'status':1,
+            'result':res
+        }
 
+#
+# rename file or dir
+#
+def rename(request_body):
+    src = None
+    dst = None
+    try:
+        src = request_body['src']
+        dst = request_body['dst']
+    except Exception as e:
+        return str(resp_err_params) + str(e)
+    return fileManager.rename(src, dst)
+
+#
+#delete file or dir
+#
+def deleteFile(request_body):
+    path = None
+    try:
+        path = request_body['path']
+    except Exception as e:
+        return str(resp_err_params) + str(e)
+    (code, res) = fileManager.deleteFile(path)
+    return {
+        'status': code,
+        'result': res
+    }
+
+def makeDir(request_body):
+    dir = None
+    try:
+        dir = request_body['dir']
+    except Exception as e:
+        return str(resp_err_params) + str(e)
+    (code, res) = fileManager.makeDir(dir)
+    return {
+        'status': code,
+        'result': res
+    }
+
+def createFile(request_body):
+    file = None
+    try:
+        file = request_body['file']
+    except Exception as e:
+        return str(resp_err_params) + str(e)
+    (code, res) = fileManager.createFile(file)
+    return {
+        'status': code,
+        'result': res
+    }
+
+#
+#
+#
+#
 def praseData(request_body):
     if type(request_body) != type({}):
         return resp_err_params
@@ -209,16 +285,24 @@ def praseData(request_body):
             return runWithVm(request_body)
         elif action == 'deleteProject':
             return deleteProject(request_body)
-        elif action == 'getMyFiles':
-            return getMyFiles(request_body)
         elif action == 'bindDataset':
             return bindDataWithProject(request_body)
         elif action == 'unbindDataset':
             return bindDataWithProject(request_body)
         elif action == 'deleteDataset':
             return deleteDataset(request_body)
-        elif action == 'test-file':
-            return fileManager.getFilesInfoOfPath(request_body['path'])
+        elif action == 'getMyFiles':
+            return getMyFiles(request_body)
+        elif action == 'getFilesInfoOfPath':
+            return getFilesInfoOfPath(request_body)
+        elif action == 'rename':
+            return rename(request_body)
+        elif action == 'deleteFile':
+            return deleteFile(request_body)
+        elif action == 'mkdir':
+            return makeDir(request_body)
+        elif action == 'mkfile':
+            return createFile(request_body)
         else:
             return {'status': 0, 'result': 'request & params not support!!!'}
 

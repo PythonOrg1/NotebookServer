@@ -98,57 +98,60 @@ def getFilesInfoOfPath(dir):
                 filePath = str(dir) + str(c)
             else:
                 filePath = str(dir) + "/" + str(c)
+            try:
+                timeAccess = str(os.path.getatime(filePath)).split(".")[0]
+                timeModify = str(os.path.getmtime(filePath)).split(".")[0]
+                timeCreate = str(os.path.getctime(filePath)).split(".")[0]
+                size = os.path.getsize(filePath)
+                if os.path.isfile(filePath) or (not str(c).startswith(".") and "." in str(c)):
+                    # is a file
+                    # files.append(c)
+                    # get file's properties
+                    file = {
+                        "name": c,
+                        "locate": filePath,
+                        "size": size,
+                        "timeCreate": timeCreate,
+                        "timeModify": timeModify,
+                        "timeAccess": timeAccess
+                    }
+                    files.append(file)
 
-            timeAccess = os.path.getatime(filePath)
-            timeModify = os.path.getmtime(filePath)
-            timeCreate = os.path.getctime(filePath)
-            size = os.path.getsize(filePath)
-            if os.path.isfile(filePath) or (not str(c).startswith(".") and "." in str(c)):
-                #is a file
-                # files.append(c)
-                #get file's properties
-                file = {
-                    "name":c,
-                    "locate":filePath,
-                    "size":size,
-                    "timeCreate":timeCreate,
-                    "timeModify":timeModify,
-                    "timeAccess":timeAccess
-                }
-                files.append(file)
+                elif os.path.isdir(filePath):
+                    # else:
+                    # is a dir
+                    isSystem = "system" in str(c)
 
-            elif os.path.isdir(filePath) :
-                # else:
-                #is a dir
-                isSystem = "system" in str(c)
+                    info = getAllFiles(filePath)
+                    print(info)
+                    numDirs = 0
+                    if len(info) > 1:
+                        numDirs = len(info) - 1
+                    numFiles = 0
+                    for i in info:
+                        numFiles += len(i['files'])
 
-                info = getAllFiles(filePath)
-                print(info)
-                numDirs = 0
-                if len(info) > 1:
-                    numDirs = len(info) - 1
-                numFiles = 0
-                for i in info:
-                    numFiles += len(i['files'])
-
-                d = {
-                    "name": c,
-                    "size": size,
-                    "timeCreate": timeCreate,
-                    "timeModify": timeModify,
-                    "timeAccess": timeAccess,
-                    "numDir":numDirs,
-                    "numFiles":numFiles,
-                    "system": isSystem
-                }
-                dirs.append(d)
-            else:
-                print(str(c)+" is unknown")
+                    d = {
+                        "name": c,
+                        "size": size,
+                        "timeCreate": timeCreate,
+                        "timeModify": timeModify,
+                        "timeAccess": timeAccess,
+                        "numDir": numDirs,
+                        "numFiles": numFiles,
+                        "system": isSystem
+                    }
+                    dirs.append(d)
+                else:
+                    print(str(c) + " is unknown")
+                    unknown.append(c)
+            except Exception as  e:
+                sysout.err(TAG, e)
                 unknown.append(c)
         result = {
             'files': files,
             'dirs': dirs,
-            'unknown':unknown
+            'unknown': unknown
         }
         return result
 
@@ -163,17 +166,85 @@ def moveFile(fileName, dir, dirTo):
     pass
 
 
-def renameFile(file, newFileName):
-    # todo
+#
+# rename file or dir
+#
+def rename(src, dst):
+    sysout.log(TAG, "src: " + str(src))
+    sysout.log(TAG, "dst: " + str(dst))
+    if src == None:
+        return {
+            'status': 0,
+            'result': 'Src can not be null !'
+        }
+    if dst == None:
+        return {
+            'status': 0,
+            'result': 'Dst can not be null !'
+        }
+    if not os.path.exists(src):
+        return {
+            'status': 0,
+            'result': str(src) + ' not found !'
+        }
 
-    pass
+    src = str(src)
+    s = src.split("/")
+    i = len(s) - 1
+    if src.endswith("/"):
+        i = len(s) - 2
+    name = s[i]
+    path = src.split("/" + str(name))[0]
+    dst = path + "/" + dst
+
+    if os.path.exists(dst):
+        return {
+            'status': 0,
+            'result': str(dst) + ' is already exists !'
+        }
+    try:
+        os.rename(src, dst)
+        if not os.path.exists(src) and os.path.exists(dst):
+            return {
+            'status': 1,
+            'result': 'rename success !'
+            }
+        else:
+            return {
+            'status': 0,
+            'result': 'rename falied !'
+            }
+    except Exception as e:
+        sysout.err(TAG, e)
+        return {
+            'status': 0,
+            'result': 'rename failed, '+ str(e)
+        }
 
 
-def getFileInfo(file, path):
-    # todo
+def makeDir(dir):
+    if dir == None:
+        return (0, 'Directory can not be null !')
+    if "/" not in str(dir):
+        return (0, 'Directory form not support, should be absolute path !')
+    else:
+        try:
+            shell.execute("mkdir " + dir)
+            return (1, 'Create successed !')
+        except Exception as  e:
+            return (0, 'Create directory failed, ' + str(e))
 
-    pass
-
+def createFile(file):
+    if dir == None:
+        return (0, 'File can not be null !')
+    if "/" not in str(dir):
+        return (0, 'File form not support, should be absolute path !')
+    else:
+        try:
+            shell.execute("touch " + file)
+            return (1, 'Create successed !')
+        except Exception as  e:
+            return (0, 'Create file failed, ' + str(e))
 
 #
 # get the directory number int the 'dir'
