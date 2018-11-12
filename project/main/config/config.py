@@ -77,20 +77,21 @@ file_system_readme = dir_home +'/base/readme'
 #sshfs for storage on StorageServer
 #cmd_sshfs_mount_storage = 'sshfs -C -o reconnect user@hostname:remote_dir local_dir'
 #
+sshfs_pwd = 'fd324;1'
+
 # release
 # sshfs  root@60.12.136.60:/sshfs/ /notebook/storage
-sshfs_pwd = 'fd324;1'
+# pwd: fd324;1
+
 #
-# dev & localhost    [private network]
-# sshfs  root@10.10.45.246:/mnt/ ~/workspace/notebook/storage
-# sshfs_pwd = 'abcd#12345'
-# dev2              [common network]
+# dev              [common network]
 #  sshfs  root@60.12.136.61:/mnt
 # sshfs_pwd = 'abcd#12345'
 
 # path of the user's dataset
 # path_dataset = '/file/datasets'
 
+# sshfs -C -o reconnect root@60.12.136.61:/mnt /notebook/storage
 
 
 # the common base nb of the sys

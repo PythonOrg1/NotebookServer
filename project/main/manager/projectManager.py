@@ -84,6 +84,7 @@ def createNewVersion(userId, projectId, projectName, versionCur):
             shell.execute('cp ' + curNb + ' ' + dir + '/')
             shell.execute('cp ' + curH5 + ' ' + dir + '/')
             shell.execute('cp ' + curPY + ' ' + dir + '/')
+            # shell.execute('cp -r ' + config.dir_home + curPath + '/dataset' + ' ' + dir + '/')
             shell.execute('cp  ~/.jupyter/custom/custom.css ' + dir + '/')
             return {
                 'projectId': projectId,

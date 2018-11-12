@@ -263,6 +263,20 @@ def createFile(request_body):
         'result': res
     }
 
+def moveFile(request_body):
+    file = None
+    dir = None
+    try:
+        file = request_body['file']
+        dir = request_body['dir']
+    except Exception as e:
+        return str(resp_err_params) + str(e)
+    (code, res) = fileManager.moveFile(file, dir)
+    return {
+        'status': code,
+        'result': res
+    }
+
 #
 #
 #
@@ -303,6 +317,8 @@ def praseData(request_body):
             return makeDir(request_body)
         elif action == 'mkfile':
             return createFile(request_body)
+        elif action == 'moveFile':
+            return moveFile(request_body)
         else:
             return {'status': 0, 'result': 'request & params not support!!!'}
 

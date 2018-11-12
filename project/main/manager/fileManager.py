@@ -160,10 +160,29 @@ def getFilesInfoOfPath(dir):
     # return content
 
 
-def moveFile(fileName, dir, dirTo):
-    # todo
-
-    pass
+#
+# move file to dir
+#
+# file, dir -- abs path
+#
+def moveFile(file, dir):
+    if file == None:
+        return (0, 'File can not be null !')
+    if dir == None:
+        return (0, 'Directory can note be null !')
+    if not os.path.exists(file):
+        return (0, 'File ' + str(file) + ' not exists !')
+    if not os.path.exists(dir):
+        return (0, 'Directory ' + str(dir) + ' not exists !')
+    try:
+        if (str(dir).endswith("/")):
+            shell.execute('mv ' + str(file) + ' ' + str(dir))
+        else:
+            shell.execute('mv ' + str(file) + ' ' + str(dir) + '/')
+        return (1, 'File move successed !')
+    except Exception as e:
+        sysout.err(TAG, e)
+        return (0, 'File move failed, ' + str(e))
 
 
 #
@@ -206,19 +225,19 @@ def rename(src, dst):
         os.rename(src, dst)
         if not os.path.exists(src) and os.path.exists(dst):
             return {
-            'status': 1,
-            'result': 'rename success !'
+                'status': 1,
+                'result': 'rename success !'
             }
         else:
             return {
-            'status': 0,
-            'result': 'rename falied !'
+                'status': 0,
+                'result': 'rename falied !'
             }
     except Exception as e:
         sysout.err(TAG, e)
         return {
             'status': 0,
-            'result': 'rename failed, '+ str(e)
+            'result': 'rename failed, ' + str(e)
         }
 
 
@@ -234,6 +253,7 @@ def makeDir(dir):
         except Exception as  e:
             return (0, 'Create directory failed, ' + str(e))
 
+
 def createFile(file):
     if dir == None:
         return (0, 'File can not be null !')
@@ -245,6 +265,7 @@ def createFile(file):
             return (1, 'Create successed !')
         except Exception as  e:
             return (0, 'Create file failed, ' + str(e))
+
 
 #
 # get the directory number int the 'dir'
