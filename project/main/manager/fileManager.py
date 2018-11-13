@@ -337,6 +337,17 @@ def deleteFile(path):
     except Exception as e:
         return (0, 'Delete Failed, cause: ' + e)
 
+def deleteFiles(paths):
+    result = []
+    for p in paths:
+        code, msg = deleteFile(p)
+        result.append({
+            'code' : code,
+            'msg': msg
+        })
+    return result
+
+
 # for test
 # if __name__ == '__main__':
 #     getAllFiles('/Users/jerryyin/notebook')

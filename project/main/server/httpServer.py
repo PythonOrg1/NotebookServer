@@ -239,6 +239,20 @@ def deleteFile(request_body):
         'result': res
     }
 
+def deleteFiles(request_body):
+    paths = None
+    try:
+        paths = request_body['paths']
+    except Exception as e:
+        return str(resp_err_params) + str(e)
+    if not type(paths) == type([]):
+        return resp_err_params
+    result = fileManager.deleteFiles(paths)
+    return {
+        'status': 1,
+        'result': result
+    }
+
 def makeDir(request_body):
     dir = None
     try:
@@ -313,6 +327,8 @@ def praseData(request_body):
             return rename(request_body)
         elif action == 'deleteFile':
             return deleteFile(request_body)
+        elif action == 'deleteFiles':
+            return deleteFiles(request_body)
         elif action == 'mkdir':
             return makeDir(request_body)
         elif action == 'mkfile':

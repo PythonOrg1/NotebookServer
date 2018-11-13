@@ -57,6 +57,20 @@ vms_host = vms_host_dev
 # file_system_readme = dir_home +'/base/readme'
 
 
+# ----------- DEV2 for 18.18.18.174 ------------
+# ns_host = '18.18.18.174'
+# ns_port_http = 8100
+# ns_port = 8888
+# ns_doname = 'https://18.18.18.174:8888'
+# ## ns_doname = 'http://' + ns_host + ":" + str(ns_port)
+#
+# # system home dir
+# dir_home = '/notebook/storage'
+# # dir_home_user = '/users'
+# dir_home_user = ''
+# # user's project dir:   homeDir/users/userId/projectId/version/xxx-nb
+# file_system_readme = dir_home +'/base/readme'
+
 
 # ----------- localohst ------------
 ns_host = '127.0.0.1'   #_localhost
