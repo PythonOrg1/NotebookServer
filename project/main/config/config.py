@@ -43,18 +43,18 @@ vms_host = vms_host_dev
 
 
 # ----------- DEV ------------
-# ns_host = '172.16.3.254'
-# ns_port_http = 8100
-# ns_port = 8888
-# ns_doname = 'https://dev.dongxicc.cn/notebook'
-# ## ns_doname = 'http://' + ns_host + ":" + str(ns_port)
-#
-# # system home dir
-# dir_home = '/notebook/storage'
-# # dir_home_user = '/users'
-# dir_home_user = ''
-# # user's project dir:   homeDir/users/userId/projectId/version/xxx-nb
-# file_system_readme = dir_home +'/base/readme'
+ns_host = '172.16.3.254'
+ns_port_http = 8100
+ns_port = 8888
+ns_doname = 'https://dev.dongxicc.cn/notebook'
+## ns_doname = 'http://' + ns_host + ":" + str(ns_port)
+
+# system home dir
+dir_home = '/notebook/storage'
+# dir_home_user = '/users'
+dir_home_user = ''
+# user's project dir:   homeDir/users/userId/projectId/version/xxx-nb
+file_system_readme = dir_home +'/base/readme'
 
 
 # ----------- DEV2 for 18.18.18.174 ------------
@@ -73,17 +73,17 @@ vms_host = vms_host_dev
 
 
 # ----------- localohst ------------
-ns_host = '127.0.0.1'   #_localhost
-ns_port_http = 8100
-ns_port = 8888
-ns_doname = 'http://' + ns_host + ":" + str(ns_port)
-
-## system home dir
-dir_home = '/Users/jerryyin/workspace/notebook/storage-dev'
-# dir_home_user = '/users'
-dir_home_user = ''
-## user's project dir:   homeDir/users/userId/projectId/version/xxx-nb
-file_system_readme = dir_home +'/base/readme'
+# ns_host = '127.0.0.1'   #_localhost
+# ns_port_http = 8100
+# ns_port = 8888
+# ns_doname = 'http://' + ns_host + ":" + str(ns_port)
+#
+# ## system home dir
+# dir_home = '/Users/jerryyin/workspace/notebook/storage-dev'
+# # dir_home_user = '/users'
+# dir_home_user = ''
+# ## user's project dir:   homeDir/users/userId/projectId/version/xxx-nb
+# file_system_readme = dir_home +'/base/readme'
 
 
 

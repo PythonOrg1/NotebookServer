@@ -32,14 +32,20 @@ def checkVersion(userId, projectId, v):
 # projectType -- 'PYTHON3' | 'PYTHON2' | 'R'
 #
 def createPreProject(userId, projectId, projectName, projectType):
+    userHome = ''
     pjHome = ''
+    dirData = ''
     if config.dir_home_user != "":
-        pjHome = config.dir_home + "/" + config.dir_home_user + '/' + str(userId) + '/system'
+        userHome = config.dir_home + "/" + config.dir_home_user + '/' + str(userId)
     else:
-        pjHome = config.dir_home + '/' + str(userId) + '/system'
+        userHome = config.dir_home + '/' + str(userId)
+    pjHome = userHome + '/system'
+    dirData = userHome + '/数据集'
     if not os.path.exists(pjHome):
         os.makedirs(pjHome)
         shell.execute('cp ' + config.file_system_readme + ' ' + pjHome + '/')
+    if not os.path.exists(dirData):
+        os.makedirs(dirData)
 
     #create directory for users's dataSets
     pathDsets = config.dir_home + "/" + config.dir_home_user + '/' + str(userId) + '/system/datasets'

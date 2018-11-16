@@ -67,6 +67,13 @@ def getOneNbFileName(dir, fileForm):
 # ** Except 'system' directory
 #
 def getUserHome(home):
+    dataHome = home + '/数据集'
+    datasetHome = home + '/system/datasets'
+    if not os.path.exists(dataHome):
+        os.makedirs(dataHome)
+        if os.path.exists(datasetHome):
+            shell.execute('ln -s ' + datasetHome + '/* ' + dataHome + '/')
+
     all = getAllFiles(home, False)
     print(all)
     return all
@@ -82,6 +89,21 @@ def getUserHome(home):
 def getFilesInfoOfPath(dir):
     if dir == None or (not os.path.exists(dir)) or (not os.path.isdir(dir)):
         return None
+
+    arr = str(dir).split('/')
+    if not arr == None and len(arr) >=3 and arr[2].isdigit():
+        # dir = "/notebook/storage/userId"
+        # is user's root /home
+        dataHome = dir + '/数据集'
+        datasetHome = dir + '/system/datasets'
+        if not os.path.exists(datasetHome):
+            os.makedirs(datasetHome)
+
+        if not os.path.exists(dataHome):
+            os.makedirs(dataHome)
+            shell.execute('ln -s ' + datasetHome + '/* ' + dataHome + '/')
+
+
     contents = os.listdir(dir)
     if contents == None:
         return None
@@ -92,62 +114,75 @@ def getFilesInfoOfPath(dir):
         dirs = []
         unknown = []
         for i in range(len(contents)):
-            c = contents[i]
-            filePath = ''
-            if str(dir).endswith("/"):
-                filePath = str(dir) + str(c)
-            else:
-                filePath = str(dir) + "/" + str(c)
-            try:
-                timeAccess = str(os.path.getatime(filePath)).split(".")[0]
-                timeModify = str(os.path.getmtime(filePath)).split(".")[0]
-                timeCreate = str(os.path.getctime(filePath)).split(".")[0]
-                size = os.path.getsize(filePath)
-                if os.path.isfile(filePath) or (not str(c).startswith(".") and "." in str(c)):
-                    # is a file
-                    # files.append(c)
-                    # get file's properties
-                    file = {
-                        "name": c,
-                        "locate": filePath,
-                        "size": size,
-                        "timeCreate": timeCreate,
-                        "timeModify": timeModify,
-                        "timeAccess": timeAccess
-                    }
-                    files.append(file)
-
-                elif os.path.isdir(filePath):
-                    # else:
-                    # is a dir
-                    isSystem = "system" in str(c)
-
-                    info = getAllFiles(filePath)
-                    print(info)
-                    numDirs = 0
-                    if len(info) > 1:
-                        numDirs = len(info) - 1
-                    numFiles = 0
-                    for i in info:
-                        numFiles += len(i['files'])
-
-                    d = {
-                        "name": c,
-                        "size": size,
-                        "timeCreate": timeCreate,
-                        "timeModify": timeModify,
-                        "timeAccess": timeAccess,
-                        "numDir": numDirs,
-                        "numFiles": numFiles,
-                        "system": isSystem
-                    }
-                    dirs.append(d)
+            if not str(contents[i]) == 'system':
+                c = contents[i]
+                filePath = ''
+                if str(dir).endswith("/"):
+                    filePath = str(dir) + str(c)
                 else:
-                    print(str(c) + " is unknown")
-                    unknown.append(c)
-            except Exception as  e:
-                sysout.err(TAG, e)
-                unknown.append(c)
+                    filePath = str(dir) + "/" + str(c)
+                try:
+                    timeAccess = str(os.path.getatime(filePath)).split(".")[0]
+                    timeModify = str(os.path.getmtime(filePath)).split(".")[0]
+                    timeCreate = str(os.path.getctime(filePath)).split(".")[0]
+                    size = os.path.getsize(filePath)
+                    if os.path.isfile(filePath) or (not str(c).startswith(".") and "." in str(c)):
+                        # is a file
+                        # files.append(c)
+                        # get file's properties
+                        file = {
+                            "name": c,
+                            "locate": filePath,
+                            "size": size,
+                            "timeCreate": timeCreate,
+                            "timeModify": timeModify,
+                            "timeAccess": timeAccess
+                        }
+                        files.append(file)
+
+                    elif os.path.isdir(filePath):
+                        # else:
+                        # is a dir
+                        isSystem = "system" in str(c)
+
+                        if filePath.endswith('/数据集'):
+                            # '/notebook/storage/userId/数据集'
+                            filePath = filePath.split('/数据集')[0] + '/system/datasets'
+                        size = getDirSize(filePath)
+                        info = getAllFiles(filePath)
+                        print(info)
+                        numDirs = 0
+                        if len(info) > 1:
+                            numDirs = len(info) - 1
+                        numFiles = 0
+                        for i in info:
+                            numFiles += len(i['files'])
+
+                        d = {
+                            "name": c,
+                            "size": size,
+                            "timeCreate": timeCreate,
+                            "timeModify": timeModify,
+                            "timeAccess": timeAccess,
+                            "numDir": numDirs,
+                            "numFiles": numFiles,
+                            "system": isSystem
+                        }
+                        dirs.append(d)
+                    else:
+                        print(str(c) + " is unknown")
+                        u = {
+                            "name": c,
+                            "msg": 'unknown file or directory!'
+                        }
+                        unknown.append(u)
+                except Exception as  e:
+                    sysout.err(TAG, e)
+                    u = {
+                        "name": c,
+                        "msg": 'unknown file or directory, cause ' + str(e)
+                    }
+                    unknown.append(u)
         result = {
             'files': files,
             'dirs': dirs,
@@ -159,6 +194,15 @@ def getFilesInfoOfPath(dir):
 
     # return content
 
+
+#
+#
+#
+def getDirSize(dir):
+    size = 0
+    for root, dirs, files in os.walk(dir):
+        size += sum([os.path.getsize(os.path.join(root, name)) for name in files])
+    return size
 
 #
 # move file to dir
@@ -328,10 +372,18 @@ def createProject(path, projectId, projectName, type, filePath):
 def deleteFile(path):
     try:
         if os.path.exists(path):
+            if '(' in path:
+                path = str(path).replace('(', '\(')
+            if ')' in path:
+                path = str(path).replace(')', '\)')
+
             d = shell.execute('rm -rf ' + path)
             print("d ======== ")
             print(d)
-            return (1, 'Delete Sccess!')
+            if d==0:
+                return (1, 'Delete Sccess!')
+            else:
+                return (0, 'Delete Failed, Please check file format!')
         else:
             return (2, 'File not exists!')
     except Exception as e:
