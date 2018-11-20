@@ -40,17 +40,19 @@ def createPreProject(userId, projectId, projectName, projectType):
     else:
         userHome = config.dir_home + '/' + str(userId)
     pjHome = userHome + '/system'
-    dirData = userHome + '/数据集'
     if not os.path.exists(pjHome):
         os.makedirs(pjHome)
         shell.execute('cp ' + config.file_system_readme + ' ' + pjHome + '/')
-    if not os.path.exists(dirData):
-        os.makedirs(dirData)
 
     #create directory for users's dataSets
     pathDsets = config.dir_home + "/" + config.dir_home_user + '/' + str(userId) + '/system/datasets'
     if not os.path.exists(pathDsets):
         os.makedirs(pathDsets)
+
+    dirData = userHome + '/数据集'
+    if not os.path.exists(dirData):
+        os.makedirs(dirData)
+        shell.execute('ln -s ' + pathDsets + '/* ' + dirData + '/')
 
     path = config.dir_home_user + '/' + str(userId) + '/system/' + str(
         projectId) + '/1'  # 1--version of pj， vesionInit=1
