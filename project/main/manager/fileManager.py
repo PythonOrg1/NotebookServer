@@ -27,7 +27,7 @@ def createDir(dir):
 #         'files': ['.DS_Store', 'migrated', 'jupyter_notebook_config.py', 'jupyter_notebook_config.json2']      //all files
 #         }, ...
 #   ]
-#
+# ls -l|grep
 def getAllFiles(dir, containSystem=True):
     if dir == None or (not os.path.exists(dir)):
         return None
@@ -41,6 +41,36 @@ def getAllFiles(dir, containSystem=True):
             })
     return result
 
+
+#
+# get files number of one dir
+# By Linux CMD
+#
+def getFileNumber(dir, containChildDir=False):
+    if dir == None or (not os.path.exists(dir)):
+        return None
+    cmd = 'ls -l '+ dir + ' |grep "^-"| wc -l'
+    if containChildDir:
+        cmd = 'ls -lR '+ dir + ' |grep "^-"| wc -l'
+    popen = shell.SubProcessCmd(cmd)
+    num = popen.getOutBuff()
+    popen.close()
+    return num
+
+#
+# get dir number of one dir
+# By Linux CMD
+#
+def getDirNumber(dir, containChildDir=False):
+    if dir == None or (not os.path.exists(dir)):
+        return None
+    cmd = 'ls -l '+ dir + ' |grep "^d"| wc -l'
+    if containChildDir:
+        cmd = 'ls -lR '+ dir + ' |grep "^d"| wc -l'
+    popen = shell.SubProcessCmd(cmd)
+    num = popen.getOutBuff()
+    popen.close()
+    return num
 
 #
 # get only one file name of the dir
@@ -91,7 +121,7 @@ def getFilesInfoOfPath(dir):
         return None
 
     arr = str(dir).split('/')
-    if not arr == None and len(arr) >=3 and arr[2].isdigit():
+    if not arr == None and len(arr) >= 3 and arr[2].isdigit():
         # dir = "/notebook/storage/userId"
         # is user's root /home
         dataHome = dir + '/数据集'
@@ -102,7 +132,6 @@ def getFilesInfoOfPath(dir):
         if not os.path.exists(dataHome):
             os.makedirs(dataHome)
             shell.execute('ln -s ' + datasetHome + '/* ' + dataHome + '/')
-
 
     contents = os.listdir(dir)
     if contents == None:
@@ -125,11 +154,12 @@ def getFilesInfoOfPath(dir):
                     timeAccess = str(os.path.getatime(filePath)).split(".")[0]
                     timeModify = str(os.path.getmtime(filePath)).split(".")[0]
                     timeCreate = str(os.path.getctime(filePath)).split(".")[0]
-                    size = os.path.getsize(filePath)
+                    size = 0
                     if os.path.isfile(filePath) or (not str(c).startswith(".") and "." in str(c)):
                         # is a file
                         # files.append(c)
                         # get file's properties
+                        size = os.path.getsize(filePath)
                         file = {
                             "name": c,
                             "locate": filePath,
@@ -149,15 +179,16 @@ def getFilesInfoOfPath(dir):
                             # '/notebook/storage/userId/数据集'
                             filePath = filePath.split('/数据集')[0] + '/system/datasets'
                         size = getDirSize(filePath)
-                        info = getAllFiles(filePath)
-                        print(info)
-                        numDirs = 0
-                        if len(info) > 1:
-                            numDirs = len(info) - 1
-                        numFiles = 0
-                        for i in info:
-                            numFiles += len(i['files'])
-
+                        # info = getAllFiles(filePath)
+                        # print(info)
+                        # numDirs = 0
+                        # if len(info) > 1:
+                        #     numDirs = len(info) - 1
+                        # numFiles = 0
+                        # for i in info:
+                        #     numFiles += len(i['files'])
+                        numDirs = getDirNumber(filePath, True)
+                        numFiles = getFileNumber(filePath, True)
                         d = {
                             "name": c,
                             "size": size,
@@ -310,22 +341,6 @@ def createFile(file):
         except Exception as  e:
             return (0, 'Create file failed, ' + str(e))
 
-
-#
-# get the directory number int the 'dir'
-# linux :
-#   get dir number of the dir
-#       #ls -l |grep "^d"|wc -l
-#
-#   get file num of the dir
-#       #ls -l |grep "^-"|wc -l
-#
-def getDirNumber(dir):
-    cmd = 'ls -l ' + str(dir) + ' |grep "^d"|wc -l'
-    n = os.popen(cmd).read()
-    return n
-
-
 #
 # copy init common project to user's dir for preview
 # path -- absolute path of the file
@@ -380,7 +395,7 @@ def deleteFile(path):
             d = shell.execute('rm -rf ' + path)
             print("d ======== ")
             print(d)
-            if d==0:
+            if d == 0:
                 return (1, 'Delete Sccess!')
             else:
                 return (0, 'Delete Failed, Please check file format!')
@@ -394,12 +409,11 @@ def deleteFiles(paths):
     for p in paths:
         code, msg = deleteFile(p)
         result.append({
-            'code' : code,
+            'code': code,
             'msg': msg
         })
     return result
 
-
 # for test
 # if __name__ == '__main__':
-#     getAllFiles('/Users/jerryyin/notebook')
+#     getFileNumber('/Users/jerryyin/notebook')

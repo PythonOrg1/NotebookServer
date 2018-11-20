@@ -10,8 +10,11 @@
 set timeout 20
 ## dev server
 #spawn sshfs  root@60.12.136.60:/sshfs/notebookserver /root/notebook/storage
+#spawn sshfs -o reconnect -o ssh_command "sshpass -p abcd#12345 ssh" root@60.12.136.61:/mnt /notebook/storage -o ConnectTimeout=30 -o StrictHostKeyChecking=no
+
 ## release server
-spawn sshfs  root@60.12.136.60:/sshfs/notebookserver /notebook/storage
+#spawn sshfs  root@60.12.136.60:/sshfs /notebook/storage
+spawn sshfs -o reconnect -o ssh_command "sshpass -p fd324;1 ssh" root@60.12.136.60:/sshfs /notebook/storage -o ConnectTimeout=30 -o StrictHostKeyChecking=no
 expect "*password:"
 send "fd324;1\r"
 # expect "*#"

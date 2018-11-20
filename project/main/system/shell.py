@@ -25,7 +25,7 @@ class SubProcessCmd(object):
             line = self.popen.stdout.readline().strip()
             # 判断内容是否为空
             if line:
-                return line
+                return line.decode('utf-8')
 
     def close(self):
         self.popen.kill()

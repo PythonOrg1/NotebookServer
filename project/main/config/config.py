@@ -89,7 +89,9 @@ file_system_readme = dir_home +'/base/readme'
 
 #cmd
 #sshfs for storage on StorageServer
-#cmd_sshfs_mount_storage = 'sshfs -C -o reconnect user@hostname:remote_dir local_dir'
+# cmd_sshfs_mount_storage = 'sshfs -o reconnect user@hostname:remote_dir local_dir'
+#
+#cmd = 'sshfs -o reconnect -o ssh_command "sshpass -p fd324;1 ssh" root@60.12.136.60:/sshfs /sshfs -o ConnectTimeout=30 -o StrictHostKeyChecking=no'
 #
 sshfs_pwd = 'fd324;1'
 

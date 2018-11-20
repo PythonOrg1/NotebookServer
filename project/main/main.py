@@ -3,7 +3,7 @@
 from base import sysout
 from config import config, string
 from server import httpServer
-
+from manager import fileManager
 
 
 
@@ -18,3 +18,5 @@ if __name__ == '__main__':
     print(warning)
     sysout.info("", TAG + " is starting...")
     httpServer.run()
+    # fileManager.getFileNumber('/Users/jerryyin/workspace/notebook', True)
+    # print(fileManager.getDirNumber('/Users/jerryyin/workspace/notebook', True))
