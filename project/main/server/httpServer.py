@@ -4,6 +4,8 @@
 # from http.server import BaseHTTPRequestHandler, HTTPServer
 from wsgiref.simple_server import make_server
 import json
+import threading
+import asyncio
 
 from base import sysout
 from manager import projectManager
@@ -19,8 +21,19 @@ mServer = (mHost, mPort)
 # global response data
 resp_err_params = {'status': '0', 'result': 'request params form error!'}
 
+global mLoop
 
 
+class NotebookHttpServer(threading.Thread):
+    def __init__(self, threadId, name):
+        threading.Thread.__init__(self)
+        self.threadID = threadId
+        self.name = name
+
+    def run(self):
+        t = threading.current_thread()
+        sysout.info(TAG, 'NotebookHttpServer is stating at thread %s - %s' %(t.threadID, t.name))
+        run()
 
 ##
 # module -- project
@@ -193,6 +206,8 @@ def deleteDataset(request_body):
 #
 # get all files & dirs info of the current path
 #
+# @asyncio.coroutine
+# async def getFilesInfoOfPath(request_body):
 def getFilesInfoOfPath(request_body):
     path = None
     try:
@@ -323,6 +338,12 @@ def praseData(request_body):
             return getMyFiles(request_body)
         elif action == 'getFilesInfoOfPath':
             return getFilesInfoOfPath(request_body)
+            # loop = asyncio.get_event_loop()
+            # task = getFilesInfoOfPath(request_body)
+            # futrue = asyncio.ensure_future(task)
+            # loop.run_until_complete(futrue)
+            # return futrue.result()
+
         elif action == 'rename':
             return rename(request_body)
         elif action == 'deleteFile':
@@ -343,31 +364,35 @@ def application(environ, start_response):
     # 定义请求的类型和当前请求成功的code
     # print(environ)
     # print(start_response)
+    sysout.info(TAG, threading.current_thread())
     start_response('200 OK', [('Content-Type', 'application/json')])
     # environ是当前请求的所有数据，包括Header和URL，body
     request_body = None
     # request_body = environ["wsgi.input"].read(int(environ.get("CONTENT_LENGTH", 0))).decode('utf-8')
     request_body = str(environ["wsgi.input"].read(int(environ.get("CONTENT_LENGTH", 0))), 'utf-8')
-    print('http request ---> ')
+    sysout.info(TAG, 'http request ---> ')
     try:
-        print(str(request_body))
+        sysout.info(TAG, str(request_body))
     except Exception as e:
-        print('Exception:')
-        print(e)
+        sysout.error(TAG, 'Exception:' + str(e))
+
+    # global mLoop
+    # mLoop = asyncio.get_event_loop()
+
     request_body = json.loads(request_body)
     response = praseData(request_body)
     try:
-        print(str(response))
+        sysout.info(TAG, str(response))
     except Exception as e:
-        print('Exception:')
-        print(e)
+        sysout.error(TAG, 'Exception:' + str(e))
+
     result = json.dumps(response).encode('utf-8')
-    print("http response --> " + str(result))
+    sysout.info(TAG, "http response --> " + str(result))
     return [result]
 
 
 def run():
     # httpd = HTTPServer(mServer, AmiHTTPServer)
     httpd = make_server(mHost, mPort, application)
-    print('http server is running on ' + str(mServer))
+    sysout.info(TAG, 'http server is running on ' + str(mServer))
     httpd.serve_forever()

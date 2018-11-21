@@ -1,7 +1,8 @@
-# charst=utf-8
+# charset=utf-8
 
 import os
-import datetime
+import datetime, time
+import threading
 
 from system import shell
 from base import sysout
@@ -9,6 +10,9 @@ from config import config
 from manager import jupyter
 
 TAG = 'filemanager'
+
+# global sizeDict
+mSizeDict = {}
 
 
 def createDir(dir):
@@ -56,8 +60,13 @@ def getFileNumber(dir, containChildDir=False):
         cmd = 'ls -lR ' + dir + ' |grep "^-"| wc -l'
     popen = shell.SubProcessCmd(cmd)
     num = popen.getOutBuff()
-    popen.close()
-    return num
+    if not num == None:
+        popen.close()
+        return num
+    else:
+        # start time counting ???
+        return setTimeout(num, popen)
+
 
 #
 # get dir number of one dir
@@ -71,8 +80,33 @@ def getDirNumber(dir, containChildDir=False):
         cmd = 'ls -lR ' + dir + ' |grep "^d"| wc -l'
     popen = shell.SubProcessCmd(cmd)
     num = popen.getOutBuff()
-    popen.close()
-    return num
+    if not num == None:
+        popen.close()
+        return num
+    else:
+        # start time counting ???
+        return setTimeout(num, popen)
+
+
+def setTimeout(num, popen):
+    # start time counting ???
+    timeout = 10
+    t = 0
+    while num == None:
+        time.sleep(1)
+        t += 1
+        if t >= timeout:
+            sysout.err(TAG, 'Read file timeout for 10s !')
+            try:
+                popen.close()
+            finally:
+                num = '未知'
+            break
+    try:
+        popen.close()
+    finally:
+        return num
+
 
 #
 # get only one file name of the dir
@@ -107,7 +141,7 @@ def getUserHome(home):
             shell.execute('ln -s ' + datasetHome + '/* ' + dataHome + '/')
 
     all = getAllFiles(home, False)
-    print(all)
+    # print(all)
     return all
 
 
@@ -180,7 +214,26 @@ def getFilesInfoOfPath(dir):
                         if filePath.endswith('/数据集'):
                             # '/notebook/storage/userId/数据集'
                             filePath = filePath.split('/数据集')[0] + '/system/datasets'
-                        size = getDirSize(filePath)
+
+                        # get the dir size
+                        # size = 0
+                        # if filePath not in mSizeDict.keys():
+                        #     mSizeDict[filePath] = None
+                        #     # size = mSizeDict[filePath]
+                        #     tmp = 0
+                        #     tout = 10
+                        #     t = threading.Thread(target=getDirSize(filePath))
+                        #     t.setDaemon(True)
+                        #     t.start()
+                        #     t.join(tout)
+                        #     while mSizeDict[filePath] == None:
+                        #         time.sleep(1)
+                        #         tmp += 1
+                        #         if tmp >= tout:
+                        #             size = mSizeDict[filePath] = '未知'
+                        #             mSizeDict.pop(filePath)
+                        #             break
+
                         # info = getAllFiles(filePath)
                         # print(info)
                         # numDirs = 0
@@ -189,8 +242,12 @@ def getFilesInfoOfPath(dir):
                         # numFiles = 0
                         # for i in info:
                         #     numFiles += len(i['files'])
-                        numDirs = getDirNumber(filePath, True)
-                        numFiles = getFileNumber(filePath, True)
+
+                        # numDirs = getDirNumber(filePath, True)
+                        # numFiles = getFileNumber(filePath, True)
+                        size = 0
+                        numDirs = '未知'
+                        numFiles = '未知'
                         d = {
                             "name": c,
                             "size": size,
@@ -203,7 +260,7 @@ def getFilesInfoOfPath(dir):
                         }
                         dirs.append(d)
                     else:
-                        print(str(c) + " is unknown")
+                        sysout.info(TAG, str(c) + " is unknown")
                         u = {
                             "name": c,
                             "msg": 'unknown file or directory!'
@@ -235,6 +292,7 @@ def getDirSize(dir):
     size = 0
     for root, dirs, files in os.walk(dir):
         size += sum([os.path.getsize(os.path.join(root, name)) for name in files])
+    mSizeDict[dir] = size
     return size
 
 
@@ -409,6 +467,7 @@ def deleteFile(path):
     except Exception as e:
         return (0, 'Delete Failed, cause: ' + e)
 
+
 def deleteFiles(paths):
     result = []
     for p in paths:
@@ -418,7 +477,6 @@ def deleteFiles(paths):
             'msg': msg
         })
     return result
-
 
 # def checkFileNameForm(path):
 #     arr = str(path).split("/")
