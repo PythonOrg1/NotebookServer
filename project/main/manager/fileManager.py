@@ -1,6 +1,8 @@
 # charst=utf-8
 
 import os
+import datetime
+
 from system import shell
 from base import sysout
 from config import config
@@ -49,9 +51,9 @@ def getAllFiles(dir, containSystem=True):
 def getFileNumber(dir, containChildDir=False):
     if dir == None or (not os.path.exists(dir)):
         return None
-    cmd = 'ls -l '+ dir + ' |grep "^-"| wc -l'
+    cmd = 'ls -l ' + dir + ' |grep "^-"| wc -l'
     if containChildDir:
-        cmd = 'ls -lR '+ dir + ' |grep "^-"| wc -l'
+        cmd = 'ls -lR ' + dir + ' |grep "^-"| wc -l'
     popen = shell.SubProcessCmd(cmd)
     num = popen.getOutBuff()
     popen.close()
@@ -64,9 +66,9 @@ def getFileNumber(dir, containChildDir=False):
 def getDirNumber(dir, containChildDir=False):
     if dir == None or (not os.path.exists(dir)):
         return None
-    cmd = 'ls -l '+ dir + ' |grep "^d"| wc -l'
+    cmd = 'ls -l ' + dir + ' |grep "^d"| wc -l'
     if containChildDir:
-        cmd = 'ls -lR '+ dir + ' |grep "^d"| wc -l'
+        cmd = 'ls -lR ' + dir + ' |grep "^d"| wc -l'
     popen = shell.SubProcessCmd(cmd)
     num = popen.getOutBuff()
     popen.close()
@@ -235,6 +237,7 @@ def getDirSize(dir):
         size += sum([os.path.getsize(os.path.join(root, name)) for name in files])
     return size
 
+
 #
 # move file to dir
 #
@@ -341,6 +344,7 @@ def createFile(file):
         except Exception as  e:
             return (0, 'Create file failed, ' + str(e))
 
+
 #
 # copy init common project to user's dir for preview
 # path -- absolute path of the file
@@ -387,14 +391,15 @@ def createProject(path, projectId, projectName, type, filePath):
 def deleteFile(path):
     try:
         if os.path.exists(path):
-            if '(' in path:
-                path = str(path).replace('(', '\(')
-            if ')' in path:
-                path = str(path).replace(')', '\)')
+            # if '(' in path:
+            #     path = str(path).replace('(', '\(')
+            # if ')' in path:
+            #     path = str(path).replace(')', '\)')
 
-            d = shell.execute('rm -rf ' + path)
-            print("d ======== ")
-            print(d)
+            # path = checkFileNameForm(path)
+            # if path == None:
+            #     return (0, 'Illegal file name can not be delete, pelase rename file name and try again!')
+            d = shell.execute('rm -rf "' + path + '"')
             if d == 0:
                 return (1, 'Delete Sccess!')
             else:
@@ -413,6 +418,31 @@ def deleteFiles(paths):
             'msg': msg
         })
     return result
+
+
+# def checkFileNameForm(path):
+#     arr = str(path).split("/")
+#     fileName = arr[len(arr) - 1]
+#     if not fileName == None:
+#         if '&' in str(path) or '>' in str(path) or '<' in str(path) or '^' in str(path) or '?' in str(
+#                 path) or "'" in str(path) or '"' in str(path) or ':' in str(path):
+#             # inlligal character
+#             newPath = path.replace(fileName, "serverdeletefile" + str(datetime.datetime.now()) + ".txt")
+#             r = rename(path, newPath)
+#             if r['status'] == 1:
+#                 # rename OK
+#                 return newPath
+#             else:
+#                 return None
+#             # try:
+#             #     shell.execute('mv ' + path + ' ' + newPath)
+#             #     return newPath
+#             # except:
+#             #     return None
+#         else:
+#             return path
+#     else:
+#         return None
 
 # for test
 # if __name__ == '__main__':
