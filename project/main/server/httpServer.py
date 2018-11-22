@@ -14,9 +14,6 @@ from manager import fileManager
 
 TAG = 'httpServer'
 
-mPort = config.ns_port_http
-mHost = config.ns_host
-mServer = (mHost, mPort)
 
 # global response data
 resp_err_params = {'status': '0', 'result': 'request params form error!'}
@@ -393,6 +390,10 @@ def application(environ, start_response):
 
 def run():
     # httpd = HTTPServer(mServer, AmiHTTPServer)
+    mPort = config.ns_port_http
+    mHost = config.ns_host
+    mServer = (mHost, mPort)
     httpd = make_server(mHost, mPort, application)
-    sysout.info(TAG, 'http server is running on ' + str(mServer))
+    # sysout.info(TAG, 'http server is running on ' + str(mServer))
+    sysout.info(TAG, "The server now is running on %s in [%s] mode!"%(str(mServer),config.system['mode']))
     httpd.serve_forever()
