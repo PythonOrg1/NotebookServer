@@ -21,7 +21,7 @@ resp_err_version_create_dir_err = {'status': 0, 'result': 'system error on creat
 def checkVersion(userId, projectId, v):
     if v == None:
         return (False, resp_err_version_invlid)
-    maxVersion = int(fileManager.getDirNumber(config.dir_home + config.dir_home_user + '/' + str(userId) + '/system/' + str(projectId) + '/'))
+    maxVersion = int(fileManager.getDirNumber2(config.dir_home + config.dir_home_user + '/' + str(userId) + '/system/' + str(projectId) + '/'))
     if (v <= 0 or v > maxVersion):
         return (False, resp_err_version_invlid)
     return (True, maxVersion)

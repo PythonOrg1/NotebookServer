@@ -109,6 +109,20 @@ def setTimeout(num, popen):
 
 
 #
+# get the directory number int the 'dir'
+# linux :
+#   get dir number of the dir
+#       #ls -l |grep "^d"|wc -l
+#
+#   get file num of the dir
+#       #ls -l |grep "^-"|wc -l
+#
+def getDirNumber2(dir):
+    cmd = 'ls -l ' + str(dir) + ' |grep "^d"|wc -l'
+    n = os.popen(cmd).read()
+    return n
+
+#
 # get only one file name of the dir
 # --fileForm:  .ipynb / .html / .py
 #

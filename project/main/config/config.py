@@ -21,40 +21,40 @@ author = "JayYin"
 vms_port = 18883
 vms_host_dev = '121.40.62.80'       #dev
 vms_host_release = '60.12.136.59'   #release
-vms_host = vms_host_dev
+vms_host = vms_host_release
 
 
 # ----------- RELEASE ------------
-# ns_host = '172.16.59.99'        #_release server cloudyotech.com
-# ns_port_http = 8100
-# ns_port = 8888
-# ns_doname = 'https://g.cloudyotech.com/notebook'
-# # ns_doname = 'http://' + ns_host + ":" + str(ns_port)
-#
-# # system home dir
-# dir_home_release = '/notebook/storage'
-# dir_home = dir_home_release
-#
-# # dir_home_user = '/users'
-# dir_home_user = ''
-# # user's project dir:   homeDir/users/userId/projectId/version/xxx-nb
-#
-# file_system_readme = dir_home +'/base/readme'
-
-
-# ----------- DEV ------------
-ns_host = '172.16.3.254'
+ns_host = '172.16.59.99'        #_release server cloudyotech.com
 ns_port_http = 8100
 ns_port = 8888
-ns_doname = 'https://dev.dongxicc.cn/notebook'
-## ns_doname = 'http://' + ns_host + ":" + str(ns_port)
+ns_doname = 'https://g.cloudyotech.com/notebook'
+# ns_doname = 'http://' + ns_host + ":" + str(ns_port)
 
 # system home dir
-dir_home = '/notebook/storage'
+dir_home_release = '/notebook/storage'
+dir_home = dir_home_release
+
 # dir_home_user = '/users'
 dir_home_user = ''
 # user's project dir:   homeDir/users/userId/projectId/version/xxx-nb
+
 file_system_readme = dir_home +'/base/readme'
+
+
+# ----------- DEV ------------
+# ns_host = '172.16.3.254'
+# ns_port_http = 8100
+# ns_port = 8888
+# ns_doname = 'https://dev.dongxicc.cn/notebook'
+# ## ns_doname = 'http://' + ns_host + ":" + str(ns_port)
+#
+# # system home dir
+# dir_home = '/notebook/storage'
+# # dir_home_user = '/users'
+# dir_home_user = ''
+# # user's project dir:   homeDir/users/userId/projectId/version/xxx-nb
+# file_system_readme = dir_home +'/base/readme'
 
 
 # ----------- DEV2 for 18.18.18.174 ------------
