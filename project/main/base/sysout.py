@@ -24,8 +24,7 @@ def log(tag, msg):
             print(log)
             logging.log(log)
         except Exception as e:
-            print('Exception:')
-            print(e)
+            print('Exception:'+str(e))
             logging.error(str(e))
 
 
@@ -36,8 +35,7 @@ def err(tag, err):
             print(log)
             logging.debug(log)
         except Exception as e:
-            print('Exception:')
-            print(e)
+            print('Exception:'+str(e))
             logging.error(str(e))
 
 
@@ -48,6 +46,5 @@ def info(tag, msg):
             print(log)
             logging.info(log)
         except Exception as e:
-            print('Exception:')
-            print(e)
+            print('Exception:'+str(e))
             logging.error(str(e))
