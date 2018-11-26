@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="75761fac-7abd-4c54-8adb-d20f3bc5d893" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/project/main/base/codeListener.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/main/base/codeListener.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/main/base/sysout.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/main/base/sysout.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/autodeeplearning.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bin/autodeeplearning.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/main/config/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/main/config/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/main/manager/fileManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/main/manager/fileManager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/main/manager/projectManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/main/manager/projectManager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/main/server/httpServer.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/main/server/httpServer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/main/system/shell.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/main/system/shell.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,7 +26,7 @@
     <SUITE FILE_PATH="coverage/NotebookServer$asyncioTest.coverage" NAME="asyncioTest Coverage Results" MODIFIED="1542786704288" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/project/test" />
     <SUITE FILE_PATH="coverage/NotebookServer$httpServer2.coverage" NAME="httpServer2 Coverage Results" MODIFIED="1539571295682" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/project/main/server" />
     <SUITE FILE_PATH="coverage/NotebookServer$fileManager.coverage" NAME="fileManager Coverage Results" MODIFIED="1542694971854" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/project/main/manager" />
-    <SUITE FILE_PATH="coverage/NotebookServer$main.coverage" NAME="main Coverage Results" MODIFIED="1542868358502" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/project/main" />
+    <SUITE FILE_PATH="coverage/NotebookServer$main.coverage" NAME="main Coverage Results" MODIFIED="1543220452942" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/project/main" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -41,7 +46,7 @@
     <session id="-589950821">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="23" />
+          <entry key="project.closed" value="26" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.10" value="6" />
           <entry key="project.open.time.14" value="1" />
@@ -49,27 +54,27 @@
           <entry key="project.open.time.160" value="1" />
           <entry key="project.open.time.2" value="2" />
           <entry key="project.open.time.3" value="2" />
-          <entry key="project.open.time.5" value="1" />
+          <entry key="project.open.time.5" value="2" />
           <entry key="project.open.time.7" value="1" />
-          <entry key="project.open.time.8" value="3" />
+          <entry key="project.open.time.8" value="4" />
           <entry key="project.open.time.9" value="5" />
-          <entry key="project.opened" value="25" />
+          <entry key="project.opened" value="28" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="automount" value="5" />
-          <entry key="log" value="3" />
-          <entry key="py" value="113" />
+          <entry key="automount" value="6" />
+          <entry key="log" value="5" />
+          <entry key="py" value="125" />
           <entry key="pyi" value="2" />
-          <entry key="sh" value="3" />
+          <entry key="sh" value="4" />
           <entry key="txt" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="PLAIN_TEXT" value="16" />
-          <entry key="Python" value="113" />
+          <entry key="PLAIN_TEXT" value="20" />
+          <entry key="Python" value="125" />
           <entry key="PythonStub" value="2" />
         </counts>
       </usages-collector>
@@ -79,15 +84,15 @@
           <entry key="automount" value="149" />
           <entry key="dummy" value="45" />
           <entry key="log" value="1" />
-          <entry key="py" value="24079" />
-          <entry key="sh" value="399" />
+          <entry key="py" value="27277" />
+          <entry key="sh" value="406" />
           <entry key="txt" value="68" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="662" />
-          <entry key="Python" value="24096" />
+          <entry key="PLAIN_TEXT" value="669" />
+          <entry key="Python" value="27294" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -101,36 +106,12 @@
     <favorites_list name="NotebookServer" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/project/main/config/config.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="31" column="52" selection-start-line="31" selection-start-column="52" selection-end-line="31" selection-end-column="52" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/project/main/startup.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="20" lean-forward="true" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
-              <folding>
-                <element signature="e#17#40#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/project/main/base/codeListener.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="17" lean-forward="true" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
-              <folding>
-                <marker date="1542945463889" expanded="true" signature="38:39" ph="..." />
-              </folding>
+            <state relative-caret-position="329">
+              <caret line="109" column="137" selection-start-line="109" selection-start-column="137" selection-end-line="109" selection-end-column="137" />
             </state>
           </provider>
         </entry>
@@ -138,11 +119,81 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/project/main/base/sysout.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="40" lean-forward="true" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
+            <state relative-caret-position="84">
+              <caret line="31" selection-start-line="31" selection-end-line="31" />
               <folding>
                 <element signature="e#16#30#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/project/main/server/httpServer.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="184">
+              <caret line="321" selection-start-line="321" selection-end-line="321" />
+              <folding>
+                <element signature="e#108#153#0" expanded="true" />
+                <marker date="1543216087335" expanded="true" signature="494:805" ph="..." />
+                <marker date="1543216087335" expanded="true" signature="3828:8793" ph="..." />
+                <marker date="1543216087335" expanded="true" signature="4159:8793" ph="..." />
+                <marker date="1543216087335" expanded="true" signature="4891:8793" ph="..." />
+                <marker date="1543216087335" expanded="true" signature="5398:5403" ph="..." />
+                <marker date="1543216087335" expanded="true" signature="7273:8785" ph="..." />
+                <marker date="1543216087335" expanded="true" signature="8445:8446" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/project/main/manager/projectManager.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="237">
+              <caret line="161" column="1" lean-forward="true" selection-start-line="161" selection-start-column="1" selection-end-line="161" selection-end-column="1" />
+              <folding>
+                <element signature="e#2536#4338#0" />
+                <element signature="e#4520#6015#0" />
+                <element signature="e#6092#6242#0" />
+                <element signature="e#6398#10029#0" />
+                <element signature="e#11950#12053#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/logs/NotebookServer.log">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/project/main/manager/fileManager.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1396">
+              <caret line="121" column="31" lean-forward="true" selection-start-line="121" selection-start-column="31" selection-end-line="121" selection-end-column="31" />
+              <folding>
+                <marker date="1543219684245" expanded="true" signature="1167:1265" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/project/main/system/shell.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="335">
+              <caret line="51" lean-forward="true" selection-start-line="51" selection-end-line="51" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/tempfile.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="359">
+              <caret line="645" selection-start-line="645" selection-end-line="645" />
             </state>
           </provider>
         </entry>
@@ -158,12 +209,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>createProject</find>
-      <find>getAllFiles</find>
-      <find>ls -l|grep</find>
-      <find>subpro</find>
-      <find>subprocess</find>
-      <find>getFileNumber</find>
       <find>size</find>
       <find>syso</find>
       <find>ill</find>
@@ -185,9 +230,15 @@
       <find>incorrect version number!</find>
       <find>ns_doname</find>
       <find>deleteFiles</find>
-      <find>getDirNumber</find>
       <find>mPort</find>
       <find>ns_port_http</find>
+      <find>os.list</find>
+      <find>os.l</find>
+      <find>getAllFiles</find>
+      <find>copyClassProject</find>
+      <find>getOneNbFileName</find>
+      <find>getDirNumber2</find>
+      <find>getDirNumber</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -207,7 +258,6 @@
         <option value="$PROJECT_DIR$/project/main/utils/socketUtils.py" />
         <option value="$PROJECT_DIR$/bin/notebookserver.sh" />
         <option value="$PROJECT_DIR$/bin/autodeeplearnig.sh" />
-        <option value="$PROJECT_DIR$/bin/autodeeplearning.sh" />
         <option value="$PROJECT_DIR$/project/test/changeSystem.py" />
         <option value="$PROJECT_DIR$/project/test/codeTest.py" />
         <option value="$PROJECT_DIR$/project/main/manager/jupyter.py" />
@@ -220,15 +270,17 @@
         <option value="$PROJECT_DIR$/project/test/asyncioTest.py" />
         <option value="$PROJECT_DIR$/project/main/main.py" />
         <option value="$PROJECT_DIR$/NotebookServer.log" />
+        <option value="$PROJECT_DIR$/project/main/startup.py" />
+        <option value="$PROJECT_DIR$/project/test/__init__.py" />
+        <option value="$PROJECT_DIR$/project/main/base/sysout.py" />
+        <option value="$PROJECT_DIR$/project/main/base/codeListener.py" />
+        <option value="$PROJECT_DIR$/project/main/server/httpServer.py" />
+        <option value="$PROJECT_DIR$/project/main/config/config.py" />
         <option value="$PROJECT_DIR$/project/main/system/shell.py" />
         <option value="$PROJECT_DIR$/project/main/manager/fileManager.py" />
         <option value="$PROJECT_DIR$/project/main/manager/projectManager.py" />
-        <option value="$PROJECT_DIR$/project/main/startup.py" />
-        <option value="$PROJECT_DIR$/project/test/__init__.py" />
-        <option value="$PROJECT_DIR$/project/main/config/config.py" />
-        <option value="$PROJECT_DIR$/project/main/server/httpServer.py" />
-        <option value="$PROJECT_DIR$/project/main/base/sysout.py" />
-        <option value="$PROJECT_DIR$/project/main/base/codeListener.py" />
+        <option value="$PROJECT_DIR$/bin/autodeeplearning.sh" />
+        <option value="$PROJECT_DIR$/logs/NotebookServer.log" />
       </list>
     </option>
   </component>
@@ -251,13 +303,22 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="NotebookServer" type="b2602c69:ProjectViewProjectNode" />
               <item name="NotebookServer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NotebookServer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NotebookServer" type="462c0819:PsiDirectoryNode" />
+              <item name="bin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NotebookServer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NotebookServer" type="462c0819:PsiDirectoryNode" />
+              <item name="logs" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="NotebookServer" type="b2602c69:ProjectViewProjectNode" />
@@ -282,18 +343,20 @@
               <item name="NotebookServer" type="462c0819:PsiDirectoryNode" />
               <item name="project" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="system" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="NotebookServer" type="b2602c69:ProjectViewProjectNode" />
               <item name="NotebookServer" type="462c0819:PsiDirectoryNode" />
               <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -321,7 +384,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.codeListener">
+  <component name="RunManager" selected="Python.main">
     <configuration name="__init__" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="NotebookServer" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -441,8 +504,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.codeListener" />
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.codeListener" />
         <item itemvalue="Python.__init__" />
         <item itemvalue="Python.asyncioTest" />
         <item itemvalue="Python.fileManager" />
@@ -475,16 +538,16 @@
     <frame x="1280" y="0" width="1920" height="1080" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4980198" visible="true" weight="0.17358893" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4980198" visible="true" weight="0.14483494" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.5019802" side_tool="true" weight="0.17039403" />
       <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Docker" order="1" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.5021299" side_tool="true" weight="0.6712871" />
-      <window_info active="true" anchor="bottom" id="Run" order="3" sideWeight="0.49840257" visible="true" weight="0.3950495" />
+      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.49840257" weight="0.40297028" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.4960396" />
       <window_info anchor="bottom" id="Terminal" order="5" weight="0.3" />
-      <window_info anchor="bottom" id="Version Control" order="6" sideWeight="0.4978701" weight="0.6712871" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="6" sideWeight="0.4978701" visible="true" weight="0.6712871" />
       <window_info anchor="bottom" id="Python Console" order="7" sideWeight="0.49946752" weight="0.32871288" />
       <window_info anchor="bottom" id="Message" order="8" />
       <window_info anchor="bottom" id="Find" order="9" weight="0.32871288" />
@@ -532,20 +595,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/project/main/system/SSH.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1020">
-          <caret line="71" column="58" lean-forward="true" selection-start-line="71" selection-start-column="58" selection-end-line="71" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/main/utils/socketUtils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="8" lean-forward="true" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/project/main/config/string.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -597,13 +646,7 @@
       </provider>
     </entry>
     <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/system/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#22#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/http/server.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -623,13 +666,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
           <caret line="26" column="38" lean-forward="true" selection-start-line="26" selection-start-column="38" selection-end-line="26" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/autodeeplearning.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="53" selection-start-line="17" selection-start-column="53" selection-end-line="17" selection-end-column="53" />
         </state>
       </provider>
     </entry>
@@ -745,39 +781,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/tempfile.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="639" column="38" lean-forward="true" selection-start-line="639" selection-start-column="38" selection-end-line="639" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/NotebookServer.log" />
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/genericpath.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="47" column="4" selection-start-line="47" selection-start-column="4" selection-end-line="47" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/main/manager/projectManager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="22" column="47" lean-forward="true" selection-start-line="22" selection-start-column="47" selection-end-line="22" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/project/main/manager/vmManager.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
           <caret line="71" column="9" lean-forward="true" selection-start-line="71" selection-start-column="9" selection-end-line="71" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/automount">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="7" lean-forward="true" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -802,64 +810,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/logs/NotebookServer.log">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/main/system/shell.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/setup.py">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/main/config/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="31" column="52" selection-start-line="31" selection-start-column="52" selection-end-line="31" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/main/server/httpServer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="25" column="39" lean-forward="true" selection-start-line="25" selection-start-column="39" selection-end-line="25" selection-end-column="39" />
-          <folding>
-            <element signature="e#108#153#0" expanded="true" />
-            <marker date="1542871113645" expanded="true" signature="494:805" ph="..." />
-            <marker date="1542871113645" expanded="true" signature="3828:7580" ph="..." />
-            <marker date="1542871113645" expanded="true" signature="4159:7580" ph="..." />
-            <marker date="1542871113645" expanded="true" signature="4891:7580" ph="..." />
-            <marker date="1542871113645" expanded="true" signature="5398:5403" ph="..." />
-            <marker date="1542871113645" expanded="true" signature="7273:7572" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/main/manager/fileManager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="930">
-          <caret line="91" column="29" selection-start-line="91" selection-start-column="29" selection-end-line="91" selection-end-column="29" />
-          <folding>
-            <marker date="1542858127729" expanded="true" signature="2184:2862" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/main/startup.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="20" lean-forward="true" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
-          <folding>
-            <element signature="e#17#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/project/test/asyncioTest.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -875,25 +827,128 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/project/main/base/codeListener.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="14" lean-forward="true" selection-start-column="14" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/main/server/httpServer2.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/main/startup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+          <folding>
+            <element signature="e#17#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/main/lib/pyinotify.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="412">
+          <caret line="690" column="36" selection-start-line="690" selection-start-column="36" selection-end-line="690" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/main/config/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="109" column="137" selection-start-line="109" selection-start-column="137" selection-end-line="109" selection-end-column="137" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/tempfile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="645" selection-start-line="645" selection-end-line="645" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/main/system/shell.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="51" lean-forward="true" selection-start-line="51" selection-end-line="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/main/server/httpServer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="321" selection-start-line="321" selection-end-line="321" />
+          <folding>
+            <element signature="e#108#153#0" expanded="true" />
+            <marker date="1543216087335" expanded="true" signature="494:805" ph="..." />
+            <marker date="1543216087335" expanded="true" signature="3828:8793" ph="..." />
+            <marker date="1543216087335" expanded="true" signature="4159:8793" ph="..." />
+            <marker date="1543216087335" expanded="true" signature="4891:8793" ph="..." />
+            <marker date="1543216087335" expanded="true" signature="5398:5403" ph="..." />
+            <marker date="1543216087335" expanded="true" signature="7273:8785" ph="..." />
+            <marker date="1543216087335" expanded="true" signature="8445:8446" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/project/main/base/sysout.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="40" lean-forward="true" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
+        <state relative-caret-position="84">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
           <folding>
             <element signature="e#16#30#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/project/main/base/codeListener.py">
+    <entry file="file://$PROJECT_DIR$/project/main/manager/fileManager.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="17" lean-forward="true" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+        <state relative-caret-position="-1396">
+          <caret line="121" column="31" lean-forward="true" selection-start-line="121" selection-start-column="31" selection-end-line="121" selection-end-column="31" />
           <folding>
-            <marker date="1542945463889" expanded="true" signature="38:39" ph="..." />
+            <marker date="1543219684245" expanded="true" signature="1167:1265" ph="..." />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/autodeeplearning.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="28" lean-forward="true" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/automount">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="7" lean-forward="true" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/genericpath.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/main/manager/projectManager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="161" column="1" lean-forward="true" selection-start-line="161" selection-start-column="1" selection-end-line="161" selection-end-column="1" />
+          <folding>
+            <element signature="e#2536#4338#0" />
+            <element signature="e#4520#6015#0" />
+            <element signature="e#6092#6242#0" />
+            <element signature="e#6398#10029#0" />
+            <element signature="e#11950#12053#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/logs/NotebookServer.log">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>

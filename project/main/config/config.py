@@ -7,9 +7,9 @@ system = {
     'app_name': "极算云notebook文件管理分发系统",
     'version': "v1.0.1",
     'author': "JayYin",
-    'mode': 'DEV'
+    # 'mode': 'DEV'
     # 'mode': 'RELEASE'
-    # 'mode': 'LOCALHOST'
+    'mode': 'LOCALHOST'
 }
 
 # server
@@ -41,6 +41,15 @@ ns_doname = 'https://g.cloudyotech.com/notebook'
 dir_home = '/notebook/storage'
 dir_home_user = ''
 file_system_readme = dir_home + '/base/readme'
+
+#/notebook/storage/base/class/classIds/projectIds
+#/notebook/storage/base/datasets/
+dir_pub_class = dir_home + '/base/class'
+dir_pub_dsets = dir_home + '/base/datasets'
+#
+#
+
+
 
 # ----------- RELEASE ------------
 ns_config_release = {
@@ -86,17 +95,19 @@ ns_config_local = {
     'ns_host': '127.0.0.1',
     'ns_port_http': 8100,
     'ns_port': 8888,
-    'ns_doname': 'http://127.0.0.1:8888',
+    'ns_doname': 'https://127.0.0.1:8888',
     # system home dir
-    'dir_home': '/Users/jerryyin/workspace/notebook/storage-dev',
+    'dir_home': '/Users/jerryyin/workspace/notebook/storage',
     'dir_home_user': '',
-    'file_system_readme': '/Users/jerryyin/workspace/notebook/storage-dev/base/readme'
+    'file_system_readme': '/Users/jerryyin/workspace/notebook/storage/base/readme'
+    # 'dir_pub_class': '/Users/jerryyin/workspace/notebook/storage/base/class',
+    # 'dir_pub_dsets': '/Users/jerryyin/workspace/notebook/storage/base/datasets'
 }
 
 
 def initConfig():
     sysout.info(TAG, 'init system config of model [%s] ..' % system['mode'])
-    global vms_host, ns_host, ns_port, ns_port_http, ns_doname, dir_home, dir_home_user, file_system_readme
+    global vms_host, ns_host, ns_port, ns_port_http, ns_doname, dir_home, dir_home_user, file_system_readme, dir_pub_class, dir_pub_dsets
     if system['mode'] == 'DEV':
         vms_host = vms_host_dev
 
@@ -127,6 +138,8 @@ def initConfig():
         dir_home = ns_config_local['dir_home']
         dir_home_user = ns_config_local['dir_home_user']
         file_system_readme = ns_config_local['file_system_readme']
+        dir_pub_class = ns_config_local['dir_home'] + '/base/class'
+        dir_pub_dsets = ns_config_local['dir_home'] + '/base/datasets'
     sysout.info(TAG, 'init system config successed! ')
 
 

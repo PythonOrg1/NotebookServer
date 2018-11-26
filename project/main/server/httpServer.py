@@ -303,6 +303,56 @@ def moveFile(request_body):
         'result': res
     }
 
+
+#public classes dir:
+#   /notebook/storage/base/class/classIds/projectIds/version/files...
+# copy class's projects and files to user's pj home
+#
+def copyClassProject(request_body):
+    classId = None
+    userId = None
+    projectIds = []
+    # version = 1 #default project version = 1
+    try:
+        userId = request_body['userId']
+        classId = request_body['classId']
+        projectIds = request_body['projectIds']
+    except Exception as e:
+        return str(resp_err_params) + str(e)
+    return projectManager.copyClassProject(classId, userId, projectIds)
+
+#public datasets dir:
+#   /notebook/storage/base/datasets/dataIds
+#
+def copyClassDataset(request_body):
+    classId = None
+    #todo copy
+
+    #todo need return on time process
+
+#
+# reset some onr or some pj in class
+# 1. delete all versions
+# 2. hold all versions
+#
+def resetClassProject(request_body):
+    classId =None
+    versions = []
+    pjIds = []
+    # todo reset project
+    if(len(versions) == 0):
+        #reset all pj of this class
+        pass
+
+
+def resetDatasets(request_body):
+    dataIds = None
+    # todo reset datas
+
+    # if (isDifferent):  isDifferent == (size1 != size2 && name1s==name2s ?)
+    #   reset
+    # else : no
+
 #
 #
 #
@@ -340,7 +390,6 @@ def praseData(request_body):
             # futrue = asyncio.ensure_future(task)
             # loop.run_until_complete(futrue)
             # return futrue.result()
-
         elif action == 'rename':
             return rename(request_body)
         elif action == 'deleteFile':
@@ -353,6 +402,9 @@ def praseData(request_body):
             return createFile(request_body)
         elif action == 'moveFile':
             return moveFile(request_body)
+
+        elif action == 'initClass':
+            return copyClassProject(request_body)
         else:
             return {'status': 0, 'result': 'request & params not support!!!'}
 

@@ -15,10 +15,10 @@ pm2 start processes.json
 
 # auto start notebook server
 ## release server
-python3 /notebook/NotebookServer/project/main/main.py
+python3 /notebook/NotebookServer/project/main/startup.py
 
 ## dev server
-#python3 ~/notebook/NotebookServer/project/main/main.py
+#python3 /notebook/NotebookServer/project/main/startup.py
 
 ## jupyter notebook
 jupyter notebook --allow-root --ip=0.0.0.0 --no-browser

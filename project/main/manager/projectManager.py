@@ -44,7 +44,7 @@ def createPreProject(userId, projectId, projectName, projectType):
         os.makedirs(pjHome)
         shell.execute('cp ' + config.file_system_readme + ' ' + pjHome + '/')
 
-    #create directory for users's dataSets
+    # create directory for users's dataSets
     pathDsets = config.dir_home + "/" + config.dir_home_user + '/' + str(userId) + '/system/datasets'
     if not os.path.exists(pathDsets):
         os.makedirs(pathDsets)
@@ -107,7 +107,7 @@ def createNewVersion(userId, projectId, projectName, versionCur):
 
 
 def runWithVm(userId, projectId, projectName, version, vmId, passwd, isoName, isoRemarks, gpu, cpu, memory,
-              action='start', pstartTime = None, pendTime = None):
+              action='start', pstartTime=None, pendTime=None):
     res = None
     # if action != None and action == 'stop':
     #     # shutdown vm
@@ -158,23 +158,24 @@ def delectProject(userId, pjId, pjName):
     return fileManager.deleteFile(projectPath)
 
 
-
 #
 # bind dataset with project
 # isUnbind = True --> unbind dataset
 #
-def bindDataWithProject(userId, projectId, version, dataIds, isUbind = False):
+def bindDataWithProject(userId, projectId, version, dataIds, isUbind=False):
     if not isUbind:
-        #bind dataset
+        # bind dataset
         paths = []
         for i in range(len(dataIds)):
             pathPj = ""
             pathDset = ""
             if config.dir_home_user != '':
-                pathPj = config.dir_home + config.dir_home_user + '/' + str(userId) + '/system/' + str(projectId) + '/' + str(version) + '/dataset/'
+                pathPj = config.dir_home + config.dir_home_user + '/' + str(userId) + '/system/' + str(
+                    projectId) + '/' + str(version) + '/dataset/'
                 # pathDset = config.dir_home + config.dir_home_user + '/' + str(userId) + '/system/datasets/' + str(dataIds[i])
             else:
-                pathPj = config.dir_home + '/' + str(userId) + '/system/' + str(projectId) + '/' + str(version) + '/dataset/'
+                pathPj = config.dir_home + '/' + str(userId) + '/system/' + str(projectId) + '/' + str(
+                    version) + '/dataset/'
                 # pathDset = config.dir_home + '/' + str(userId) + '/system/datasets/' + str(dataIds[i])
 
             # pathPj = '/data/system/' + str(projectId) + '/' + str(version) + '/dataset/'
@@ -185,7 +186,7 @@ def bindDataWithProject(userId, projectId, version, dataIds, isUbind = False):
             # pathDset = config.dir_home + config.path_dataset + '/' + str(dataIds[i])
             # pathDset = config.dir_home + config.dir_home_user + '/'+str(userId) + '/system/datasets/' + str(dataIds[i])
             if not os.path.exists(pathDset):
-                shell.execute('mkdir '+ pathDset)
+                shell.execute('mkdir ' + pathDset)
                 # return {
                 #     'status' : 0,
                 #     'result' : 'Dataset file not exists!'
@@ -197,23 +198,27 @@ def bindDataWithProject(userId, projectId, version, dataIds, isUbind = False):
         return {
             'status': 1,
             'result': {
-                'message':"dataset bind successde!",
+                'message': "dataset bind successde!",
                 'path': paths
             }
         }
 
     else:
-        #unbind dataset
+        # unbind dataset
         done = {}
         for i in range(len(dataIds)):
             path = ''
             path1 = ''
             if config.dir_home_user != '':
-                path = config.dir_home + config.dir_home_user + '/' + str(userId) + '/system/' + str(projectId) + '/' + str(version) + '/dataset/' + str(dataIds[i])
-                path1 = config.dir_home + config.dir_home_user + '/' + str(userId) + '/system/' + str(projectId) + '/' + str(version) + '/dataset'
+                path = config.dir_home + config.dir_home_user + '/' + str(userId) + '/system/' + str(
+                    projectId) + '/' + str(version) + '/dataset/' + str(dataIds[i])
+                path1 = config.dir_home + config.dir_home_user + '/' + str(userId) + '/system/' + str(
+                    projectId) + '/' + str(version) + '/dataset'
             else:
-                path = config.dir_home + '/' + str(userId) + '/system/' + str(projectId) + '/' + str(version) + '/dataset/' + str(dataIds[i])
-                path1 = config.dir_home + '/' + str(userId) + '/system/' + str(projectId) + '/' + str(version) + '/dataset'
+                path = config.dir_home + '/' + str(userId) + '/system/' + str(projectId) + '/' + str(
+                    version) + '/dataset/' + str(dataIds[i])
+                path1 = config.dir_home + '/' + str(userId) + '/system/' + str(projectId) + '/' + str(
+                    version) + '/dataset'
 
             # path = config.dir_home + config.dir_home_user + '/' + str(userId) + '/system/' + str(projectId) + '/' + str(version) + '/dataset/' + str(dataIds[i])
 
@@ -227,7 +232,7 @@ def bindDataWithProject(userId, projectId, version, dataIds, isUbind = False):
                 havaException = True
 
             if not os.path.exists(path):
-                #the data not binded
+                # the data not binded
                 # done[str(i)] = 'data hava not been binded before!'
                 done[str(i)] = 1
             else:
@@ -239,7 +244,7 @@ def bindDataWithProject(userId, projectId, version, dataIds, isUbind = False):
             if not done[str(k)] == 1:
                 success = False
 
-        if success :
+        if success:
             return {
                 'status': 1,
                 'result': "unbind datasets success!"
@@ -256,14 +261,14 @@ def deleteDataset(userId, dataId):
         path = ''
         pathDsetFile = ''
 
-        #first unbind dataset of all project
+        # first unbind dataset of all project
         if config.dir_home_user != '':
             path = config.dir_home + config.dir_home_user + '/' + str(userId) + '/system/'
-            pathDsetFile = config.dir_home + config.dir_home_user + '/' + str(userId) + '/system/datasets/' + str(dataId)
+            pathDsetFile = config.dir_home + config.dir_home_user + '/' + str(userId) + '/system/datasets/' + str(
+                dataId)
         else:
             path = config.dir_home + '/' + str(userId) + '/system/'
             pathDsetFile = config.dir_home + '/' + str(userId) + '/system/datasets/' + str(dataId)
-
 
         content = fileManager.getAllFiles(path)
         for i in range(len(content)):
@@ -278,7 +283,7 @@ def deleteDataset(userId, dataId):
                     version = pwds[5]
                     bindDataWithProject(userId, projectId, version, [dataId], True)
 
-        #second delete file
+        # second delete file
         (code, msg) = fileManager.deleteFile(pathDsetFile)
         if code == 1:
             return {
@@ -297,6 +302,80 @@ def deleteDataset(userId, dataId):
             'result': "delete failed! " + e
         }
 
+
+#
+# @param pjVersion : default 1
+#
+def copyClassProject(classId, userId, pjIds):
+    pathClass = config.dir_pub_class + '/' + str(classId)
+    print(pathClass)
+    if classId == None or not os.path.exists(pathClass):
+        return {
+            'status': 0,
+            'result': 'No such Class, please check the path!'
+        }
+    numPjs = fileManager.getDirNumber2(pathClass)
+    # size have to same
+    if not numPjs == str(len(pjIds)):
+        return {
+            'status': 0,
+            'result': 'Class and Project Size error! ' + str(numPjs) + ' projects in class but ' + str(
+                len(pjIds)) + ' project ids.'
+        }
+    pathUser = config.dir_home + '/' + str(userId)
+    if not os.path.exists(pathUser):
+        return {
+            'status': 0,
+            'result': "No such user, please check again!"
+        }
+
+    # check done, start copy
+    pjIdsInClass = os.listdir(pathClass)  # normal: only have directories of all projects
+    projects = []
+    for i in range(len(pjIds)):
+        version = 1  # default project version = 1
+        pathPj = pathUser + '/system/' + str(pjIds[i]) + '/' + str(version)
+        nbFileName = fileManager.getOneNbFileName(pathClass + '/' + pjIdsInClass[i], '.ipynb')
+        fileName = str(nbFileName).split('.ipynb')[0]
+        try:
+            if not os.path.exists(pathPj):
+                os.makedirs(pathPj)
+            shell.execute('cp -r ' + pathClass + '/' + str(pjIdsInClass[i]) + '/* ' + pathPj + '/')
+
+            fileUrl = config.ns_doname + '/notebooks/storage' + '/' + str(userId) + '/system/'+ str(pjIds[i]) + '/' + str(version) + '/'
+
+            projects.append({
+                'fileName':fileName,
+                'projectId': pjIds[i],
+                'version': version,
+                'notebook': fileUrl + nbFileName,
+                'html': fileUrl + fileManager.getOneNbFileName(pathClass + '/' + pjIdsInClass[i], '.html'),
+                'py': fileUrl + str(fileName) + '.py',  # maybe not have the .py file
+                'code':1,
+                'msg':'init project success!'
+            })
+
+        except Exception as e:
+            sysout.err(TAG, str(e))
+            # return {
+            #     'status': 0,
+            #     'result': 'Init class failed, cause ' + str(e)
+            # }
+            projects.append({
+                'fileName': fileName,
+                'projectId': pjIds[i],
+                'version': version,
+                'notebook': None,
+                'html': None,
+                'py': None,
+                'code':0,
+                'msg': 'init project failed, cause ' + str(e)
+            })
+
+    return {
+        'status': 1,
+        'result': projects
+    }
 
 #
 #

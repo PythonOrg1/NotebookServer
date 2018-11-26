@@ -47,6 +47,10 @@ def getAllFiles(dir, containSystem=True):
             })
     return result
 
+def listFile(dir):
+    if dir == None or (not os.path.exists(dir)):
+        return None
+    return os.listdir(dir)
 
 #
 # get files number of one dir
@@ -120,7 +124,7 @@ def setTimeout(num, popen):
 def getDirNumber2(dir):
     cmd = 'ls -l ' + str(dir) + ' |grep "^d"|wc -l'
     n = os.popen(cmd).read()
-    return n
+    return str(n).strip()
 
 #
 # get only one file name of the dir
