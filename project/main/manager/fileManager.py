@@ -409,9 +409,9 @@ def makeDir(dir):
 
 
 def createFile(file):
-    if dir == None:
+    if file == None:
         return (0, 'File can not be null !')
-    if "/" not in str(dir):
+    if "/" not in str(file):
         return (0, 'File form not support, should be absolute path !')
     else:
         try:

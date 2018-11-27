@@ -14,7 +14,6 @@ from manager import fileManager
 
 TAG = 'httpServer'
 
-
 # global response data
 resp_err_params = {'status': '0', 'result': 'request params form error!'}
 
@@ -29,8 +28,9 @@ class NotebookHttpServer(threading.Thread):
 
     def run(self):
         t = threading.current_thread()
-        sysout.info(TAG, 'NotebookHttpServer is stating at thread %s - %s' %(t.threadID, t.name))
+        sysout.info(TAG, 'NotebookHttpServer is stating at thread %s - %s' % (t.threadID, t.name))
         run()
+
 
 ##
 # module -- project
@@ -114,7 +114,7 @@ def runWithVm(request_body):
     gpu = None
     cpu = None
     memory = None
-    action1 = 'start'   #default : start
+    action1 = 'start'  # default : start
     pstartTime = None
     pendTime = None
     try:
@@ -158,7 +158,7 @@ def getMyFiles(request_body):
         return str(resp_err_params) + str(e)
 
     home = config.dir_home + '/' + str(userId)
-    res =  fileManager.getUserHome(home)
+    res = fileManager.getUserHome(home)
     return {
         "status": 1,
         "result": res
@@ -187,6 +187,7 @@ def bindDataWithProject(request_body):
     else:
         return projectManager.bindDataWithProject(userId, projectId, version, dataIds, isUbind)
 
+
 def deleteDataset(request_body):
     userId = None
     dataId = None
@@ -199,6 +200,7 @@ def deleteDataset(request_body):
         return {'status': '0', 'result': 'empty dataset!'}
     else:
         return projectManager.deleteDataset(userId, dataId)
+
 
 #
 # get all files & dirs info of the current path
@@ -214,14 +216,15 @@ def getFilesInfoOfPath(request_body):
     res = fileManager.getFilesInfoOfPath(path)
     if res == None:
         return {
-            'status':0,
-            'result':"File or directory not found!"
+            'status': 0,
+            'result': "File or directory not found!"
         }
     else:
         return {
-            'status':1,
-            'result':res
+            'status': 1,
+            'result': res
         }
+
 
 #
 # rename file or dir
@@ -236,8 +239,9 @@ def rename(request_body):
         return str(resp_err_params) + str(e)
     return fileManager.rename(src, dst)
 
+
 #
-#delete file or dir
+# delete file or dir
 #
 def deleteFile(request_body):
     path = None
@@ -250,6 +254,7 @@ def deleteFile(request_body):
         'status': code,
         'result': res
     }
+
 
 def deleteFiles(request_body):
     paths = None
@@ -265,6 +270,7 @@ def deleteFiles(request_body):
         'result': result
     }
 
+
 def makeDir(request_body):
     dir = None
     try:
@@ -277,6 +283,7 @@ def makeDir(request_body):
         'result': res
     }
 
+
 def createFile(request_body):
     file = None
     try:
@@ -288,6 +295,7 @@ def createFile(request_body):
         'status': code,
         'result': res
     }
+
 
 def moveFile(request_body):
     file = None
@@ -304,7 +312,7 @@ def moveFile(request_body):
     }
 
 
-#public classes dir:
+# public classes dir:
 #   /notebook/storage/base/class/classIds/projectIds/version/files...
 # copy class's projects and files to user's pj home
 #
@@ -321,14 +329,25 @@ def copyClassProject(request_body):
         return str(resp_err_params) + str(e)
     return projectManager.copyClassProject(classId, userId, projectIds)
 
-#public datasets dir:
+
+# public datasets dir:
 #   /notebook/storage/base/datasets/dataIds
 #
 def copyClassDataset(request_body):
     classId = None
-    #todo copy
+    userId = None
+    projectIds = []
+    # version = 1 #default project version = 1
+    try:
+        userId = request_body['userId']
+        classId = request_body['classId']
+        projectIds = request_body['projectIds']
+    except Exception as e:
+        return str(resp_err_params) + str(e)
+    # todo copy
 
-    #todo need return on time process
+    # todo need return on time process
+
 
 #
 # reset some onr or some pj in class
@@ -336,12 +355,12 @@ def copyClassDataset(request_body):
 # 2. hold all versions
 #
 def resetClassProject(request_body):
-    classId =None
+    classId = None
     versions = []
     pjIds = []
     # todo reset project
-    if(len(versions) == 0):
-        #reset all pj of this class
+    if (len(versions) == 0):
+        # reset all pj of this class
         pass
 
 
@@ -352,6 +371,7 @@ def resetDatasets(request_body):
     # if (isDifferent):  isDifferent == (size1 != size2 && name1s==name2s ?)
     #   reset
     # else : no
+
 
 #
 #
@@ -408,6 +428,7 @@ def praseData(request_body):
         else:
             return {'status': 0, 'result': 'request & params not support!!!'}
 
+
 # server
 def application(environ, start_response):
     # 定义请求的类型和当前请求成功的code
@@ -447,5 +468,6 @@ def run():
     mServer = (mHost, mPort)
     httpd = make_server(mHost, mPort, application)
     # sysout.info(TAG, 'http server is running on ' + str(mServer))
-    sysout.info(TAG, "The server now is running on %s in [%s] mode!"%(str(mServer),config.system['mode']))
+    sysout.info(TAG, "\033[22;32;40m【200 SUCCESS】\033[0m" + " The http_server is now running on %s in [%s] mode!" % (
+    str(mServer), config.system['mode']))
     httpd.serve_forever()

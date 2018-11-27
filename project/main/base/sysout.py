@@ -1,15 +1,16 @@
 # coding:utf-8
 
 import logging
-import os, sys
+import os, sys, time
+
 # from config import config
 # path = os.getcwd().split("/project")[0]+'/logs'
-path = sys.argv[0].split("/project")[0]+'/logs'
+path = sys.argv[0].split("/project")[0] + '/logs'
 
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
                     datefmt='%Y/%m/%d %H:%M:%S',
-                    filename= path + '/NotebookServer.log',
+                    filename=path + '/NotebookServer-' + time.strftime("%Y.%m.%d-%H:%M:%S", time.localtime()) + '.log',
                     # filename= config.logpath,
                     filemode='w')
 logger = logging.getLogger("NBLogger")
@@ -24,7 +25,7 @@ def log(tag, msg):
             print(log)
             logging.log(log)
         except Exception as e:
-            print('Exception:'+str(e))
+            print('Exception:' + str(e))
             logging.error(str(e))
 
 
@@ -35,7 +36,7 @@ def err(tag, err):
             print(log)
             logging.debug(log)
         except Exception as e:
-            print('Exception:'+str(e))
+            print('Exception:' + str(e))
             logging.error(str(e))
 
 
@@ -46,5 +47,5 @@ def info(tag, msg):
             print(log)
             logging.info(log)
         except Exception as e:
-            print('Exception:'+str(e))
+            print('Exception:' + str(e))
             logging.error(str(e))
