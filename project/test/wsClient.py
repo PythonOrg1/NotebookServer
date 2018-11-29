@@ -3,10 +3,23 @@ import websockets
 import json
 
 params = {
-    'action': 'copyData',
-    'userId': 1,
+    'action': 'copyClassData',
+    'userId': 396,
     'classId': 1,
-    'projectId': 10,
+    'binds': [
+        {
+            'classPjId': 10,             # project id of class
+            'pjId': 3,                # user's project id
+            'version': 1,               # version of pj; default 1
+            'dsetIds': ['sys-dset-1', 'sys-dset-2']    # dataset id (same both user's & class)
+        },
+        {
+            'classPjId': 11,
+            'pjId': 4,               # user's project id
+            'version': 1,
+            'dsetIds': ['sys-dset-1']
+        }
+    ]
 }
 
 
@@ -23,11 +36,12 @@ async def hello(uri):
                 res = await websocket.recv()
                 res = json.loads(res)
                 print(res)
-                if res['done'] == True:
-                    websocket.close()
-                    print('Procress to 100% Success!')
-                    break
+                # if res['done'] == True:
+                #     websocket.close()
+                #     print('Procress to 100% Success!')
+                #     break
         except Exception as e:
+            print(e)
             websocket.close()
 
 

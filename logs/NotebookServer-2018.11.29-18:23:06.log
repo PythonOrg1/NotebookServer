@@ -1,0 +1,34 @@
+2018/11/29 18:23:06 sysout.py[line:48] INFO nbINFO: config | init system config of model [LOCALHOST] ..
+2018/11/29 18:23:06 sysout.py[line:48] INFO nbINFO: config | init system config successed! 
+2018/11/29 18:23:06 sysout.py[line:48] INFO nbINFO:  | [0;37;43m
+ ---- 
+ System Warning:
+ ---- 
+ Before u start the NotebookServer, u have to make sure that u have already installed the module "Jupyter Notebook"! 
+ Even though, there'll be some error when u use it !! 
+ ---- ---- ---- ---- 
+[0m
+2018/11/29 18:23:06 sysout.py[line:48] INFO nbINFO: webSocketServer | init ws config...  
+2018/11/29 18:23:06 sysout.py[line:48] INFO nbINFO: webSocketServer | {'ws_host': '127.0.0.1', 'ws_port': '8101'}
+2018/11/29 18:23:06 sysout.py[line:48] INFO nbINFO: webSocketServer | init ws config done, ws_host = ('127.0.0.1', '8101')
+2018/11/29 18:23:06 selector_events.py[line:65] DEBUG Using selector: KqueueSelector
+2018/11/29 18:23:06 sysout.py[line:48] INFO nbINFO: httpServer | NotebookHttpServer is stating at thread 1 - NotebookHttpServer
+2018/11/29 18:23:06 sysout.py[line:48] INFO nbINFO: webSocketServer | websocketServer is stating at thread 2 - nbWsServer
+2018/11/29 18:23:06 sysout.py[line:48] INFO nbINFO: webSocketServer | [22;32;40m【200 SUCCESS】[0mThe ws_server is now running on ('127.0.0.1', '8101') in [LOCALHOST] mode!
+2018/11/29 18:23:06 sysout.py[line:48] INFO nbINFO: httpServer | [22;32;40m【200 SUCCESS】[0m The http_server is now running on ('127.0.0.1', 8100) in [LOCALHOST] mode!
+2018/11/29 18:23:08 protocol.py[line:225] DEBUG server - state = CONNECTING
+2018/11/29 18:23:08 protocol.py[line:1193] DEBUG server - event = connection_made(<_SelectorSocketTransport fd=11 read=idle write=<idle, bufsize=0>>)
+2018/11/29 18:23:08 protocol.py[line:289] DEBUG server - state = OPEN
+2018/11/29 18:23:08 protocol.py[line:886] DEBUG server < Frame(fin=True, opcode=1, data=b'{"action": "copyClassData", "userId": 396, "classId": 1, "binds": [{"classPjId": 10, "pjId": 3, "version": 1, "dsetIds": ["sys-dset1", "sys-dset2"]}, {"classPjId": 11, "pjId": 4, "version": 1, "dsetIds": ["sys-dset1"]}]}', rsv1=False, rsv2=False, rsv3=False)
+2018/11/29 18:23:08 sysout.py[line:48] INFO nbINFO: webSocketServer | ws_server get request >> {'action': 'copyClassData', 'userId': 396, 'classId': 1, 'binds': [{'classPjId': 10, 'pjId': 3, 'version': 1, 'dsetIds': ['sys-dset1', 'sys-dset2']}, {'classPjId': 11, 'pjId': 4, 'version': 1, 'dsetIds': ['sys-dset1']}]}
+2018/11/29 18:23:08 protocol.py[line:898] DEBUG server > Frame(fin=True, opcode=1, data=b'starting copyClassDataset...', rsv1=False, rsv2=False, rsv3=False)
+2018/11/29 18:23:08 protocol.py[line:898] DEBUG server > Frame(fin=True, opcode=1, data=b'{"status": 1, "result": "Datasets copy successed !"}', rsv1=False, rsv2=False, rsv3=False)
+2018/11/29 18:23:08 sysout.py[line:48] INFO nbINFO: webSocketServer | ws_connection for -- {'action': 'copyClassData', 'userId': 396, 'classId': 1, 'binds': [{'classPjId': 10, 'pjId': 3, 'version': 1, 'dsetIds': ['sys-dset1', 'sys-dset2']}, {'classPjId': 11, 'pjId': 4, 'version': 1, 'dsetIds': ['sys-dset1']}]} -- is closed.
+2018/11/29 18:23:08 protocol.py[line:954] DEBUG server - state = CLOSING
+2018/11/29 18:23:08 protocol.py[line:898] DEBUG server > Frame(fin=True, opcode=8, data=b'\x03\xe8', rsv1=False, rsv2=False, rsv3=False)
+2018/11/29 18:23:08 protocol.py[line:886] DEBUG server < Frame(fin=True, opcode=8, data=b'\x03\xe8', rsv1=False, rsv2=False, rsv3=False)
+2018/11/29 18:23:08 protocol.py[line:1035] DEBUG server x half-closing TCP connection
+2018/11/29 18:23:08 protocol.py[line:1220] DEBUG server - event = eof_received()
+2018/11/29 18:23:08 protocol.py[line:1229] DEBUG server - event = connection_lost(None)
+2018/11/29 18:23:08 protocol.py[line:1231] DEBUG server - state = CLOSED
+2018/11/29 18:23:08 protocol.py[line:1238] DEBUG server x code = 1000, reason = [no reason]

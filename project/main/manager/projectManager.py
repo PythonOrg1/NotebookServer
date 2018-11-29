@@ -4,8 +4,10 @@ from base import sysout
 from config import config, string
 from manager import fileManager, vmManager
 from system import shell
+from hashlib import md5
 import os
 import json
+import threading, time
 
 TAG = "projectManager"
 
@@ -16,12 +18,42 @@ resp_err_version_create_dir_err = {'status': 0, 'result': 'system error on creat
 
 
 #
+# public check method
+#
+def checkClassUsrPj(userId, classId, pjIds):
+    pathClass = config.dir_pub_class + '/' + str(classId)
+    print(pathClass)
+    if classId == None or not os.path.exists(pathClass):
+        return {
+            'status': 0,
+            'result': 'No such Class, please check the path!'
+        }
+    numPjs = fileManager.getDirNumber2(pathClass)
+    # size have to same
+    if not numPjs == str(len(pjIds)):
+        return {
+            'status': 0,
+            'result': 'Class and Project Size error! ' + str(numPjs) + ' projects in class but ' + str(
+                len(pjIds)) + ' project ids.'
+        }
+    pathUser = config.dir_home + '/' + str(userId)
+    if not os.path.exists(pathUser):
+        return {
+            'status': 0,
+            'result': "No such user, please check again!"
+        }
+    # success checked
+    return None
+
+
+#
 # check the version of pj is exists?
 #
 def checkVersion(userId, projectId, v):
     if v == None:
         return (False, resp_err_version_invlid)
-    maxVersion = int(fileManager.getDirNumber2(config.dir_home + config.dir_home_user + '/' + str(userId) + '/system/' + str(projectId) + '/'))
+    maxVersion = int(fileManager.getDirNumber2(
+        config.dir_home + config.dir_home_user + '/' + str(userId) + '/system/' + str(projectId) + '/'))
     if (v <= 0 or v > maxVersion):
         return (False, resp_err_version_invlid)
     return (True, maxVersion)
@@ -308,26 +340,11 @@ def deleteDataset(userId, dataId):
 #
 def copyClassProject(classId, userId, pjIds):
     pathClass = config.dir_pub_class + '/' + str(classId)
-    print(pathClass)
-    if classId == None or not os.path.exists(pathClass):
-        return {
-            'status': 0,
-            'result': 'No such Class, please check the path!'
-        }
-    numPjs = fileManager.getDirNumber2(pathClass)
-    # size have to same
-    if not numPjs == str(len(pjIds)):
-        return {
-            'status': 0,
-            'result': 'Class and Project Size error! ' + str(numPjs) + ' projects in class but ' + str(
-                len(pjIds)) + ' project ids.'
-        }
     pathUser = config.dir_home + '/' + str(userId)
-    if not os.path.exists(pathUser):
-        return {
-            'status': 0,
-            'result': "No such user, please check again!"
-        }
+
+    check = checkClassUsrPj(userId, classId, pjIds)
+    if not check == None:
+        return check
 
     # check done, start copy
     pjIdsInClass = os.listdir(pathClass)  # normal: only have directories of all projects
@@ -342,17 +359,18 @@ def copyClassProject(classId, userId, pjIds):
                 os.makedirs(pathPj)
             shell.execute('cp -r ' + pathClass + '/' + str(pjIdsInClass[i]) + '/* ' + pathPj + '/')
 
-            fileUrl = config.ns_doname + '/notebooks/storage' + '/' + str(userId) + '/system/'+ str(pjIds[i]) + '/' + str(version) + '/'
+            fileUrl = config.ns_doname + '/notebooks/storage' + '/' + str(userId) + '/system/' + str(
+                pjIds[i]) + '/' + str(version) + '/'
 
             projects.append({
-                'fileName':fileName,
+                'fileName': fileName,
                 'projectId': pjIds[i],
                 'version': version,
                 'notebook': fileUrl + nbFileName,
                 'html': fileUrl + fileManager.getOneNbFileName(pathClass + '/' + pjIdsInClass[i], '.html'),
                 'py': fileUrl + str(fileName) + '.py',  # maybe not have the .py file
-                'code':1,
-                'msg':'init project success!'
+                'code': 1,
+                'msg': 'init project success!'
             })
 
         except Exception as e:
@@ -368,7 +386,7 @@ def copyClassProject(classId, userId, pjIds):
                 'notebook': None,
                 'html': None,
                 'py': None,
-                'code':0,
+                'code': 0,
                 'msg': 'init project failed, cause ' + str(e)
             })
 
@@ -376,6 +394,165 @@ def copyClassProject(classId, userId, pjIds):
         'status': 1,
         'result': projects
     }
+
+
+async def copyClassDatasets(userId, classId, binds, onProcess, websocket):
+    pathClass = config.dir_pub_class + '/' + str(classId)
+    pathUser = config.dir_home + '/' + str(userId)
+
+    if classId == None or not os.path.exists(pathClass):
+        return {
+            'status': 0,
+            'result': 'No such Class, please check the path!'
+        }
+    if not os.path.exists(pathUser):
+        return {
+            'status': 0,
+            'result': "No such user, please check again!"
+        }
+    if binds == None or len(binds) <= 0:
+        return {
+            'status': 0,
+            'result': 'Params "binds" error, please check it !'
+        }
+
+    sizeTotal = 0  # datasets file size of all files
+    sizeDone = 0  # done copy files size
+    process = 0.00  # process
+    numDsetTotal = 0
+    numDsetCur = 0
+    numPjCur = 0
+
+    arr = []
+    for b in binds:
+        numDsetTotal += len(b['dsetIds'])
+    #     for d in b['dsetIds']:
+    #         if d not in arr:
+    #             arr.append(d)
+    # numDsetTotal = len(arr)
+
+    print('numDsetTotal=' + str(numDsetTotal))
+    for i in range(len(binds)):
+        bind = binds[i]
+        pjId_c = bind['classPjId']
+        pjId = bind['pjId']
+        version = 1
+        dsetIds = bind['dsetIds']
+        numPjCur = i + 1
+
+        try:
+            version = bind['version']
+        except:
+            sysout.log(TAG, 'Params not contains "version", default : 1 !')
+            version = 1
+
+        for d in dsetIds:
+            # check data
+            path_c = config.dir_pub_dsets + '/' + str(d)
+            path = pathUser + '/system/datasets/' + str(d)
+            print(path_c)
+            print(path)
+            if os.path.exists(path_c):
+                print('have path_c .')
+                if not os.path.exists(path):
+                    print('mkdirs path_u')
+                    os.makedirs(path)
+                    numDsetCur = dsetIds.index(d) + 1
+                    print(numDsetCur)
+                    # onProcess(numDsetCur, numDsetTotal)
+                    # t = threading.Thread(target=startProcessCounting(userId, classId, binds, path_c, path, numDsetCur, numDsetTotal, sizeTotal, sizeDone,websocket))
+                    # t.start()
+                    await startProcessCounting(userId, classId, binds,
+                                               path_c, path,
+                                               numDsetCur, numDsetTotal, sizeTotal, sizeDone,
+                                               websocket)
+                    # if numDsetCur == numDsetTotal:
+                    #     #copy done
+                    #     await websocket.send()
+                else:
+                    # if have some datas copyed before but not full datas;
+                    #todo continue to copy
+                    pass
+
+        return {
+            'status': 1,
+            'result': 'Datasets copy successed !'
+        }
+
+
+#
+# return the data copy process by the websocket
+#
+async def startProcessCounting(userId, classId, binds, path_c, path, numDsetCur, numDsetTotal, sizeTotal, sizeDone,websocket):
+    sysout.info(TAG, "start copy dset " + str(numDsetCur) + '/' + str(numDsetTotal))
+    process = str(numDsetCur) + '/' + str(numDsetTotal)
+    # todo cal numCur = ?
+    # numDsetCur = ?
+
+    rep_proocess = {
+        'userId': userId,
+        'classId': classId,
+        'binds': binds,
+        'sizeTotal': sizeTotal,
+        'sizeDone': sizeDone,
+        'numDsetTotal': numDsetTotal,
+        'numDsetCur': numDsetCur,
+        'process': process,
+
+    }
+    print('ws_send:')
+    print(rep_proocess)
+    await websocket.send(json.dumps(rep_proocess))
+    shell.execute('cp -r ' + path_c + '/* ' + path + '/')
+    print('copy done')
+    # while not websocket == None and numDsetCur <= numDsetTotal:
+    #     # process = 0.00
+    #     process = str(numDsetCur) + '/' + str(numDsetTotal)
+    #     # todo cal numCur = ?
+    #     # numDsetCur = ?
+    #
+    #     rep_proocess = {
+    #         'userId': userId,
+    #         'classId': classId,
+    #         'binds': binds,
+    #         'sizeTotal': sizeTotal,
+    #         'sizeDone': sizeDone,
+    #         'numDsetTotal': numDsetTotal,
+    #         'numDsetCur': numDsetCur,
+    #         'process': process,
+    #
+    #     }
+    #     await websocket.send(json.dumps(rep_proocess))
+    #
+    #     if numDsetCur == numDsetTotal:
+    #         break
+    #     else:
+    #         time.sleep(0.25)  # 1/4 of second
+    #         continue
+
+
+class ProcessLisener(threading.Thread):
+    def __init__(self, userId, classId, binds, path_c, path, numDsetCur, numDsetTotal, sizeTotal, sizeDone, websocket):
+        threading.Thread.__init__(self)
+        # self.threadID = threadId
+        self.name = 'nb_ws_processListener'
+        self.userId = userId
+        self.classId = classId
+        self.binds = binds
+        self.path_c = path_c
+        self.path = path
+        self.numDsetTotal = numDsetTotal
+        self.numDseCur = numDsetCur
+        self.sizeTotal = sizeTotal
+        self.sizeDone = sizeDone
+        self.websocket = websocket
+
+    def run(self):
+        t = threading.current_thread()
+        sysout.info(TAG, 'websocketServer is stating at thread %s - %s' % (t.threadID, t.name))
+        startProcessCounting(self.userId, self.classId, self.binds,
+                             self.path_c, self.path, self.numDsetCur,
+                             self.numDsetTotal, self.sizeTotal, self.sizeDone, self.websocket)
 
 #
 #

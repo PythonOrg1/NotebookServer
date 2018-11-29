@@ -1,0 +1,57 @@
+2018/11/29 18:03:29 sysout.py[line:48] INFO nbINFO: config | init system config of model [LOCALHOST] ..
+2018/11/29 18:03:29 sysout.py[line:48] INFO nbINFO: config | init system config successed! 
+2018/11/29 18:03:29 sysout.py[line:48] INFO nbINFO:  | [0;37;43m
+ ---- 
+ System Warning:
+ ---- 
+ Before u start the NotebookServer, u have to make sure that u have already installed the module "Jupyter Notebook"! 
+ Even though, there'll be some error when u use it !! 
+ ---- ---- ---- ---- 
+[0m
+2018/11/29 18:03:29 sysout.py[line:48] INFO nbINFO: webSocketServer | init ws config...  
+2018/11/29 18:03:29 sysout.py[line:48] INFO nbINFO: webSocketServer | {'ws_host': '127.0.0.1', 'ws_port': '8101'}
+2018/11/29 18:03:29 sysout.py[line:48] INFO nbINFO: webSocketServer | init ws config done, ws_host = ('127.0.0.1', '8101')
+2018/11/29 18:03:29 selector_events.py[line:65] DEBUG Using selector: KqueueSelector
+2018/11/29 18:03:29 sysout.py[line:48] INFO nbINFO: httpServer | NotebookHttpServer is stating at thread 1 - NotebookHttpServer
+2018/11/29 18:03:29 sysout.py[line:48] INFO nbINFO: webSocketServer | websocketServer is stating at thread 2 - nbWsServer
+2018/11/29 18:03:29 sysout.py[line:48] INFO nbINFO: webSocketServer | [22;32;40m【200 SUCCESS】[0mThe ws_server is now running on ('127.0.0.1', '8101') in [LOCALHOST] mode!
+2018/11/29 18:03:29 sysout.py[line:48] INFO nbINFO: httpServer | [22;32;40m【200 SUCCESS】[0m The http_server is now running on ('127.0.0.1', 8100) in [LOCALHOST] mode!
+2018/11/29 18:03:35 protocol.py[line:225] DEBUG server - state = CONNECTING
+2018/11/29 18:03:35 protocol.py[line:1193] DEBUG server - event = connection_made(<_SelectorSocketTransport fd=14 read=idle write=<idle, bufsize=0>>)
+2018/11/29 18:03:35 protocol.py[line:289] DEBUG server - state = OPEN
+2018/11/29 18:03:35 protocol.py[line:886] DEBUG server < Frame(fin=True, opcode=1, data=b'{"action": "copyClassData", "userId": 396, "classId": 1, "binds": [{"classPjId": 10, "pjId": 3, "version": 1, "dsetIds": ["sys-dset1", "sys-dset2"]}, {"classPjId": 11, "pjId": 4, "version": 1, "dsetIds": [1]}]}', rsv1=False, rsv2=False, rsv3=False)
+2018/11/29 18:03:35 sysout.py[line:48] INFO nbINFO: webSocketServer | ws_server get request >> {'action': 'copyClassData', 'userId': 396, 'classId': 1, 'binds': [{'classPjId': 10, 'pjId': 3, 'version': 1, 'dsetIds': ['sys-dset1', 'sys-dset2']}, {'classPjId': 11, 'pjId': 4, 'version': 1, 'dsetIds': [1]}]}
+2018/11/29 18:03:35 protocol.py[line:898] DEBUG server > Frame(fin=True, opcode=1, data=b'starting copyClassDataset...', rsv1=False, rsv2=False, rsv3=False)
+2018/11/29 18:07:49 protocol.py[line:898] DEBUG server > Frame(fin=True, opcode=1, data=b'{"status": 1, "result": "Datasets copy successed !"}', rsv1=False, rsv2=False, rsv3=False)
+2018/11/29 18:08:25 sysout.py[line:48] INFO nbINFO: webSocketServer | ws_connection for -- {'action': 'copyClassData', 'userId': 396, 'classId': 1, 'binds': [{'classPjId': 10, 'pjId': 3, 'version': 1, 'dsetIds': ['sys-dset1', 'sys-dset2']}, {'classPjId': 11, 'pjId': 4, 'version': 1, 'dsetIds': [1]}]} -- is closed.
+2018/11/29 18:08:35 protocol.py[line:954] DEBUG server - state = CLOSING
+2018/11/29 18:08:35 protocol.py[line:898] DEBUG server > Frame(fin=True, opcode=8, data=b'\x03\xe8', rsv1=False, rsv2=False, rsv3=False)
+2018/11/29 18:08:35 protocol.py[line:1229] DEBUG server - event = connection_lost([Errno 32] Broken pipe)
+2018/11/29 18:08:35 protocol.py[line:1231] DEBUG server - state = CLOSED
+2018/11/29 18:08:35 protocol.py[line:1238] DEBUG server x code = 1006, reason = [no reason]
+2018/11/29 18:08:35 protocol.py[line:1113] DEBUG server ! failing WebSocket connection in the CLOSED state: 1006 [no reason]
+2018/11/29 18:08:35 protocol.py[line:1000] WARNING Unexpected exception in keepalive ping task
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/websockets/protocol.py", line 984, in keepalive_ping
+    ping_waiter = yield from self.ping()
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/websockets/protocol.py", line 583, in ping
+    yield from self.ensure_open()
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/websockets/protocol.py", line 646, in ensure_open
+    ) from self.transfer_data_exc
+websockets.exceptions.ConnectionClosed: WebSocket connection is closed: code = 1006 (connection closed abnormally [internal]), no reason
+2018/11/29 18:08:35 protocol.py[line:1035] DEBUG server x half-closing TCP connection
+2018/11/29 18:08:35 server.py[line:182] WARNING Error in closing handshake
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/websockets/server.py", line 177, in handler
+    yield from self.close()
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/websockets/protocol.py", line 535, in close
+    loop=self.loop,
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/asyncio/tasks.py", line 358, in wait_for
+    return fut.result()
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/websockets/protocol.py", line 958, in write_close_frame
+    True, OP_CLOSE, data, _expected_state=State.CLOSING
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/websockets/protocol.py", line 919, in write_frame
+    yield from self.ensure_open()
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/websockets/protocol.py", line 646, in ensure_open
+    ) from self.transfer_data_exc
+websockets.exceptions.ConnectionClosed: WebSocket connection is closed: code = 1006 (connection closed abnormally [internal]), no reason
