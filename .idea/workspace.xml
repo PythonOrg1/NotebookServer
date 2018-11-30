@@ -2,6 +2,41 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="75761fac-7abd-4c54-8adb-d20f3bc5d893" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/logs/NotebookServer-2018.11.29-13:39:56.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/NotebookServer-2018.11.29-13:42:01.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/NotebookServer-2018.11.29-13:42:07.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/NotebookServer-2018.11.29-13:42:16.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/NotebookServer-2018.11.29-16:50:15.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/NotebookServer-2018.11.29-16:51:00.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/NotebookServer-2018.11.29-16:53:59.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/NotebookServer-2018.11.29-16:55:27.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/NotebookServer-2018.11.29-16:56:26.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/NotebookServer-2018.11.29-16:57:23.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/NotebookServer-2018.11.29-16:59:42.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/NotebookServer-2018.11.29-17:35:34.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/NotebookServer-2018.11.29-17:44:18.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/NotebookServer-2018.11.29-17:49:36.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/NotebookServer-2018.11.29-17:51:12.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/NotebookServer-2018.11.29-17:56:28.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/NotebookServer-2018.11.29-17:57:23.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/NotebookServer-2018.11.29-17:57:47.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/NotebookServer-2018.11.29-17:58:03.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/NotebookServer-2018.11.29-17:59:10.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/NotebookServer-2018.11.29-17:59:42.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/NotebookServer-2018.11.29-18:00:34.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/NotebookServer-2018.11.29-18:01:13.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/NotebookServer-2018.11.29-18:03:29.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/NotebookServer-2018.11.29-18:12:34.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/NotebookServer-2018.11.29-18:12:47.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/NotebookServer-2018.11.29-18:13:38.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/NotebookServer-2018.11.29-18:14:10.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/NotebookServer-2018.11.29-18:18:46.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/NotebookServer-2018.11.29-18:23:06.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/NotebookServer-2018.11.29-18:24:20.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/NotebookServer-2018.11.29-18:25:43.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/NotebookServer-2018.11.29-18:27:01.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/NotebookServer-2018.11.29-18:29:24.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/NotebookServer-2018.11.29-18:29:51.log" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/project/test/process.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/project/test/syncTask.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -50,7 +85,7 @@
     <session id="-589950821">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="29" />
+          <entry key="project.closed" value="30" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.10" value="6" />
           <entry key="project.open.time.14" value="1" />
@@ -549,7 +584,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4980198" visible="true" weight="0.2003231" />
       <window_info id="Structure" order="1" weight="0.25" />
@@ -557,9 +591,9 @@
       <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Docker" order="1" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.5021299" side_tool="true" weight="0.6712871" />
-      <window_info active="true" anchor="bottom" id="Run" order="3" sideWeight="0.49840257" visible="true" weight="0.46849316" />
+      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.49840257" weight="0.46849316" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.4958904" />
-      <window_info anchor="bottom" id="Terminal" order="5" weight="0.3" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="5" visible="true" weight="0.3" />
       <window_info anchor="bottom" id="Version Control" order="6" sideWeight="0.4978701" weight="0.6712329" />
       <window_info anchor="bottom" id="Python Console" order="7" sideWeight="0.49946752" weight="0.32871288" />
       <window_info anchor="bottom" id="Message" order="8" />
