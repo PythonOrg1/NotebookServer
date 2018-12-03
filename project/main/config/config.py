@@ -7,9 +7,9 @@ system = {
     'app_name': "极算云notebook文件管理分发系统",
     'version': "v1.0.1",
     'author': "JayYin",
-    # 'mode': 'DEV'
+    'mode': 'DEV'
     # 'mode': 'RELEASE'
-    'mode': 'LOCALHOST'
+    # 'mode': 'LOCALHOST'
 }
 
 # server
@@ -54,6 +54,7 @@ dir_pub_dsets = dir_home + '/base/datasets'
 # ----------- RELEASE ------------
 ns_config_release = {
     'ns_host': '172.16.59.99',  # _release server cloudyotech.com',
+    'ns_host_pub': '120.26.57.100',
     'ns_port_http': 8100,
     'ns_port': 8888,
     'ns_doname ': 'https://g.cloudyotech.com/notebook',
@@ -67,6 +68,7 @@ ns_config_release = {
 # ----------- DEV ------------
 ns_config_dev = {
     'ns_host': '172.16.3.254',
+    'ns_host_pub': '120.26.48.110',
     'ns_port_http': 8100,
     'ns_port': 8888,
     'ns_doname': 'https://dev.dongxicc.cn/notebook',
@@ -80,6 +82,7 @@ ns_config_dev = {
 # ----------- DEV2 for 18.18.18.174 ------------
 ns_config_dev2 = {
     'ns_host': '18.18.18.174',
+    'ns_host_pub': '120.26.48.110',
     'ns_port_http': 8100,
     'ns_port': 8888,
     'ns_doname': 'https://18.18.18.174:8888',
@@ -93,6 +96,7 @@ ns_config_dev2 = {
 # ----------- localohst ------------
 ns_config_local = {
     'ns_host': '127.0.0.1',
+    'ns_host_pub': '120.26.48.110',
     'ns_port_http': 8100,
     'ns_port': 8888,
     'ns_doname': 'https://127.0.0.1:8888',
@@ -107,10 +111,10 @@ ns_config_local = {
 
 def initConfig():
     sysout.info(TAG, 'init system config of model [%s] ..' % system['mode'])
-    global vms_host, ns_host, ns_port, ns_port_http, ns_doname, dir_home, dir_home_user, file_system_readme, dir_pub_class, dir_pub_dsets
+    global vms_host,ns_host_pub, ns_host, ns_port, ns_port_http, ns_doname, dir_home, dir_home_user, file_system_readme, dir_pub_class, dir_pub_dsets
     if system['mode'] == 'DEV':
         vms_host = vms_host_dev
-
+        ns_host_pub = ns_config_dev['ns_host_pub']
         ns_host = ns_config_dev['ns_host']
         ns_port_http = ns_config_dev['ns_port_http']
         ns_port = ns_config_dev['ns_port']
@@ -120,7 +124,7 @@ def initConfig():
         file_system_readme = ns_config_dev['file_system_readme']
     elif system['mode'] == 'RELEASE':
         vms_host = vms_host_release
-
+        ns_host_pub = ns_config_release['ns_host_pub']
         ns_host = ns_config_release['ns_host']
         ns_port_http = ns_config_release['ns_port_http']
         ns_port = ns_config_release['ns_port']
@@ -130,7 +134,7 @@ def initConfig():
         file_system_readme = ns_config_release['file_system_readme']
     elif system['mode'] == 'LOCALHOST':
         vms_host = vms_host_dev
-
+        ns_host_pub = ns_config_local['ns_host_pub']
         ns_host = ns_config_local['ns_host']
         ns_port_http = ns_config_local['ns_port_http']
         ns_port = ns_config_local['ns_port']

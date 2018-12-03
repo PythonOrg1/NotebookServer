@@ -8,6 +8,7 @@ from hashlib import md5
 import os
 import json
 import threading, time
+import urllib.request
 
 TAG = "projectManager"
 
@@ -211,10 +212,8 @@ def bindDataWithProject(userId, projectId, version, dataIds, isUbind=False):
                 # pathDset = config.dir_home + '/' + str(userId) + '/system/datasets/' + str(dataIds[i])
 
             # pathPj = '/data/system/' + str(projectId) + '/' + str(version) + '/dataset/'
-            pathDset = '/data/system/datasets/' + str(dataIds[i])
+            pathDset = '../../../datasets/' + str(dataIds[i])
 
-            if not os.path.exists(pathPj):
-                os.mkdir(pathPj)
             # pathDset = config.dir_home + config.path_dataset + '/' + str(dataIds[i])
             # pathDset = config.dir_home + config.dir_home_user + '/'+str(userId) + '/system/datasets/' + str(dataIds[i])
             if not os.path.exists(pathDset):
@@ -338,152 +337,72 @@ def deleteDataset(userId, dataId):
 #
 # @param pjVersion : default 1
 #
-def copyClassProject(classId, userId, pjIds):
-    pathClass = config.dir_pub_class + '/' + str(classId)
-    pathUser = config.dir_home + '/' + str(userId)
-
-    check = checkClassUsrPj(userId, classId, pjIds)
-    if not check == None:
-        return check
-
+def copyClassProject(userId, pjIds):
+    # check = checkClassUsrPj(userId, classId, pjIds)
+    # if not check == None:
+    #     return check
     # check done, start copy
-    pjIdsInClass = os.listdir(pathClass)  # normal: only have directories of all projects
-    projects = []
-    for i in range(len(pjIds)):
+    for pjid in pjIds:
         version = 1  # default project version = 1
-        pathPj = pathUser + '/system/' + str(pjIds[i]) + '/' + str(version)
-        nbFileName = fileManager.getOneNbFileName(pathClass + '/' + pjIdsInClass[i], '.ipynb')
-        fileName = str(nbFileName).split('.ipynb')[0]
+        fromPj = config.dir_home + "/0/system/" + str(pjid["baseId"])
+        toPj = config.dir_home + "/" + str(userId) + "/system/" + str(pjid["id"])
         try:
-            if not os.path.exists(pathPj):
-                os.makedirs(pathPj)
-            shell.execute('cp -r ' + pathClass + '/' + str(pjIdsInClass[i]) + '/* ' + pathPj + '/')
-
-            fileUrl = config.ns_doname + '/notebooks/storage' + '/' + str(userId) + '/system/' + str(
-                pjIds[i]) + '/' + str(version) + '/'
-
-            projects.append({
-                'fileName': fileName,
-                'projectId': pjIds[i],
-                'version': version,
-                'notebook': fileUrl + nbFileName,
-                'html': fileUrl + fileManager.getOneNbFileName(pathClass + '/' + pjIdsInClass[i], '.html'),
-                'py': fileUrl + str(fileName) + '.py',  # maybe not have the .py file
-                'code': 1,
-                'msg': 'init project success!'
-            })
-
+            shell.execute('cp -r ' + fromPj + '   ' + toPj)
+            sysout.info(TAG,"copyClassProject success")
+            return {
+                'status': 1,
+                'result': 'init project success!'
+            }
         except Exception as e:
             sysout.err(TAG, str(e))
-            # return {
-            #     'status': 0,
-            #     'result': 'Init class failed, cause ' + str(e)
-            # }
-            projects.append({
-                'fileName': fileName,
-                'projectId': pjIds[i],
-                'version': version,
-                'notebook': None,
-                'html': None,
-                'py': None,
-                'code': 0,
-                'msg': 'init project failed, cause ' + str(e)
-            })
-
     return {
-        'status': 1,
-        'result': projects
+            'code': 0,
+            'msg': 'init project failed, cause ' + str(e)
     }
 
 
-async def copyClassDatasets(userId, classId, binds, onProcess, websocket):
-    pathClass = config.dir_pub_class + '/' + str(classId)
-    pathUser = config.dir_home + '/' + str(userId)
-
-    if classId == None or not os.path.exists(pathClass):
-        return {
-            'status': 0,
-            'result': 'No such Class, please check the path!'
-        }
-    if not os.path.exists(pathUser):
-        return {
-            'status': 0,
-            'result': "No such user, please check again!"
-        }
-    if binds == None or len(binds) <= 0:
-        return {
-            'status': 0,
-            'result': 'Params "binds" error, please check it !'
-        }
-
-    sizeTotal = 0  # datasets file size of all files
-    sizeDone = 0  # done copy files size
-    process = 0.00  # process
-    numDsetTotal = 0
-    numDsetCur = 0
-    numPjCur = 0
-
-    arr = []
-    for b in binds:
-        numDsetTotal += len(b['dsetIds'])
-    #     for d in b['dsetIds']:
-    #         if d not in arr:
-    #             arr.append(d)
-    # numDsetTotal = len(arr)
-
-    print('numDsetTotal=' + str(numDsetTotal))
-    for i in range(len(binds)):
-        bind = binds[i]
-        pjId_c = bind['classPjId']
-        pjId = bind['pjId']
-        version = 1
-        dsetIds = bind['dsetIds']
-        numPjCur = i + 1
-
+def copyClassDatasets(coursewareId,userId, datasets):
+    sysout.info(TAG, str('xxx'))
+    for dataset in datasets:
+        fromPj = config.dir_home + "/0/system/datasets/" + dataset
+        toPj = config.dir_home + "/" + str(userId) + "/system/datasets/"
+        if not os.path.exists(fromPj):
+            sysout.err('fromPj not exit')
+            data = {'status': '0','userId':str(userId),'courseId':str(coursewareId),'result': 'No such Class, please check the path!'}
+            httpServer('http://'+config.ns_host_pub+ ':8080/WeCloud/dlCourseware/copyDatasetsStatus',data)
+            return
+        if not os.path.exists(toPj):
+            sysout.err('toPj not exit')
+            data = {'status': '0','userId':str(userId),'courseId':str(coursewareId),'result': 'No such user, please check again!!'}
+            httpServer('http://'+config.ns_host_pub+ ':8080/WeCloud/dlCourseware/copyDatasetsStatus',data )
+            return
         try:
-            version = bind['version']
-        except:
-            sysout.log(TAG, 'Params not contains "version", default : 1 !')
-            version = 1
-
-        for d in dsetIds:
-            # check data
-            path_c = config.dir_pub_dsets + '/' + str(d)
-            path = pathUser + '/system/datasets/' + str(d)
-            print(path_c)
-            print(path)
-            if os.path.exists(path_c):
-                print('have path_c .')
-                if not os.path.exists(path):
-                    print('mkdirs path_u')
-                    os.makedirs(path)
-                    numDsetCur = dsetIds.index(d) + 1
-                    print(numDsetCur)
-                    # onProcess(numDsetCur, numDsetTotal)
-                    # t = threading.Thread(target=startProcessCounting(userId, classId, binds, path_c, path, numDsetCur, numDsetTotal, sizeTotal, sizeDone,websocket))
-                    # t.start()
-                    await startProcessCounting(userId, classId, binds,
-                                               path_c, path,
-                                               numDsetCur, numDsetTotal, sizeTotal, sizeDone,
-                                               websocket)
-                    # if numDsetCur == numDsetTotal:
-                    #     #copy done
-                    #     await websocket.send()
-                else:
-                    # if have some datas copyed before but not full datas;
-                    #todo continue to copy
-                    pass
-
-        return {
-            'status': 1,
-            'result': 'Datasets copy successed !'
-        }
+            shell.execute('cp -r ' + fromPj + '   ' + toPj)
+            sysout.info(TAG,"copyClassDatasets success")
+            data = {'status': '1','userId':str(userId),'courseId':str(coursewareId),'result': 'copy success!!'}
+            httpServer('http://'+config.ns_host_pub+ ':8080/WeCloud/dlCourseware/copyDatasetsStatus',data)
+        except Exception as e:
+            sysout.err(TAG, str(e))
+            data = {'status': '0','userId':str(userId),'courseId':str(coursewareId),'result':str(e)}
+            httpServer('http://'+config.ns_host_pub+ ':8080/WeCloud/dlCourseware/copyDatasetsStatus',data)
+        return
 
 
+def httpServer(url,values):
+    headers = {
+        'User-Agent': 'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)',
+        'Content-Type': 'application/json'
+    }
+    data = json.dumps(values)
+    data = bytes(data, 'utf8')
+    request = urllib.request.Request(url, data, headers)
+    html = urllib.request.urlopen(request).read().decode('utf-8')
+    print(html)
 #
 # return the data copy process by the websocket
 #
-async def startProcessCounting(userId, classId, binds, path_c, path, numDsetCur, numDsetTotal, sizeTotal, sizeDone,websocket):
+async def startProcessCounting(userId, classId, binds, path_c, path, numDsetCur, numDsetTotal, sizeTotal, sizeDone,
+                               websocket):
     sysout.info(TAG, "start copy dset " + str(numDsetCur) + '/' + str(numDsetTotal))
     process = str(numDsetCur) + '/' + str(numDsetTotal)
     # todo cal numCur = ?

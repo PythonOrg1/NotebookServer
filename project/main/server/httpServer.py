@@ -5,7 +5,10 @@
 from wsgiref.simple_server import make_server
 import json
 import threading
+import _thread
 import asyncio
+import os
+from os.path import join, getsize
 
 from base import sysout
 from manager import projectManager
@@ -317,36 +320,38 @@ def moveFile(request_body):
 # copy class's projects and files to user's pj home
 #
 def copyClassProject(request_body):
-    classId = None
     userId = None
     projectIds = []
     # version = 1 #default project version = 1
     try:
         userId = request_body['userId']
-        classId = request_body['classId']
         projectIds = request_body['projectIds']
     except Exception as e:
+        print(str(e))
         return str(resp_err_params) + str(e)
-    return projectManager.copyClassProject(classId, userId, projectIds)
+    return projectManager.copyClassProject(userId, projectIds)
 
 
 # public datasets dir:
 #   /notebook/storage/base/datasets/dataIds
 #
 def copyClassDataset(request_body):
-    classId = None
+    coursewateId = None
     userId = None
-    projectIds = []
+    datasets = []
     # version = 1 #default project version = 1
     try:
         userId = request_body['userId']
-        classId = request_body['classId']
-        projectIds = request_body['projectIds']
+        coursewateId = request_body['coursewareId']
+        datasets = request_body['datasets']
     except Exception as e:
         return str(resp_err_params) + str(e)
-    # todo copy
-
-    # todo need return on time process
+    # projectManager.copyClassDatasets(coursewateId,userId,datasets)
+    _thread.start_new_thread( projectManager.copyClassDatasets, (coursewateId,userId,datasets, ) )
+    return {
+        'status': 1,
+        'result': 'start copying datasets!'
+    }
 
 
 #
@@ -355,23 +360,28 @@ def copyClassDataset(request_body):
 # 2. hold all versions
 #
 def resetClassProject(request_body):
-    classId = None
-    versions = []
-    pjIds = []
-    # todo reset project
-    if (len(versions) == 0):
+    projets = []
+    type = request_body['type']
+    userId = request_body['userId']
+    project = request_body['project']
+    projets.append(project)
+    if (type == 'all'):
         # reset all pj of this class
+        projectManager.delectProject(project['id'])
         pass
+    return projectManager.copyClassProject(userId,projets)
 
 
-def resetDatasets(request_body):
-    dataIds = None
-    # todo reset datas
 
-    # if (isDifferent):  isDifferent == (size1 != size2 && name1s==name2s ?)
-    #   reset
-    # else : no
-
+def getDirSize(request_body):
+    userId = request_body['userId']
+    dir = '/notebook/storage/' + str(userId)
+    size = 0
+    size = fileManager.getDirSize(dir)
+    return {
+        'status': 1,
+        'result': size
+    }
 
 #
 #
@@ -425,6 +435,12 @@ def praseData(request_body):
 
         elif action == 'initClass':
             return copyClassProject(request_body)
+        elif action == 'getDirSize':
+            return getDirSize(request_body)
+        elif action == 'copyClassProject':
+            return copyClassProject(request_body)
+        elif action == 'copyClassDataset':
+            return copyClassDataset(request_body)
         else:
             return {'status': 0, 'result': 'request & params not support!!!'}
 

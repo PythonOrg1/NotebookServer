@@ -1,0 +1,16 @@
+#
+# This isfor u to use the NotebookServer
+#
+
+1. where to place:
+	/notebook/
+
+2. start cmd: 
+	python3 /notebook/NotebookServer/project/main/startup.py
+
+3. repo:
+	current new branch : class
+	you have to checkout to a new branch for u users
+
+
+
