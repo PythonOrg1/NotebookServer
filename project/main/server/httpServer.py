@@ -363,12 +363,13 @@ def resetClassProject(request_body):
     projets = []
     type = request_body['type']
     userId = request_body['userId']
-    project = request_body['project']
+    project = request_body['projectIds']
     projets.append(project)
     if (type == 'all'):
         # reset all pj of this class
-        projectManager.delectProject(project['id'])
-        pass
+        projectManager.delectProject(userId,project['id'],None)
+    elif (type == 'one'):
+        projectManager.delectProject(userId,str(project['id'])+"/1",None)
     return projectManager.copyClassProject(userId,projets)
 
 
@@ -441,6 +442,8 @@ def praseData(request_body):
             return copyClassProject(request_body)
         elif action == 'copyClassDataset':
             return copyClassDataset(request_body)
+        elif action == 'resetClassProject':
+            return resetClassProject(request_body)
         else:
             return {'status': 0, 'result': 'request & params not support!!!'}
 

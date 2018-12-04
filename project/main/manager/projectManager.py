@@ -347,6 +347,8 @@ def copyClassProject(userId, pjIds):
         fromPj = config.dir_home + "/0/system/" + str(pjid["baseId"])
         toPj = config.dir_home + "/" + str(userId) + "/system/" + str(pjid["id"])
         try:
+            if (os.path.exists(toPj)):
+                fromPj = fromPj + "/*"
             shell.execute('cp -r ' + fromPj + '   ' + toPj)
             sysout.info(TAG,"copyClassProject success")
             return {
@@ -362,30 +364,30 @@ def copyClassProject(userId, pjIds):
 
 
 def copyClassDatasets(coursewareId,userId, datasets):
-    sysout.info(TAG, str('xxx'))
     for dataset in datasets:
         fromPj = config.dir_home + "/0/system/datasets/" + dataset
-        toPj = config.dir_home + "/" + str(userId) + "/system/datasets/"
-        if not os.path.exists(fromPj):
-            sysout.err('fromPj not exit')
-            data = {'status': '0','userId':str(userId),'courseId':str(coursewareId),'result': 'No such Class, please check the path!'}
-            httpServer('http://'+config.ns_host_pub+ ':8080/WeCloud/dlCourseware/copyDatasetsStatus',data)
-            return
-        if not os.path.exists(toPj):
-            sysout.err('toPj not exit')
-            data = {'status': '0','userId':str(userId),'courseId':str(coursewareId),'result': 'No such user, please check again!!'}
-            httpServer('http://'+config.ns_host_pub+ ':8080/WeCloud/dlCourseware/copyDatasetsStatus',data )
-            return
+        toPj = config.dir_home + "/" + str(userId) + "/system/datasets/"+ str(userId) + str(dataset[1:])
         try:
+            if os.path.exists(toPj):
+                shell.execute('rm -rf ' +   toPj)
+            if not os.path.exists(fromPj):
+                sysout.err('fromPj not exit')
+                data = {'status': '0','userId':str(userId),'courseId':str(coursewareId),'result': 'No such Class, please check the path!'}
+                httpServer('http://'+config.ns_host_pub+ ':8080/WeCloud/dlCourseware/copyDatasetsStatus',data)
+                return
             shell.execute('cp -r ' + fromPj + '   ' + toPj)
             sysout.info(TAG,"copyClassDatasets success")
             data = {'status': '1','userId':str(userId),'courseId':str(coursewareId),'result': 'copy success!!'}
             httpServer('http://'+config.ns_host_pub+ ':8080/WeCloud/dlCourseware/copyDatasetsStatus',data)
+            return
         except Exception as e:
             sysout.err(TAG, str(e))
             data = {'status': '0','userId':str(userId),'courseId':str(coursewareId),'result':str(e)}
             httpServer('http://'+config.ns_host_pub+ ':8080/WeCloud/dlCourseware/copyDatasetsStatus',data)
-        return
+            return
+    data = {'status': '1','userId':str(userId),'courseId':str(coursewareId),'result': 'copy success!!'}
+    httpServer('http://'+config.ns_host_pub+ ':8080/WeCloud/dlCourseware/copyDatasetsStatus',data)
+    return
 
 
 def httpServer(url,values):

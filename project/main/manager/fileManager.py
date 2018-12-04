@@ -309,7 +309,10 @@ def getFilesInfoOfPath(dir):
 def getDirSize(dir):
     size = 0
     for root, dirs, files in os.walk(dir):
-        size += sum([os.path.getsize(os.path.join(root, name)) for name in files])
+        try:
+            size += sum([os.path.getsize(os.path.join(root, name)) for name in files])
+        except:
+            pass
     mSizeDict[dir] = size
     return size
 
