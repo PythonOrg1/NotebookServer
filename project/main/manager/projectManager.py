@@ -351,17 +351,16 @@ def copyClassProject(userId, pjIds):
                 fromPj = fromPj + "/*"
             shell.execute('cp -r ' + fromPj + '   ' + toPj)
             sysout.info(TAG,"copyClassProject success")
-            return {
-                'status': 1,
-                'result': 'init project success!'
-            }
         except Exception as e:
             sysout.err(TAG, str(e))
+            return {
+                    'code': 0,
+                    'msg': 'init project failed, cause ' + str(e)
+            }
     return {
-            'code': 0,
-            'msg': 'init project failed, cause ' + str(e)
+        'status': 1,
+        'result': 'init project success!'
     }
-
 
 def copyClassDatasets(coursewareId,userId, datasets):
     for dataset in datasets:
@@ -377,9 +376,6 @@ def copyClassDatasets(coursewareId,userId, datasets):
                 return
             shell.execute('cp -r ' + fromPj + '   ' + toPj)
             sysout.info(TAG,"copyClassDatasets success")
-            data = {'status': '1','userId':str(userId),'courseId':str(coursewareId),'result': 'copy success!!'}
-            httpServer('http://'+config.ns_host_pub+ ':8080/WeCloud/dlCourseware/copyDatasetsStatus',data)
-            return
         except Exception as e:
             sysout.err(TAG, str(e))
             data = {'status': '0','userId':str(userId),'courseId':str(coursewareId),'result':str(e)}
