@@ -212,16 +212,15 @@ def bindDataWithProject(userId, projectId, version, dataIds, isUbind=False):
                 # pathDset = config.dir_home + '/' + str(userId) + '/system/datasets/' + str(dataIds[i])
 
             # pathPj = '/data/system/' + str(projectId) + '/' + str(version) + '/dataset/'
-            pathDset = '../../../datasets/' + str(dataIds[i])
+            if not os.path.exists(pathPj):
+                os.makedirs(pathPj)
 
             # pathDset = config.dir_home + config.path_dataset + '/' + str(dataIds[i])
             # pathDset = config.dir_home + config.dir_home_user + '/'+str(userId) + '/system/datasets/' + str(dataIds[i])
-            if not os.path.exists(pathPj):
-                shell.execute('mkdir ' + pathPj)
-                # return {
-                #     'status' : 0,
-                #     'result' : 'Dataset file not exists!'
-                # }
+            pathDset = '../../../datasets/' + str(dataIds[i])
+            # if not os.path.exists(pathDset):
+            #     os.makedirs(pathDset)
+
             shell.execute('ln -s ' + pathDset + ' ' + pathPj)
             pathDsetln = 'dataset/' + str(dataIds[i]) + '/'
             paths.append(pathDsetln)
