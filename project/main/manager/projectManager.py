@@ -364,7 +364,7 @@ def copyClassProject(userId, pjIds):
         'result': 'init project success!'
     }
 
-def rename(path,userId):
+def reln(path,userId):
     filelist = os.listdir(path) #该文件夹下的所有文件
     count =0
     for file in filelist:
@@ -375,6 +375,8 @@ def rename(path,userId):
         print(str(filename))
         Newdir = os.path.join(path,filename.replace('0-',str(userId)+'-',1))
         os.rename(Olddir,Newdir)
+        pathDset = '../../../datasets/' + filename.replace('0-',str(userId)+'-',1)
+        shell.execute('ln -s ' + pathDset + ' ' + pathPj)
         count += 1
 
 def copyClassDatasets(coursewareId,userId, datasets):

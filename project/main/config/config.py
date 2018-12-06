@@ -67,7 +67,7 @@ ns_config_release = {
 
 # ----------- DEV ------------
 ns_config_dev = {
-    'ns_host': '172.16.3.254',
+    'ns_host': '60.12.136.58',
     'ns_host_pub': '120.26.48.110',
     'ns_port_http': 8100,
     'ns_port': 8888,

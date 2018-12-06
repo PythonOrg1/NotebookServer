@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="75761fac-7abd-4c54-8adb-d20f3bc5d893" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/main/config/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/main/config/config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/main/manager/projectManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/main/manager/projectManager.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -119,14 +119,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="json" value="2" />
-          <entry key="py" value="1614" />
+          <entry key="py" value="1620" />
           <entry key="regexp" value="28" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="2" />
-          <entry key="Python" value="1614" />
+          <entry key="Python" value="1620" />
           <entry key="RegExp" value="28" />
         </counts>
       </usages-collector>
@@ -152,7 +152,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/project/main/server/httpServer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-75">
+            <state relative-caret-position="-120">
               <caret line="133" column="39" selection-start-line="133" selection-start-column="39" selection-end-line="133" selection-end-column="39" />
               <folding>
                 <element signature="e#108#153#0" expanded="true" />
@@ -165,7 +165,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/project/main/manager/fileManager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4380">
+            <state relative-caret-position="504">
               <caret line="319" column="1" selection-start-line="319" selection-start-column="1" selection-end-line="319" selection-end-column="1" />
               <folding>
                 <element signature="e#17#26#0" expanded="true" />
@@ -180,11 +180,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/project/main/manager/projectManager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="534">
-              <caret line="224" column="61" lean-forward="true" selection-start-line="224" selection-start-column="61" selection-end-line="224" selection-end-column="61" />
+            <state relative-caret-position="279">
+              <caret line="378" column="57" lean-forward="true" selection-start-line="378" selection-start-column="57" selection-end-line="378" selection-end-column="57" />
               <folding>
                 <element signature="e#17#40#0" expanded="true" />
-                <marker date="1544064138653" expanded="true" signature="12818:12823" ph="..." />
+                <marker date="1544066105846" expanded="true" signature="12818:12823" ph="..." />
               </folding>
             </state>
           </provider>
@@ -193,8 +193,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/project/main/config/config.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1020">
-              <caret line="68" column="17" selection-start-line="68" selection-start-column="17" selection-end-line="68" selection-end-column="17" />
+            <state relative-caret-position="202">
+              <caret line="69" column="30" lean-forward="true" selection-start-line="69" selection-start-column="30" selection-end-line="69" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -291,9 +291,9 @@
         <option value="$PROJECT_DIR$/project/test/wsClient.py" />
         <option value="$PROJECT_DIR$/project/main/config/ws_conf.json" />
         <option value="$PROJECT_DIR$/project/main/server/websocketServer.py" />
-        <option value="$PROJECT_DIR$/project/main/config/config.py" />
         <option value="$PROJECT_DIR$/project/main/manager/fileManager.py" />
         <option value="$PROJECT_DIR$/project/main/server/httpServer.py" />
+        <option value="$PROJECT_DIR$/project/main/config/config.py" />
         <option value="$PROJECT_DIR$/project/main/manager/projectManager.py" />
       </list>
     </option>
@@ -405,7 +405,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544064369806" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544066264016" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -575,12 +575,12 @@
       <workItem from="1543801630103" duration="16825000" />
       <workItem from="1543887570785" duration="11899000" />
       <workItem from="1543973853327" duration="6112000" />
-      <workItem from="1544060351876" duration="2340000" />
+      <workItem from="1544060351876" duration="3899000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49032000" />
+    <option name="totallyTimeSpent" value="50591000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -607,7 +607,7 @@
       <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.5021299" side_tool="true" weight="0.6712871" />
       <window_info anchor="bottom" id="Run" order="3" sideWeight="0.49840257" weight="0.44420367" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.45287108" />
-      <window_info anchor="bottom" id="Terminal" order="5" weight="0.36078006" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="5" visible="true" weight="0.36078006" />
       <window_info anchor="bottom" id="Version Control" order="6" sideWeight="0.4978701" weight="0.6706392" />
       <window_info anchor="bottom" id="Python Console" order="7" sideWeight="0.49946752" weight="0.32871288" />
       <window_info anchor="bottom" id="Message" order="8" />
@@ -846,9 +846,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/project/main/config/string.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/main/config/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="69" column="30" lean-forward="true" selection-start-line="69" selection-start-column="30" selection-end-line="69" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/project/main/manager/fileManager.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4380">
+        <state relative-caret-position="504">
           <caret line="319" column="1" selection-start-line="319" selection-start-column="1" selection-end-line="319" selection-end-column="1" />
           <folding>
             <element signature="e#17#26#0" expanded="true" />
@@ -859,19 +869,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/project/main/config/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1020">
-          <caret line="68" column="17" selection-start-line="68" selection-start-column="17" selection-end-line="68" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/main/config/string.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/project/main/server/httpServer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-75">
+        <state relative-caret-position="-120">
           <caret line="133" column="39" selection-start-line="133" selection-start-column="39" selection-end-line="133" selection-end-column="39" />
           <folding>
             <element signature="e#108#153#0" expanded="true" />
@@ -882,11 +882,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/project/main/manager/projectManager.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="534">
-          <caret line="224" column="61" lean-forward="true" selection-start-line="224" selection-start-column="61" selection-end-line="224" selection-end-column="61" />
+        <state relative-caret-position="279">
+          <caret line="378" column="57" lean-forward="true" selection-start-line="378" selection-start-column="57" selection-end-line="378" selection-end-column="57" />
           <folding>
             <element signature="e#17#40#0" expanded="true" />
-            <marker date="1544064138653" expanded="true" signature="12818:12823" ph="..." />
+            <marker date="1544066105846" expanded="true" signature="12818:12823" ph="..." />
           </folding>
         </state>
       </provider>
