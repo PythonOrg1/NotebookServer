@@ -212,16 +212,15 @@ def bindDataWithProject(userId, projectId, version, dataIds, isUbind=False):
                 # pathDset = config.dir_home + '/' + str(userId) + '/system/datasets/' + str(dataIds[i])
 
             # pathPj = '/data/system/' + str(projectId) + '/' + str(version) + '/dataset/'
-            pathDset = '../../../datasets/' + str(dataIds[i])
+            if not os.path.exists(pathPj):
+                os.makedirs(pathPj)
 
             # pathDset = config.dir_home + config.path_dataset + '/' + str(dataIds[i])
             # pathDset = config.dir_home + config.dir_home_user + '/'+str(userId) + '/system/datasets/' + str(dataIds[i])
-            if not os.path.exists(pathPj):
-                shell.execute('mkdir ' + pathPj)
-                # return {
-                #     'status' : 0,
-                #     'result' : 'Dataset file not exists!'
-                # }
+            pathDset = '../../../datasets/' + str(dataIds[i])
+            # if not os.path.exists(pathDset):
+            #     os.makedirs(pathDset)
+
             shell.execute('ln -s ' + pathDset + ' ' + pathPj)
             pathDsetln = 'dataset/' + str(dataIds[i]) + '/'
             paths.append(pathDsetln)
@@ -342,6 +341,8 @@ def copyClassProject(userId, pjIds):
     # if not check == None:
     #     return check
     # check done, start copy
+    if not os.path.exists(config.dir_home + "/" + str(userId) + "/system/datasets/"):
+        os.makedirs(config.dir_home + "/" + str(userId) + "/system/datasets/")
     for pjid in pjIds:
         version = 1  # default project version = 1
         fromPj = config.dir_home + "/0/system/" + str(pjid["baseId"])
@@ -366,18 +367,16 @@ def copyClassProject(userId, pjIds):
 
 def reln(path,userId):
     filelist = os.listdir(path) #该文件夹下的所有文件
-    count =0
     for file in filelist:
         Olddir = os.path.join(path,file)
         if os.path.isfile(Olddir):
             continue
         filename = os.path.splitext(file)[0]
-        print(str(filename))
-        Newdir = os.path.join(path,filename.replace('0-',str(userId)+'-',1))
+        Newdir = os.path.join(path,filename)
         os.rename(Olddir,Newdir)
         pathDset = '../../../datasets/' + filename.replace('0-',str(userId)+'-',1)
-        shell.execute('ln -s ' + pathDset + ' ' + pathPj)
-        count += 1
+        shell.execute('ln -snf ' + pathDset + ' ' + Newdir)
+        shell.execute('cp -r'+ Newdir +'   '+ os.path.join(path,filename.replace('0-',str(userId)+'-',1)))
 
 def copyClassDatasets(coursewareId,userId, datasets):
     for dataset in datasets:

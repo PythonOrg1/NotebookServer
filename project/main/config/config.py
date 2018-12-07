@@ -7,8 +7,8 @@ system = {
     'app_name': "极算云notebook文件管理分发系统",
     'version': "v1.0.1",
     'author': "JayYin",
-    'mode': 'DEV'
-    # 'mode': 'RELEASE'
+    # 'mode': 'DEV'
+    'mode': 'RELEASE'
     # 'mode': 'LOCALHOST'
 }
 
@@ -53,7 +53,7 @@ dir_pub_dsets = dir_home + '/base/datasets'
 
 # ----------- RELEASE ------------
 ns_config_release = {
-    'ns_host': '172.16.59.99',  # _release server cloudyotech.com',
+    'ns_host': '60.12.136.58',  # _release server cloudyotech.com',
     'ns_host_pub': '120.26.57.100',
     'ns_port_http': 8100,
     'ns_port': 8888,
@@ -67,7 +67,9 @@ ns_config_release = {
 
 # ----------- DEV ------------
 ns_config_dev = {
-    'ns_host': '60.12.136.58',
+    # 'ns_host': '60.12.136.58',      #18.174 ubuntu
+    'ns_host': '18.18.45.175',      #18.174 ubuntu
+    # 'ns_host': '172.16.3.254',    #aliyun dev server
     'ns_host_pub': '120.26.48.110',
     'ns_port_http': 8100,
     'ns_port': 8888,
