@@ -365,7 +365,7 @@ def copyClassProject(userId, pjIds):
         'result': 'init project success!'
     }
 
-def reln(path,userId):
+def rename(path,userId):
     filelist = os.listdir(path) #该文件夹下的所有文件
     for file in filelist:
         Olddir = os.path.join(path,file)
@@ -376,7 +376,7 @@ def reln(path,userId):
         os.rename(Olddir,Newdir)
         pathDset = '../../../datasets/' + filename.replace('0-',str(userId)+'-',1)
         shell.execute('ln -snf ' + pathDset + ' ' + Newdir)
-        shell.execute('cp -r'+ Newdir +'   '+ os.path.join(path,filename.replace('0-',str(userId)+'-',1)))
+        shell.execute('cp -r  '+ Newdir +'   '+ os.path.join(path,filename.replace('0-',str(userId)+'-',1)))
 
 def copyClassDatasets(coursewareId,userId, datasets):
     for dataset in datasets:
