@@ -57,7 +57,7 @@ ns_config_release = {
     'ns_host_pub': '120.26.57.100',
     'ns_port_http': 8100,
     'ns_port': 8888,
-    'ns_doname ': 'https://g.cloudyotech.com/notebook',
+    'ns_doname ': 'https://f.cloudyotech.com/notebook',
     # system home dir
     'dir_home': '/notebook/storage',
     'dir_home_user': '',
@@ -73,7 +73,7 @@ ns_config_dev = {
     'ns_host_pub': '120.26.48.110',
     'ns_port_http': 8100,
     'ns_port': 8888,
-    'ns_doname': 'https://dev.dongxicc.cn/notebook',
+    'ns_doname': 'https://file.deongxicc.cn/notebook',
     # system home dir
     'dir_home': '/notebook/storage',
     'dir_home_user': '',
