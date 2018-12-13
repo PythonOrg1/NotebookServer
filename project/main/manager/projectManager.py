@@ -378,7 +378,7 @@ def rename(path,userId):
         shell.execute('ln -snf ' + pathDset + ' ' + Newdir)
         shell.execute('cp -r  '+ Newdir +'   '+ os.path.join(path,filename.replace('0-',str(userId)+'-',1)))
 
-def copyClassDatasets(coursewareId,userId, datasets,projectId):
+def copyClassDatasets(coursewareId,userId, datasets,projectId,datasetId):
     for dataset in datasets:
         fromPj = config.dir_home + "/0/system/datasets/" + dataset
         toPj = config.dir_home + "/" + str(userId) + "/system/datasets/"+ str(userId) + str(dataset[1:])
@@ -387,17 +387,17 @@ def copyClassDatasets(coursewareId,userId, datasets,projectId):
                 shell.execute('rm -rf ' +   toPj)
             if not os.path.exists(fromPj):
                 sysout.err('fromPj not exit')
-                data = {'status': '0','userId':userId,'courseId':coursewareId,'projectId':projectId,'result': 'No such Class, please check the path!'}
+                data = {'status': '0','userId':userId,'courseId':coursewareId,'projectId':projectId,'datasetId':datasetId, 'result': 'No such Class, please check the path!'}
                 httpServer('http://'+config.ns_host_pub+ ':8080/WeCloud/dlCourseware/copyDatasetsStatus',data)
                 return
             shell.execute('cp -r ' + fromPj + '   ' + toPj)
             sysout.info(TAG,"copyClassDatasets success")
         except Exception as e:
             sysout.err(TAG, str(e))
-            data = {'status': '0','userId':userId,'courseId':coursewareId,'projectId':projectId,'result':str(e)}
+            data = {'status': '0','userId':userId,'courseId':coursewareId,'projectId':projectId,'datasetId':datasetId,'result':str(e)}
             httpServer('http://'+config.ns_host_pub+ ':8080/WeCloud/dlCourseware/copyDatasetsStatus',data)
             return
-    data = {'status': '1','userId':userId,'courseId':coursewareId,'projectId':projectId,'result': 'copy success!!'}
+    data = {'status': '1','userId':userId,'courseId':coursewareId,'projectId':projectId,'datasetId':datasetId,'result': 'copy success!!'}
     httpServer('http://'+config.ns_host_pub+ ':8080/WeCloud/dlCourseware/copyDatasetsStatus',data)
     return
 

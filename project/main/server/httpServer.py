@@ -338,6 +338,7 @@ def copyClassProject(request_body):
 def copyClassDataset(request_body):
     coursewateId = None
     projectId = None
+    datasetId = None
     userId = None
     datasets = []
     # version = 1 #default project version = 1
@@ -347,11 +348,13 @@ def copyClassDataset(request_body):
             coursewateId = request_body['coursewareId']
         if ('projectId' in request_body.keys()):
             projectId = request_body['projectId']
+        if ('datasetId' in request_body.keys()):
+            datasetId = request_body['datasetId']
         datasets = request_body['datasets']
     except Exception as e:
         return str(resp_err_params) + str(e)
     # projectManager.copyClassDatasets(coursewateId,userId,datasets)
-    _thread.start_new_thread( projectManager.copyClassDatasets, (coursewateId,userId,datasets,projectId, ) )
+    _thread.start_new_thread( projectManager.copyClassDatasets, (coursewateId,userId,datasets,projectId,datasetId, ) )
     return {
         'status': 1,
         'result': 'start copying datasets!'
