@@ -7,8 +7,8 @@ system = {
     'app_name': "极算云notebook文件管理分发系统",
     'version': "v1.0.1",
     'author': "JayYin",
-    # 'mode': 'DEV'
-    'mode': 'RELEASE'
+    'mode': 'DEV'
+    # 'mode': 'RELEASE'
     # 'mode': 'LOCALHOST'
 }
 
@@ -73,7 +73,7 @@ ns_config_dev = {
     'ns_host_pub': '120.26.48.110',
     'ns_port_http': 8100,
     'ns_port': 8888,
-    'ns_doname': 'https://file.deongxicc.cn/notebook',
+    'ns_doname': 'https://file.dongxicc.cn/notebook',
     # system home dir
     'dir_home': '/notebook/storage',
     'dir_home_user': '',
