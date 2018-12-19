@@ -209,7 +209,8 @@ def getFilesInfoOfPath(dir):
                     timeModify = str(os.path.getmtime(filePath)).split(".")[0]
                     timeCreate = str(os.path.getctime(filePath)).split(".")[0]
                     size = 0
-                    if os.path.isfile(filePath) or (not str(c).startswith(".") and "." in str(c)):
+                    # if os.path.isfile(filePath) or (not str(c).startswith(".") and "." in str(c)):
+                    if os.path.isfile(filePath):
                         # is a file
                         # files.append(c)
                         # get file's properties
