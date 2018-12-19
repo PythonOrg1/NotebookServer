@@ -391,6 +391,14 @@ def getDirSize(request_body):
         'result': size
     }
 
+def bindFileToDataset(request_body):
+    try:
+        files = request_body['files']
+        dir = request_body['dir']
+        userId = request_body['userId']
+    except Exception as e:
+        return str(resp_err_params) + str(e)
+    return projectManager.bindFileToDataset(userId,files,dir)
 #
 #
 #
@@ -451,6 +459,8 @@ def praseData(request_body):
             return copyClassDataset(request_body)
         elif action == 'resetClassProject':
             return resetClassProject(request_body)
+        elif action == 'bindFileToDataset':
+            return bindFileToDataset(request_body)
         else:
             return {'status': 0, 'result': 'request & params not support!!!'}
 

@@ -401,6 +401,24 @@ def copyClassDatasets(coursewareId,userId, datasets,projectId,datasetId):
     httpServer('http://'+config.ns_host_pub+ ':8080/WeCloud/dlCourseware/copyDatasetsStatus',data)
     return
 
+def bindFileToDataset(userId,files,dir):
+    datasetPath = config.dir_home+"/"+str(userId)+"/system/datasets/"+str(dir)+'/'
+    if not os.path.exists(datasetPath):
+        os.makedirs(datasetPath)
+    try:
+        for file in files:
+            path = file['path']
+            shell.execute('ln -s '+ '../../..'+path+'  '+ datasetPath)
+    except Exception as e:
+        sysout.err(TAG, str(e))
+        return {
+            'status': 0,
+            'msg': 'bind file to dataset failed, cause ' + str(e)
+        }
+    return {
+        'status': 1,
+        'result': 'bind file to dataset success!'
+    }
 
 def httpServer(url,values):
     headers = {
@@ -415,6 +433,9 @@ def httpServer(url,values):
 #
 # return the data copy process by the websocket
 #
+
+
+
 async def startProcessCounting(userId, classId, binds, path_c, path, numDsetCur, numDsetTotal, sizeTotal, sizeDone,
                                websocket):
     sysout.info(TAG, "start copy dset " + str(numDsetCur) + '/' + str(numDsetTotal))
