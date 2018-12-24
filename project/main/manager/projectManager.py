@@ -85,7 +85,7 @@ def createPreProject(userId, projectId, projectName, projectType):
     dirData = userHome + '/数据集'
     if not os.path.exists(dirData):
         os.makedirs(dirData)
-        shell.execute('ln -s ' + pathDsets + '/* ' + dirData + '/')
+        shell.execute('ln -s ' + pathDsets + '/ ' + dirData + '/')
 
     path = config.dir_home_user + '/' + str(userId) + '/system/' + str(
         projectId) + '/1'  # 1--version of pj， vesionInit=1
