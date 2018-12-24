@@ -78,7 +78,7 @@ def createPreProject(userId, projectId, projectName, projectType):
         shell.execute('cp ' + config.file_system_readme + ' ' + pjHome + '/')
 
     # create directory for users's dataSets
-    pathDsets = config.dir_home + "/" + config.dir_home_user + '/' + str(userId) + '/system/datasets'
+    pathDsets = config.dir_home + '/' + str(userId) + '/system/datasets'
     if not os.path.exists(pathDsets):
         os.makedirs(pathDsets)
 
