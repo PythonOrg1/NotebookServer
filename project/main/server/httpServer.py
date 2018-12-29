@@ -24,15 +24,17 @@ global mLoop
 
 
 class NotebookHttpServer(threading.Thread):
-    def __init__(self, threadId, name):
+    def __init__(self, threadId, name, loop):
         threading.Thread.__init__(self)
         self.threadID = threadId
         self.name = name
+        self.loop = loop
+        mLoop = self.loop
 
     def run(self):
         t = threading.current_thread()
         sysout.info(TAG, 'NotebookHttpServer is stating at thread %s - %s' % (t.threadID, t.name))
-        run()
+        run(self.loop)
 
 
 ##
@@ -383,9 +385,10 @@ def resetClassProject(request_body):
 
 async def getDirSize(request_body):
     userId = request_body['userId']
-    dir = '/notebook/storage/' + str(userId)
+    home = config.dir_home + '/' + str(userId)
+    # dir = '/notebook/storage/' + str(userId)
     size = 0
-    size = await fileManager.getDirSize(dir)
+    size = await fileManager.getDirSize(home)
     return {
         'status': 1,
         'result': size
@@ -452,7 +455,11 @@ def praseData(request_body):
         elif action == 'initClass':
             return copyClassProject(request_body)
         elif action == 'getDirSize':
-            return getDirSize(request_body)
+            loop = asyncio.get_event_loop()
+            return loop.run_until_complete(getDirSize(request_body))
+            # loop.close()
+            # return a
+            # return getDirSize(request_body, loop)
         elif action == 'copyClassProject':
             return copyClassProject(request_body)
         elif action == 'copyClassDataset':
@@ -497,7 +504,9 @@ def application(environ, start_response):
     return [result]
 
 
-def run():
+def run(loop):
+    asyncio.set_event_loop(loop)
+
     # httpd = HTTPServer(mServer, AmiHTTPServer)
     mPort = config.ns_port_http
     mHost = config.ns_host
@@ -507,3 +516,7 @@ def run():
     sysout.info(TAG, "\033[22;32;40m【200 SUCCESS】\033[0m" + " The http_server is now running on %s in [%s] mode!" % (
     str(mServer), config.system['mode']))
     httpd.serve_forever()
+
+    # loop.run_until_complete(httpd)
+    # loop.run_until_complete(asyncio.wait(httpd))
+    # loop.run_forever()

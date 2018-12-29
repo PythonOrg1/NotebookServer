@@ -8,6 +8,7 @@ from system import shell
 from base import sysout
 from config import config
 from manager import jupyter
+import asyncio
 
 TAG = 'filemanager'
 
@@ -307,7 +308,7 @@ def getFilesInfoOfPath(dir):
 #
 #
 #
-def getDirSize(dir):
+async def getDirSize(dir):
     size = 0
     for root, dirs, files in os.walk(dir):
         try:

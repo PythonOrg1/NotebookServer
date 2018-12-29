@@ -51,7 +51,7 @@ if __name__ == '__main__':
     # startHttpServer()
 
     pool = []
-    pool.append(httpServer.NotebookHttpServer(threadId=1, name='NotebookHttpServer'))
+    pool.append(httpServer.NotebookHttpServer(threadId=1, name='NotebookHttpServer', loop=asyncio.new_event_loop()))
     from server import websocketServer
     pool.append(websocketServer.webSocketServer(threadId=2, name='nbWsServer', loop=asyncio.new_event_loop()))
     for t in pool:
