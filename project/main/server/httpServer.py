@@ -381,11 +381,11 @@ def resetClassProject(request_body):
 
 
 
-def getDirSize(request_body):
+async def getDirSize(request_body):
     userId = request_body['userId']
     dir = '/notebook/storage/' + str(userId)
     size = 0
-    size = fileManager.getDirSize(dir)
+    size = await fileManager.getDirSize(dir)
     return {
         'status': 1,
         'result': size
