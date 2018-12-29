@@ -84,8 +84,7 @@ def createPreProject(userId, projectId, projectName, projectType):
 
     dirData = userHome + '/数据集'
     if not os.path.exists(dirData):
-        os.makedirs(dirData)
-        shell.execute('ln -s ' + pathDsets + '/* ' + dirData + '/')
+        os.symlink('system/datasets',dirData)
 
     path = config.dir_home_user + '/' + str(userId) + '/system/' + str(
         projectId) + '/1'  # 1--version of pj， vesionInit=1
@@ -403,18 +402,34 @@ def copyClassDatasets(coursewareId,userId, datasets,projectId,datasetId):
 
 def bindFileToDataset(userId,files,dir):
     datasetPath = config.dir_home+"/"+str(userId)+"/system/datasets/"+str(dir)+'/'
+    deletePaths = []
     if not os.path.exists(datasetPath):
         os.makedirs(datasetPath)
     try:
         for file in files:
             path = file['path']
-            shell.execute('ln -s '+ '../../..'+path+'  '+ datasetPath)
-    except Exception as e:
-        sysout.err(TAG, str(e))
+            name = file['name']
+            os.symlink('../../..'+path,datasetPath+name)
+            deletePaths.append(datasetPath+name)
+    except FileExistsError as e1:
+        sysout.err(TAG, str(e1))
+        for deletePath in deletePaths:
+            if os.path.exists(deletePath):
+                os.remove(deletePath)
         return {
             'status': 0,
-            'msg': 'bind file to dataset failed, cause ' + str(e)
+            'result': '绑定失败，存在同名文件！'
         }
+    except Exception as e:
+        sysout.err(TAG, str(e))
+        for deletePath in deletePaths:
+            if os.path.exists(deletePath):
+                os.remove(deletePath)
+        return {
+            'status': 0,
+            'result': 'bind file to dataset failed, cause ' + str(e)
+        }
+
     return {
         'status': 1,
         'result': 'bind file to dataset success!'

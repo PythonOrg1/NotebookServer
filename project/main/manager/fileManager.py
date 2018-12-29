@@ -406,7 +406,7 @@ def makeDir(dir):
         return (0, 'Directory form not support, should be absolute path !')
     else:
         try:
-            shell.execute("mkdir " + dir)
+            os.makedirs(dir)
             return (1, 'Create successed !')
         except Exception as  e:
             return (0, 'Create directory failed, ' + str(e))

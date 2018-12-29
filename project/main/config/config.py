@@ -7,8 +7,8 @@ system = {
     'app_name': "极算云notebook文件管理分发系统",
     'version': "v1.0.1",
     'author': "JayYin",
-    'mode': 'DEV'
-    # 'mode': 'RELEASE'
+    # 'mode': 'DEV'
+    'mode': 'RELEASE'
     # 'mode': 'LOCALHOST'
 }
 
